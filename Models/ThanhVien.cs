@@ -13,9 +13,9 @@ namespace DACN.Models
         public ThanhVien()
         {
             BaiViets = new HashSet<BaiViet>();
-            ChuXes = new HashSet<ChuXe>();
-            KhachHangs = new HashSet<KhachHang>();
-            TaiXes = new HashSet<TaiXe>();
+            BinhLuanBaiViets = new HashSet<BinhLuanBaiViet>();
+            DatXes = new HashSet<DatXe>();
+            Xes = new HashSet<Xe>();
         }
 
         [Key]
@@ -31,7 +31,19 @@ namespace DACN.Models
         public string XacNhanMatKhau { get; set; }
 
         [StringLength(255)]
+        public string Email { get; set; }
+
+        [StringLength(255)]
         public string TenHienThi { get; set; }
+
+        [StringLength(255)]
+        public string HoTen { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime? NgaySinh { get; set; }
+
+        [StringLength(255)]
+        public string DienThoai { get; set; }
 
         public int? MaLoaiThanhVien { get; set; }
 
@@ -39,14 +51,14 @@ namespace DACN.Models
         public virtual ICollection<BaiViet> BaiViets { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChuXe> ChuXes { get; set; }
+        public virtual ICollection<BinhLuanBaiViet> BinhLuanBaiViets { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KhachHang> KhachHangs { get; set; }
+        public virtual ICollection<DatXe> DatXes { get; set; }
 
         public virtual LoaiThanhVien LoaiThanhVien { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TaiXe> TaiXes { get; set; }
+        public virtual ICollection<Xe> Xes { get; set; }
     }
 }

@@ -16,10 +16,10 @@ namespace DACN.Models
         }
 
         [Key]
-        public int MaHinhThucThanhToan { get; set; }
+        public int MaHinhThuc { get; set; }
 
         [StringLength(255)]
-        public string TenHinhThucThanhToan { get; set; }
+        public string TenHinhThuc { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DatXe> DatXes { get; set; }

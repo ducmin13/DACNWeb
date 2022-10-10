@@ -22,6 +22,8 @@ namespace DACN.Models
         [StringLength(255)]
         public string TenLoaiThanhVien { get; set; }
 
+        public int? UuDai { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhanQuyen> PhanQuyens { get; set; }
 
