@@ -12,9 +12,9 @@ namespace DACN.Models
         [Key]
         public int MaChiTietDatXe { get; set; }
 
-        public int? MaXe { get; set; }
-
         public int? MaDatXe { get; set; }
+
+        public int? MaXe { get; set; }
 
         public int? TongThanhToan { get; set; }
 

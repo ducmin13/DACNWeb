@@ -21,7 +21,7 @@
     <IISExpressSSLPort>44398</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
-    <IISExpressUseClassicPipelineMode />
+    <IISExpressUseClassicPipelineMode>true</IISExpressUseClassicPipelineMode>
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -133,20 +133,18 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BaiViet.cs" />
-    <Compile Include="Models\CarRentalDbContext.cs" />
+    <Compile Include="Models\BinhLuanBaiViet.cs" />
+    <Compile Include="Models\CarRental_DbContext.cs" />
     <Compile Include="Models\ChiTietDatXe.cs" />
-    <Compile Include="Models\ChuXe.cs" />
+    <Compile Include="Models\ChuDe.cs" />
     <Compile Include="Models\DatXe.cs" />
-    <Compile Include="Models\HangXe.cs" />
-    <Compile Include="Models\HinhThucDatXe.cs" />
+    <Compile Include="Models\DiaDiem.cs" />
     <Compile Include="Models\HinhThucThanhToan.cs" />
-    <Compile Include="Models\KhachHang.cs" />
-    <Compile Include="Models\KhuVucChoThue.cs" />
     <Compile Include="Models\LoaiThanhVien.cs" />
     <Compile Include="Models\LoaiXe.cs" />
+    <Compile Include="Models\NhaSanXuat.cs" />
     <Compile Include="Models\PhanQuyen.cs" />
     <Compile Include="Models\Quyen.cs" />
-    <Compile Include="Models\TaiXe.cs" />
     <Compile Include="Models\ThanhVien.cs" />
     <Compile Include="Models\Xe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -173,6 +171,15 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\DangKy.cshtml" />
+    <Content Include="Views\Home\DangNhap.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -180,13 +187,23 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\BaiViet\BaiVietPartial.cshtml" />
+    <Content Include="Views\BaiViet\ChiTietBaiViet.cshtml" />
+    <Content Include="Views\BaiViet\HienThiToanBoBaiViet.cshtml" />
+    <Content Include="Views\ChuDe\ChuDePartial.cshtml" />
+    <Content Include="Views\DiaDiem\DiaDiemPartial.cshtml" />
+    <Content Include="Views\Home\FooterPartial.cshtml" />
+    <Content Include="Views\Home\HeaderPartial.cshtml" />
+    <Content Include="Views\Home\HuongDanDangKyChuXe.cshtml" />
+    <Content Include="Views\Home\LienHe.cshtml" />
+    <Content Include="Views\LoaiXe\LoaiXePartial.cshtml" />
+    <Content Include="Views\NhaSanXuat\NhaSanXuatPartial.cshtml" />
+    <Content Include="Views\Shared\_MainLayout.cshtml" />
+    <Content Include="Views\Shared\_MenuLayout.cshtml" />
+    <Content Include="Views\Xe\HienThiToanBoXe.cshtml" />
+    <Content Include="Views\Xe\HienThiXeTheoLoaiXe.cshtml" />
+    <Content Include="Views\Xe\HienThiXeTheoNhaSanXuat.cshtml" />
+    <Content Include="Views\Xe\XePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

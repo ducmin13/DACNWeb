@@ -1,0 +1,115 @@
+﻿
+@model DACN.Models.ThanhVien
+@using BotDetect.Web.Mvc;
+@{
+    ViewBag.Title = "DangKy";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<link href="@BotDetect.Web.CaptchaUrls.Absolute.LayoutStyleSheetUrl"
+      rel="stylesheet" type="text/css" />
+
+@{
+    MvcCaptcha exampleCaptcha = new MvcCaptcha("ExampleCaptcha");
+    exampleCaptcha.UserInputID = "CaptchaCode";
+}
+
+
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/Assets/images/contact.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
+            <div class="col-md-9 ftco-animate pb-5">
+                <p class="breadcrumbs"><span class="mr-2"><a href="@Url.Action("Index","Home")">Trang chủ <i class="ion-ios-arrow-forward"></i></a></span> <span>Đăng ký <i class="ion-ios-arrow-forward"></i></span></p>
+                
+            </div>
+        </div>
+    </div>
+</section>
+<br />
+<br />
+<br />
+<section class="vh-100 bg-image">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                            <h2 class="text-uppercase text-center mb-5">Đăng ký thành viên</h2>
+                            <form>
+                                @using (Html.BeginForm("DangKy", "Home", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="form3Example1cg">Tên đăng nhập</label>
+                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg"
+                                               name="TaiKhoan" />
+                                        @Html.ValidationMessageFor(model => model.TaiKhoan, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="form3Example4cdg">Mật khẩu</label>
+                                        <input type="password" id="form3Example4cdg" class="form-control form-control-lg"
+                                               name="MatKhau" />
+                                        @Html.ValidationMessageFor(model => model.MatKhau, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="form3Example1cg">Xác nhận mật khẩu</label>
+
+                                        <input type="password" id="form3Example1cg" class="form-control form-control-lg"
+                                               name="XacNhanMatKhau" />
+                                        @Html.ValidationMessageFor(model => model.XacNhanMatKhau, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="form3Example1cg">Email</label>
+                                        <input type="email" id="form3Example1cg" class="form-control form-control-lg"
+                                               name="Email" />
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
+
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="form3Example1cg">Tên hiển thị</label>
+                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg"
+                                               name="TenHienThi" />
+                                        @Html.ValidationMessageFor(model => model.TenHienThi, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        @Html.Captcha(exampleCaptcha)
+                                        @Html.TextBox("CaptchaCode")
+                                    </div>
+
+                                    <div>
+                                        <span style="color: #ff0000; font-size: 20px">@ViewBag.ThongBaoThatBai</span>
+                                        <span style="color: #39b900; font-size: 20px">@ViewBag.ThongBaoThanhCong</span>
+                                    </div>
+
+                                    <div class="d-flex justify-content-center">
+                                        <button type="submit"
+                                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
+                                            Đăng ký
+                                        </button>
+                                    </div>
+                                 }
+                                </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
