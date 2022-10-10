@@ -14,8 +14,6 @@ namespace DACN.Models
 
         public int? MaXe { get; set; }
 
-        public int? MaDatXe { get; set; }
-
         public int? TongThanhToan { get; set; }
 
         public virtual DatXe DatXe { get; set; }
