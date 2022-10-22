@@ -1,0 +1,15 @@
+﻿@using DoAnChuyenNganh.Models;
+@model IEnumerable<NhaSanXuat>
+
+
+<div class="sidebar-box ftco-animate">
+    <div class="categories">
+        <h3>Hãng xe</h3>
+        @foreach (var item in Model)
+        {
+            <li><a href="@Url.Action("HienThiXeTheoNhaSanXuat", new { id = @item.MaNhaSanXuat })">@item.TenNhaSanXuat<span>(12)</span></a></li>
+        }
+
+       
+    </div>
+</div>
