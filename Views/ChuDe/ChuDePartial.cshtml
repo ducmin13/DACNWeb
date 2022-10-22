@@ -1,0 +1,19 @@
+﻿@using DoAnChuyenNganh.Models;
+@model IEnumerable<ChuDe>
+
+
+<div class="col-md-3 text-center d-flex ftco-animate">
+    <div class="sidebar-box ftco-animate">
+        <div class="categories">
+            <h3>Chủ đề</h3>
+            
+                @foreach (var item in Model)
+                {
+                    <a href="@Url.Action("HienThiBaiVietTheoChuDe", new { id = @item.MaChuDe })" class="tag-cloud-link">@item.TenChuDe</a>
+                }
+        </div>
+    </div>
+</div>
+
+
+

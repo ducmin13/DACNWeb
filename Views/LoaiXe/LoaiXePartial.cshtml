@@ -1,0 +1,13 @@
+﻿@using DoAnChuyenNganh.Models;
+@model IEnumerable<LoaiXe>
+
+
+<div class="sidebar-box ftco-animate">
+    <h3>Loại xe</h3>
+    <div class="tagcloud">
+        @foreach (var item in Model)
+        {
+            <a href="@Url.Action("HienThiXeTheoLoaiXe", new { id = @item.MaLoaiXe })" class="tag-cloud-link">@item.TenLoaiXe</a>
+        }
+    </div>
+</div>

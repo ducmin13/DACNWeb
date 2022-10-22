@@ -1,0 +1,67 @@
+﻿@model DoAnChuyenNganh.Models.ThanhVien
+@using BotDetect.Web.Mvc;
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/Assets/images/contact.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
+            <div class="col-md-9 ftco-animate pb-5">
+                <p class="breadcrumbs"><span class="mr-2"><a href="@Url.Action("Index","Home")">Trang chủ <i class="ion-ios-arrow-forward"></i></a></span> <span>Đăng ký <i class="ion-ios-arrow-forward"></i></span></p>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!--form login-->
+<section class="vh-100 bg-image">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                            <div class="row justify-content-around">
+                                @using (Ajax.BeginForm("DangNhap", "Home", new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "ThongBao" }))
+                                {
+                                    <h1 class="text-center text-uppercase h3 py-3"> Đăng Nhập</h1>
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="form3Example1cg">Email hoặc số điện thoại</label>
+                                        <input type="email" id="form3Example1cg" class="form-control form-control-lg"
+                                               name="Email" />
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="form3Example4cdg">Mật khẩu</label>
+                                        <input type="password" id="form3Example4cdg" class="form-control form-control-lg"
+                                               name="MatKhau" />
+                                        @Html.ValidationMessageFor(model => model.MatKhau, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
+                                    </div>
+                                    <input type="Checkbox" name="remember-me" id="remember-me">
+                                    <label for="p-3">Lưu tài khoản</label>
+                                    <a style="float: right;" href="#">Quên mật khẩu? </a>
+                                    <div class="d-flex justify-content-center">
+                                        <button type="submit"
+                                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
+                                            Đăng nhập
+                                        </button>
+                                    </div>
+                                    <p>
+                                        Chưa có tài khoản?
+                                        <a href="@Url.Action("DangKy","Home")">Đăng ký | </a>
+                                        <a style="float: right;" href="@Url.Action("Index","Home")">Trang chủ</a>
+                                    </p>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+                    <!--end form login-->
