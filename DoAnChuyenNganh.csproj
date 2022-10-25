@@ -143,8 +143,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Controllers\BaiVietController.cs" />
     <Compile Include="Controllers\ChuDeController.cs" />
+    <Compile Include="Controllers\DatXeController.cs" />
     <Compile Include="Controllers\DiaDiemController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoaiXeController.cs" />
@@ -363,6 +366,10 @@
     <Content Include="Assets\scss\bootstrap\_utilities.scss" />
     <Content Include="Assets\scss\bootstrap\_variables.scss" />
     <Content Include="Assets\scss\style.scss" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\Error.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminLayout.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -407,10 +414,11 @@
     <Content Include="Views\BaiViet\HienThiToanBoBaiViet.cshtml" />
     <Content Include="Views\ChuDe\ChuDePartial.cshtml" />
     <Content Include="Views\BaiViet\ChiTietBaiViet.cshtml" />
+    <Content Include="Views\DatXe\DatXe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\" />
+    <Folder Include="Areas\Admin\Data\" />
     <Folder Include="test\" />
   </ItemGroup>
   <ItemGroup>
