@@ -3,6 +3,8 @@ using DoAnChuyenNganh.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -47,7 +49,9 @@ namespace DoAnChuyenNganh.Controllers
         {
             return View();
         }
+
         [HttpPost]
+        [ValidateAntiForgeryToken]
         [CaptchaValidationActionFilter("CaptchaCode", "ExampleCaptcha", "Không hợp lệ!")]
         public ActionResult DangKy(ThanhVien tv)    //dùng post để truyền data lên csdl, dùng biến tv trong model thay formcollection
         {
@@ -62,21 +66,41 @@ namespace DoAnChuyenNganh.Controllers
                 else
                 {               
                     tv.MaLoaiThanhVien = 2;
-                    ViewBag.ThongBaoThanhCong = "Đăng ký thành công";
+                    tv.MatKhau = GetMD5(tv.MatKhau);
                     dbContext.ThanhViens.Add(tv);
                     dbContext.SaveChanges();
+                    ViewBag.ThongBaoThanhCong = "Đăng ký thành công";
                     // Reset the captcha if your app's workflow continues with the same view
                     MvcCaptcha.ResetCaptcha("ExampleCaptcha");
+                    return RedirectToAction("Index","Home");
                 }
             }
             else
             {
                 ViewBag.ThongBaoThatBai = "Không hợp lệ!";
+                return View();
+
             }
             return View();
         }
 
-        
+        public static string GetMD5(string str)
+        {
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] fromData = Encoding.UTF8.GetBytes(str);
+            byte[] targetData = md5.ComputeHash(fromData);
+            string byte2String = null;
+
+            for (int i = 0; i < targetData.Length; i++)
+            {
+                byte2String += targetData[i].ToString("x2");
+
+            }
+            return byte2String;
+        }
+
+
+
         public ActionResult HuongDanDangKyChuXe()
         {
             return View();
@@ -114,8 +138,8 @@ namespace DoAnChuyenNganh.Controllers
         public ActionResult DangNhap(FormCollection f)
         {
             //kiểm tra tên đăng nhập và mật khẩu
-            string email = f["txtEmail"].ToString();   //lấy chuỗi trong txtTenDangNhap
-            string matKhau = f["txtMatKhau"].ToString();    //lấy chuỗi trong txtMatKhau
+            string email = f["Email"].ToString();   //lấy chuỗi trong txtTenDangNhap
+            string matKhau = f["MatKhau"].ToString();    //lấy chuỗi trong txtMatKhau
 
             ThanhVien tv = dbContext.ThanhViens.SingleOrDefault(n => n.Email == email && n.MatKhau == matKhau);      //so sánh với tk và mk trong csdl
             if (tv != null)

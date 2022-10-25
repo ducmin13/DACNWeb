@@ -22,16 +22,16 @@ namespace DoAnChuyenNganh.Models
         public int MaThanhVien { get; set; }
 
         [StringLength(255)]
-        [Required]
-        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,15}$")]
+        //[Required]
+        //[RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,15}$")]
         public string MatKhau { get; set; }
 
         [StringLength(255)]
         public string XacNhanMatKhau { get; set; }
 
         [StringLength(255)]
-        [Required]
-        [RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}")]
+        //[Required]
+        //[RegularExpression(@"[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}")]
         public string Email { get; set; }
 
         [StringLength(255)]
