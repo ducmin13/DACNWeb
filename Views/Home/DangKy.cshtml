@@ -1,4 +1,4 @@
-
+﻿
 @model DoAnChuyenNganh.Models.ThanhVien
 @using BotDetect.Web.Mvc;
 @{
@@ -6,19 +6,13 @@
     Layout = "~/Views/Shared/_MenuLayout.cshtml";
 }
 
-<link href="@BotDetect.Web.CaptchaUrls.Absolute.LayoutStyleSheetUrl"
-      rel="stylesheet" type="text/css" />
-@{
-    MvcCaptcha exampleCaptcha = new MvcCaptcha("ExampleCaptcha");
-    exampleCaptcha.UserInputID = "CaptchaCode";
-}
 
 <div class="container">
     <div class="card o-hidden border-0 shadow-lg my-5">
         <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
-                <div class="col-lg-5 d-none d-lg-block"> <img src="~/Assets/images/dangky.jpg" style="width:450px"/></div>
+                <div class="col-lg-5 d-none d-lg-block"><img src="~/Assets/images/dangky.jpg" style="width:450px" /></div>
                 <div class="col-lg-7">
                     <div class="p-5">
                         <div class="text-center">
@@ -30,12 +24,10 @@
                             @Html.AntiForgeryToken()
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             <form class="user">
-                                <div class="form-group row">
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" name="TenHienThi"
-                                               placeholder="Tên hiển thị">
-                                        @Html.ValidationMessageFor(model => model.TenHienThi, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
-                                    </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" name="TenHienThi"
+                                           placeholder="Tên hiển thị">
+                                    @Html.ValidationMessageFor(model => model.TenHienThi, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" name="Email"
@@ -54,11 +46,6 @@
                                         @Html.ValidationMessageFor(model => model.XacNhanMatKhau, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
                                     </div>
 
-                                    @*<div class="form-outline mb-4">
-                                        @Html.Captcha(exampleCaptcha)
-                                        @Html.TextBox("CaptchaCode")
-                                    </div>*@
-
                                     <div>
                                         <span style="color: #ff0000; font-size: 20px">@ViewBag.ThongBaoThatBai</span>
                                         <span style="color: #39b900; font-size: 20px">@ViewBag.ThongBaoThanhCong</span>
@@ -75,25 +62,24 @@
                                     <i class="fab fa-facebook-f fa-fw"></i> Đăng ký với Facebook
                                 </a>
                             </form>
+
+                            <hr>
+                            <div>
+                                <div style="float:left">
+                                    <a class="small" href="forgot-password.html">Quên mật khẩu?</a>
+
+                                </div>
+                                <div style="float:right">
+                                    <a class="small" href="@Url.Action("DangNhap", "Home")">Đã có tài khoản?</a>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <a href="@Url.Action("Index","Home")">Trang chủ</a>
+                            </div>
                         }
-                        <hr>
-                        <div>
-                            <div style="float:left">
-                                <a class="small" href="forgot-password.html">Quên mật khẩu?</a>
-
-                            </div>
-                            <div style="float:right">
-                                <a class="small" href="@Url.Action("DangNhap","Home")">Đã có tài khoản?</a>
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <a href="@Url.Action("Index","Home")">Trang chủ</a>
-                        </div>
-
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
