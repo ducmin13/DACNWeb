@@ -1,0 +1,102 @@
+﻿@using DoAnChuyenNganh.Models;
+@{
+    ViewBag.Title = "Home Page";
+}
+@{
+    //định nghĩa các viewbag để truyền vào partial view
+    IEnumerable<DiaDiem> lstDiaDiem = (IEnumerable<DiaDiem>)ViewBag.ListDiaDiem;    //cách ép kiểu 1
+    IEnumerable<BaiViet> lstBaiViet = ViewBag.ListBaiViet as IEnumerable<BaiViet>;   //cách ép kiểu 2
+    IEnumerable<Xe> lstXe = ViewBag.ListXe as IEnumerable<Xe>;
+}
+<!--backgroud image-->
+<div class="hero-wrap ftco-degree-bg" style="background-image: url('/Assets/images/bg_index.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text justify-content-start align-items-center justify-content-center">
+            <div class="col-lg-8 ftco-animate">
+                <div class="text w-100 text-center mb-md-5 pb-md-5">
+                    <h1 class="mb-4">NAT - Cùng bạn trên mọi hành trình</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end backgroud image-->
+<!--detail book a car-->
+<section class="ftco-section ftco-no-pt bg-light">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-md-12	featured-top">
+                <div class="row no-gutters">
+                    <div class="col-md-4 d-flex align-items-center">
+                        <form action="#" class="request-form ftco-animate bg-primary">
+
+
+                            <div class="form-group">
+                                <label for="" class="label">Địa điểm</label>
+                                <input type="text" class="form-control" placeholder="City, Airport, Station, etc">
+                            </div>
+                            <div class="d-flex">
+                                <div class="form-group mr-2">
+                                    <label for="" class="label">Bắt đầu</label>
+                                    <input type="text" class="form-control" id="book_pick_date" placeholder="Date">
+                                </div>
+                                <div class="form-group ml-2">
+                                    <label for="" class="label">Kết thúc</label>
+                                    <input type="text" class="form-control" id="book_off_date" placeholder="Date">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="submit" value="Tìm xe" class="btn btn-secondary py-3 px-4">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-8 d-flex align-items-center">
+                        <div class="services-wrap rounded-right w-100">
+                            <h3 class="heading-section mb-4">Cách thức đặt xe</h3>
+                            <div class="row d-flex mb-4">
+                                <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                                    <div class="services w-100 text-center">
+                                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
+                                        <div class="text w-100">
+                                            <h3 class="heading mb-2">Chọn điểm đến</h3>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                                    <div class="services w-100 text-center">
+                                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-rent"></span></div>
+                                        <div class="text w-100">
+                                            <h3 class="heading mb-2">Đặt xe & trải nghiệm chuyến đi</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                                    <div class="services w-100 text-center">
+                                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-handshake"></span></div>
+                                        <div class="text w-100">
+                                            <h3 class="heading mb-2">Kết thúc</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--end detail book a car-->
+<!--place-->
+@Html.Partial("~/Views/DiaDiem/DiaDiemPartial.cshtml", lstDiaDiem) @*dùng đg dẫn tuyệt đối vì khác folder và truyền vào model của lstDiaDiem*@
+<!--end place-->
+<!--book car-->
+<!--end book car-->
+@Html.Partial("~/Views/Xe/XePartial.cshtml", lstXe)
+<!--blog-->
+@Html.Partial("~/Views/BaiViet/BaiVietPartial.cshtml", lstBaiViet)
+<!--end blog-->

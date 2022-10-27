@@ -1,0 +1,36 @@
+﻿@using DoAnChuyenNganh.Models;
+@model IEnumerable<DiaDiem>
+
+
+<!--place-->
+<section class="ftco-section ftco-no-pt bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 heading-section text-center ftco-animate mb-5">
+
+                <h2 class="mb-2">Địa điểm du lịch mới</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="carousel-car owl-carousel">
+                    @foreach(var item in Model)
+                     {
+                    <div class="item">
+                        <div class="car-wrap rounded ftco-animate">
+                            <div class="img rounded d-flex align-items-end" style="background-image: url(/Assets/images/dia_diem/@item.HinhAnh);">
+                            </div>
+                            <div class="text">
+                                <h2 class="mb-0"><a href="#">@item.TenDiaDiem</a></h2>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                      }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--end place-->
