@@ -73,8 +73,8 @@
                     <div class="card" style="border-radius: 15px;">
                         <div class="card-body p-5">
                             <h2 class="text-uppercase text-center mb-5">Đăng ký xe cho thuê</h2>
-                            <form>
-                                @using (Html.BeginForm("DangKyChuXe", "Home", FormMethod.Post))
+                            
+                                @using (Html.BeginForm())
                                 {
                                     @Html.AntiForgeryToken()
                                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -112,7 +112,7 @@
 
                                     <div>
                                         <span style="color: #ff0000; font-size: 20px">@ViewBag.ThongBaoThatBai</span>
-                                        <span style="color: #39b900; font-size: 20px">@ViewBag.ThongBaoThanhCong</span>
+                                        @* <span style="color: #39b900; font-size: 20px">@ViewBag.ThongBaoThanhCong</span>*@
                                     </div>
 
 
@@ -124,7 +124,7 @@
                                     </div>
                                 }
                                
-                            </form>
+
 
                         </div>
                     </div>
