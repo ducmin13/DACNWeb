@@ -145,7 +145,7 @@ namespace DoAnChuyenNganh.Controllers
             {
                 var lstQuyen = dbContext.PhanQuyens.Where(n => n.MaLoaiThanhVien == tv.MaLoaiThanhVien);   //lấy ra list quyền tương ứng loaitv
                 string quyen = "";
-                if (lstQuyen.Count() != 0)
+                if (lstQuyen.Count() == 1)
                 {
                     foreach (var item in lstQuyen)   //duyệt list quyền
                     {
@@ -155,7 +155,22 @@ namespace DoAnChuyenNganh.Controllers
                     PhanQuyenUser(tv.Email.ToString(), quyen);
 
                     Session["TaiKhoan"] = tv;
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Admin", "Admin/Admin");
+                }
+                else
+                {
+                    if (lstQuyen.Count() != 0)
+                    {
+                        foreach (var item in lstQuyen)   //duyệt list quyền
+                        {
+                            quyen += item.Quyen.MaQuyen + ",";
+                        }
+                        quyen = quyen.Substring(0, quyen.Length - 1); //Cắt dấu ,
+                        PhanQuyenUser(tv.Email.ToString(), quyen);
+
+                        Session["TaiKhoan"] = tv;
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
             }
             return Content("Tài khoản hoặc mật khẩu không chính xác.");
