@@ -1,0 +1,30 @@
+﻿@using DoAnChuyenNganh.Models;
+@model IEnumerable<Xe>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<h2>@ViewBag.Title</h2>
+<body>
+    <div class="card">
+        <div class="card-body">
+            <p>
+                @Html.ActionLink("Thêm mới", "TaoMoi", null, htmlAttributes: new { @class = "btn btn-sm btn-warning font-weight-bold " })
+            </p>
+            @using (Html.BeginForm("Index", "QuanLyXe", FormMethod.Get, new { @class = "form-inline" }))
+            {
+                <div class="form-group form-inline" style="display: flex;">
+                    <input type="Text" style="width: 300px" class="form-control col-md-10" value="@ViewBag.Keyword"
+                           name="searchString" placeholder="Nhập sản phẩm">
+
+                </div>
+                <input type="submit" class="btn btn-info" value="Tìm Kiếm" style="margin-left:-40px">
+            }
+            <div id="divPartialView">
+                @Html.Partial("_IndexPartial")
+            </div>
+        </div>
+    </div>
+</body>
