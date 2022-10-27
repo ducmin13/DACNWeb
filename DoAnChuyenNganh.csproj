@@ -145,6 +145,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\XeController.cs" />
     <Compile Include="Controllers\BaiVietController.cs" />
     <Compile Include="Controllers\ChuDeController.cs" />
     <Compile Include="Controllers\DatXeController.cs" />
@@ -2201,6 +2202,7 @@
     <Content Include="Assets\vendor\jquery\jquery.slim.min.map" />
     <Content Include="Areas\Admin\Views\Admin\Header.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Footer.cshtml" />
+    <Content Include="Areas\Admin\Views\Xe\Quanlyxe.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

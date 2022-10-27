@@ -66,7 +66,6 @@ namespace DoAnChuyenNganh.Controllers
                 else
                 {               
                     tv.MaLoaiThanhVien = 2;
-                    tv.MatKhau = GetMD5(tv.MatKhau);
                     dbContext.ThanhViens.Add(tv);
                     dbContext.SaveChanges();
                     ViewBag.ThongBaoThanhCong = "Đăng ký thành công";
