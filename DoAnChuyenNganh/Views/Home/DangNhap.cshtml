@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Views/Shared/_MenuLayout.cshtml";
+}
+
+<!--form login-->
+<div class="wrapper" id="login-form">
+    <div class="container">
+
+        <div class="row justify-content-around">
+            @using (Ajax.BeginForm("DangNhap", "Home", new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "ThongBao" }))
+            {
+                <h1 class="text-center text-uppercase h3 py-3"> Đăng Nhập</h1>
+                <div class="form-group">
+                    <label for="username">Tên đăng nhập</label>
+                    <input type="text" name="txtTenDangNhap"
+                           id="username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mật khẩu</label>
+                    <input type="password" name="txtMatKhau"
+                           id="password" class="form-control" required>
+                </div>
+                <input type="Checkbox" name="remember-me" id="remember-me">
+                <label for="p-3">Lưu tài khoản</label>
+                <a style="float: right;" href="#">Quên mật khẩu? </a>
+                <input type="submit" value="Đăng nhập" class="btn-primary btn btn-block my-3">
+                <p>
+                    Chưa có tài khoản?
+                    <a href="@Url.Action("DangKy","Home")">Đăng ký | </a>
+                    <a style="float: right;" href="@Url.Action("Index","Home")">Trang chủ</a>
+                </p>
+            }
+
+
+        </div>
+    </div>
+
+</div>
+<!--end form login-->

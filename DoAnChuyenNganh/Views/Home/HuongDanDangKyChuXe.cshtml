@@ -1,0 +1,138 @@
+﻿@model DoAnChuyenNganh.Models.ThanhVien
+@using BotDetect.Web.Mvc;
+@{
+    ViewBag.Title = "HuongDanDangKyChuXe";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<link href="@BotDetect.Web.CaptchaUrls.Absolute.LayoutStyleSheetUrl"
+      rel="stylesheet" type="text/css" />
+
+@{
+    MvcCaptcha exampleCaptcha = new MvcCaptcha("ExampleCaptcha");
+    exampleCaptcha.UserInputID = "CaptchaCode";
+}
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/Assets/images/bg.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
+            <div class="col-md-9 ftco-animate pb-5">
+                <p class="breadcrumbs"><span class="mr-2"><a href="@Url.Action("Index","Home")">Trang chủ <i class="ion-ios-arrow-forward"></i></a></span> <span>Services <i class="ion-ios-arrow-forward"></i></span></p>
+                <h1 class="mb-3 bread">Our Services</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 text-center heading-section ftco-animate">
+
+                <h2 class="mb-3">3 bước đăng ký cho thuê xe</h2>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="services services-2 w-100 text-center">
+                    <div class="icon d-flex align-items-center justify-content-center"><span><img style="width:120px;height:120px;" src="~/Assets/images/b1.jpg" alt="Alternate Text" /></span></div>
+                    <div class="text w-100">
+                        <h3 class="heading mb-2">Bước 1</h3>
+                        <p>Điền thông tin theo mẫu để chúng tôi sẽ hỗ trợ tư vấn quy trình đăng ký.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="services services-2 w-100 text-center">
+                    <div class="icon d-flex align-items-center justify-content-center"><span><img style="width:120px;height:120px;" src="~/Assets/images/b2.jpg" alt="Alternate Text" /></span></div>
+                    <div class="text w-100">
+                        <h3 class="heading mb-2">Bước 2</h3>
+                        <p>Nhân viên sẽ liên hệ chủ xe để tư vấn thủ tục & quy trình cho thuê xe trong vòng 1 ngày sau khi nhận được thông tin.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="services services-2 w-100 text-center">
+                    <div class="icon d-flex align-items-center justify-content-center"><span><img style="width:120px;height:120px;" src="~/Assets/images/b3.jpg" alt="Alternate Text" /></span></div>
+                    <div class="text w-100">
+                        <h3 class="heading mb-2">Bước 3</h3>
+                        <p>Bắt đầu cho thuê xe sau khi nhận thông báo xe đã được phê duyệt.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="vh-100 bg-image">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                            <h2 class="text-uppercase text-center mb-5">Đăng ký xe cho thuê</h2>
+                            <form>
+                                @using (Html.BeginForm("DangKyChuXe", "Home", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="form3Example1cg">Họ tên</label>
+
+                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg"
+                                               name="HoTen" />
+                                        @Html.ValidationMessageFor(model => model.HoTen, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
+
+                                    </div>
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="form3Example4cdg">Số điện thoại</label>
+                                        <input type="text" id="form3Example4cdg" class="form-control form-control-lg"
+                                               name="DienThoai" />
+                                        @Html.ValidationMessageFor(model => model.DienThoai, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <label class="form-label" for="form3Example1cg">Email</label>
+
+                                        <input type="email" id="form3Example1cg" class="form-control form-control-lg"
+                                               name="Email" />
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
+
+                                    </div>
+
+
+                                    <div class="form-outline mb-4">
+                                        @Html.Captcha(exampleCaptcha)
+                                        @Html.TextBox("CaptchaCode")
+                                    </div>
+
+                                    <div>
+                                        <span style="color: #ff0000; font-size: 20px">@ViewBag.ThongBaoThatBai</span>
+                                        <span style="color: #39b900; font-size: 20px">@ViewBag.ThongBaoThanhCong</span>
+                                    </div>
+
+
+                                    <div class="d-flex justify-content-center">
+                                        <button type="submit"
+                                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
+                                            Đăng ký
+                                        </button>
+                                    </div>
+                                }
+                               
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br />
+<br />
+<br />
