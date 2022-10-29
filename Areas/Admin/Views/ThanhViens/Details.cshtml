@@ -79,5 +79,5 @@
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.MaThanhVien }) |
-    @Html.ActionLink("Back to List", "Index")
+    <a href="@Url.Action("Index","ThanhViens")" class="btn btn-outline-secondary">Back to list</a>
 </p>

@@ -5,64 +5,62 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table table-hover">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.LoaiXe.TenLoaiXe)
+            Loại xe
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NhaSanXuat.TenNhaSanXuat)
+            Tên nhà sản xuất
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ThanhVien.MatKhau)
+            Tên xe
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TenXe)
+            Giá
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Gia)
+            Hình ảnh
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.HinhAnh)
+            Mô tả
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MoTa)
+            Tác vụ
         </th>
-        <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.LoaiXe.TenLoaiXe)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NhaSanXuat.TenNhaSanXuat)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ThanhVien.MatKhau)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenXe)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Gia)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HinhAnh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MoTa)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaXe }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaXe }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaXe })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoaiXe.TenLoaiXe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NhaSanXuat.TenNhaSanXuat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenXe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gia)
+            </td>
+            <td>
+                <img src="~/Assets/images/xe/@Url.Content(item.HinhAnh)" style="width:250px; height:200px" alt="Image" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoTa)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit","Xes", new {id=item.MaXe})" class="btn btn-outline-primary">Edit</a>
+                <a href="@Url.Action("Details","Xes", new {id=item.MaXe})" class="btn btn-outline-info">Details</a>
+                <a href="@Url.Action("Delete","Xes", new {id=item.MaXe})" class="btn btn-outline-danger">Delete</a>
+            </td>
+        </tr>
+    }
+    
 </table>
+<p>
+    <input type="submit" value="Create" href="@Url.Action("Create","Xes")" class="btn btn-outline-success" />
+</p>
