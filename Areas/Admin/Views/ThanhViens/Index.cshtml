@@ -6,9 +6,6 @@
 }
 
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table table-hover">
     <tr>
         <th>
@@ -38,38 +35,41 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.LoaiThanhVien.TenLoaiThanhVien)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MatKhau)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.XacNhanMatKhau)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenHienThi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HoTen)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NgaySinh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DienThoai)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaThanhVien }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaThanhVien }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaThanhVien })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoaiThanhVien.TenLoaiThanhVien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MatKhau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.XacNhanMatKhau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenHienThi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoTen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgaySinh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DienThoai)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit","ThanhViens", new {id=item.MaThanhVien})" class="btn btn-outline-primary">Edit</a>
+                <a href="@Url.Action("Details","ThanhViens", new {id=item.MaThanhVien})" class="btn btn-outline-info">Details</a>
+                <a href="@Url.Action("Delete","ThanhViens", new {id=item.MaThanhVien})" class="btn btn-outline-danger">Delete</a>
+            </td>
+        </tr>
+    }
+    <p>
+        <input type="submit" value="Create" href="@Url.Action("Create","ThanhViens")" class="btn btn-outline-success" />
+    </p>
 </table>

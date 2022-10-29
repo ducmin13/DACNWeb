@@ -5,36 +5,40 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Index</h2>
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                Mã loại thành viên
+            </th>
+            <th>
+                Loại thành viên
+            </th>
+            <th>
+                Tác vụ
+            </th>
+        </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.MaLoaiThanhVien)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TenLoaiThanhVien)
-        </th>
-        <th></th>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaLoaiThanhVien)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenLoaiThanhVien)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit","LoaiThanhViens", new {id=item.MaLoaiThanhVien})" class="btn btn-outline-primary">Edit</a>
+                    <a href="@Url.Action("Details","LoaiThanhViens", new {id=item.MaLoaiThanhVien})" class="btn btn-outline-info">Details</a>
+                    <a href="@Url.Action("Delete","LoaiThanhViens", new {id=item.MaLoaiThanhVien})" class="btn btn-outline-danger">Delete</a>
+                </td>
+            </tr>
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.MaLoaiThanhVien)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenLoaiThanhVien)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaLoaiThanhVien }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaLoaiThanhVien }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaLoaiThanhVien })
-        </td>
-    </tr>
-}
+    </table>
+</div>
+<div>
+    <a href="@Url.Action("Create","LoaiThanhViens")" class="btn btn-outline-success">Create</a>
+</div>
 
-</table>

@@ -23,6 +23,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaLoaiThanhVien }) |
-    @Html.ActionLink("Back to List", "Index")
+    <a href="@Url.Action("Edit","LoaiThanhViens", new {id=Model.MaLoaiThanhVien})" class="btn btn-outline-primary">Edit</a>
+    <a href="@Url.Action("Index","LoaiThanhViens")" class="btn btn-outline-secondary">Back to list</a>
 </p>
