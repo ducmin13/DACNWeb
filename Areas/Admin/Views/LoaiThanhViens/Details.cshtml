@@ -1,0 +1,28 @@
+﻿@model DoAnChuyenNganh.Models.LoaiThanhVien
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>LoaiThanhVien</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenLoaiThanhVien)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenLoaiThanhVien)
+        </dd>
+
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaLoaiThanhVien }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -52,10 +53,10 @@
       <HintPath>..\packages\Captcha.4.4.2\lib\net35\BotDetect.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
@@ -145,7 +146,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
-    <Compile Include="Areas\Admin\Controllers\XeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\LoaiThanhViensController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ThanhViensController.cs" />
+    <Compile Include="Areas\Admin\Controllers\XesController.cs" />
     <Compile Include="Controllers\BaiVietController.cs" />
     <Compile Include="Controllers\ChuDeController.cs" />
     <Compile Include="Controllers\DatXeController.cs" />
@@ -2202,7 +2205,22 @@
     <Content Include="Assets\vendor\jquery\jquery.slim.min.map" />
     <Content Include="Areas\Admin\Views\Admin\Header.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\Footer.cshtml" />
-    <Content Include="Areas\Admin\Views\Xe\Quanlyxe.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Sidebar.cshtml" />
+    <Content Include="Areas\Admin\Views\ThanhViens\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ThanhViens\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ThanhViens\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ThanhViens\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ThanhViens\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Xes\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Xes\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Xes\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Xes\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Xes\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiThanhViens\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiThanhViens\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiThanhViens\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiThanhViens\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\LoaiThanhViens\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2302,8 +2320,11 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
   <Import Project="..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.115.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
