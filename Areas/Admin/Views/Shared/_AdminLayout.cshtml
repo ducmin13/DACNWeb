@@ -15,9 +15,15 @@
 </head>
 
 <body>
+
     @Html.Partial("~/Areas/Admin/Views/Admin/Header.cshtml")
-    @RenderBody()
+    <div id="wrapper">
+        @Html.Partial("~/Areas/Admin/Views/Admin/Sidebar.cshtml")
+        @RenderBody()
+    </div>
+
     @Html.Partial("~/Areas/Admin/Views/Admin/Footer.cshtml")
+
     <!-- loader -->
     <!-- Bootstrap core JavaScript-->
     <script src="~/Assets/vendor/jquery/jquery.min.js"></script>
