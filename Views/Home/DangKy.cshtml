@@ -5,8 +5,13 @@
     ViewBag.Title = "DangKy";
     Layout = "~/Views/Shared/_MenuLayout.cshtml";
 }
+<link href="@BotDetect.Web.CaptchaUrls.Absolute.LayoutStyleSheetUrl"
+      rel="stylesheet" type="text/css" />
 
-
+@{
+    MvcCaptcha exampleCaptcha = new MvcCaptcha("ExampleCaptcha");
+    exampleCaptcha.UserInputID = "CaptchaCode";
+}
 <div class="container">
     <div class="card o-hidden border-0 shadow-lg my-5">
         <div class="card-body p-0">
@@ -45,7 +50,13 @@
                                                name="XacNhanMatKhau" placeholder="Xác nhận mật khẩu">
                                         @Html.ValidationMessageFor(model => model.XacNhanMatKhau, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
                                     </div>
-
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        @Html.Captcha(exampleCaptcha)
+                                        @Html.TextBox("CaptchaCode")
+                                    </div>
+                                    
                                     <div>
                                         <span style="color: #ff0000; font-size: 20px">@ViewBag.ThongBaoThatBai</span>
                                         <span style="color: #39b900; font-size: 20px">@ViewBag.ThongBaoThanhCong</span>

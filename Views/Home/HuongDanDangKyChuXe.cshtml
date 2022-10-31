@@ -11,7 +11,7 @@
     MvcCaptcha exampleCaptcha = new MvcCaptcha("ExampleCaptcha");
     exampleCaptcha.UserInputID = "CaptchaCode";
 }
-<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/Assets/images/nen1.jpg');" data-stellar-background-ratio="0.5">
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/Assets/images/bg.jpg');" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
@@ -73,58 +73,62 @@
                     <div class="card" style="border-radius: 15px;">
                         <div class="card-body p-5">
                             <h2 class="text-uppercase text-center mb-5">Đăng ký xe cho thuê</h2>
-                            
-                                @using (Html.BeginForm())
-                                {
-                                    @Html.AntiForgeryToken()
-                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <span style="color: #39b900; font-size: 20px">@ViewBag.ThongBaoThanhCong</span>
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label" for="form3Example1cg">Họ tên</label>
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example1cg">Họ tên</label>
 
-                                        <input type="text" id="form3Example1cg" class="form-control form-control-lg"
-                                               name="HoTen" />
-                                        @Html.ValidationMessageFor(model => model.HoTen, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
+                                    <input type="text" id="form3Example1cg" class="form-control form-control-lg"
+                                           name="HoTen" />
+                                    @Html.ValidationMessageFor(model => model.HoTen, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
 
-                                    </div>
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label" for="form3Example4cdg">Số điện thoại</label>
-                                        <input type="text" id="form3Example4cdg" class="form-control form-control-lg"
-                                               name="DienThoai" />
-                                        @Html.ValidationMessageFor(model => model.DienThoai, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
-                                    </div>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example4cdg">Số điện thoại</label>
+                                    <input type="text" id="form3Example4cdg" class="form-control form-control-lg"
+                                           name="DienThoai" />
+                                    @Html.ValidationMessageFor(model => model.DienThoai, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
+                                </div>
 
-                                    <div class="form-outline mb-4">
-                                        <label class="form-label" for="form3Example1cg">Email</label>
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example1cg">Email</label>
 
-                                        <input type="email" id="form3Example1cg" class="form-control form-control-lg"
-                                               name="Email" />
-                                        @Html.ValidationMessageFor(model => model.Email, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
+                                    <input type="email" id="form3Example1cg" class="form-control form-control-lg"
+                                           name="Email" />
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
 
-                                    </div>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example1cg">Ngày Sinh</label>
 
+                                    <input type="text" id="form3Example1cg" class="form-control form-control-lg"
+                                           name="NgaySinh" />
+                                    @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
 
-                                    <div class="form-outline mb-4">
-                                        @Html.Captcha(exampleCaptcha)
-                                        @Html.TextBox("CaptchaCode")
-                                    </div>
+                                </div>
 
-                                    <div>
-                                        <span style="color: #ff0000; font-size: 20px">@ViewBag.ThongBaoThatBai</span>
-                                        @* <span style="color: #39b900; font-size: 20px">@ViewBag.ThongBaoThanhCong</span>*@
-                                    </div>
+                                <div class="form-outline mb-4">
+                                    @Html.Captcha(exampleCaptcha)
+                                    @Html.TextBox("CaptchaCode")
+                                </div>
 
+                                <div>
+                                    <span style="color: #ff0000; font-size: 20px">@ViewBag.ThongBaoThatBai</span>
+                                    @* <span style="color: #39b900; font-size: 20px">@ViewBag.ThongBaoThanhCong</span>*@
+                                </div>
 
-                                    <div class="d-flex justify-content-center">
-                                        <button type="submit"
-                                                class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
-                                            Đăng ký
-                                        </button>
-                                    </div>
-                                }
-                               
-
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit"
+                                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
+                                        Đăng ký
+                                    </button>
+                                </div>
+                            }
 
                         </div>
                     </div>
@@ -134,4 +138,3 @@
     </div>
 </section>
 <br />
-

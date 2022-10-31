@@ -1,0 +1,49 @@
+﻿@using DoAnChuyenNganh.Models
+@model IEnumerable<LoaiXe>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    WebGrid grid = new WebGrid(source: Model, rowsPerPage: 10); //khởi tạo control webgird
+
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="card">
+    <div class="card-body">
+        <p>
+            @Html.ActionLink("Thêm mới", "TaoMoi", null, htmlAttributes: new { @class = "btn btn-sm btn-warning font-weight-bold " })
+        </p>
+        @using (Html.BeginForm("Index", "QuanLyLoaiXe", FormMethod.Get, new { @class = "form-inline" }))
+        {
+            <div class="form-group form-inline" style="display: flex;">
+                <input type="Text" style="width: 300px" class="form-control col-md-10" value="@ViewBag.Keyword"
+                       name="searchString" placeholder="Nhập sản phẩm">
+
+            </div>
+            <input type="submit" class="btn btn-info" value="Tìm Kiếm" style="margin-left:-40px">
+        }
+        <div id="divPartialView">
+            @if (grid != null)
+            {
+                <div id="list" class="table-responsive">
+                    @grid.GetHtml(
+                    tableStyle: "table table-bordered table-hover",
+                    headerStyle: "",
+                    footerStyle: "text-center",
+                    numericLinksCount: 10,
+                    mode: WebGridPagerModes.All, firstText: "Trang đầu", lastText: "Trang cuối",
+                    columns: grid.Columns(
+                        grid.Column("MaLoaiXe", "Mã loại xe"),
+                        grid.Column("TenLoaiXe", "Tên loại xe"),
+                        grid.Column(format: p => Html.ActionLink("Chỉnh sửa", "ChinhSua", new { id = p.MaLoaiXe })),
+                grid.Column(format: p => Html.ActionLink("Xóa", "Xoa", new { id = p.MaLoaiXe }))
+                )
+                    )
+                </div>
+
+            }
+
+        </div>
+    </div>
+</div>
+

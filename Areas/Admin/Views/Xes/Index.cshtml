@@ -1,13 +1,29 @@
-﻿@model IEnumerable<DoAnChuyenNganh.Models.Xe>
-
+﻿
+@model IEnumerable<DoAnChuyenNganh.Models.Xe>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Danh sách xe";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
 
 <table class="table table-hover">
     <tr>
+        <td align="left" style="height:150px">
+            <h2>@ViewBag.Title</h2>
+            <a href="@Url.Action("Create","Xes")" class="btn btn-outline-success">Create</a>
+            @using (Html.BeginForm("Index", "Xes", FormMethod.Get, new { @class = "form-inline" }))
+            {
+                <br />
+                <div class="form-group form-inline" style="display: flex;">
+                    <input type="Text" style="width: 300px" class="form-control col-md-10" value="@ViewBag.Keyword"
+                           name="searchString" placeholder="Từ khóa">
+
+                </div>
+                <input type="submit" class="btn btn-info" value="Tìm Kiếm" style="margin-left:-40px">
+            }
+        </td>
+    </tr>
+    <tr style="height:50px;" >
         <th>
             Loại xe
         </th>
@@ -33,7 +49,7 @@
 
     @foreach (var item in Model)
     {
-        <tr>
+        <tr >
             <td>
                 @Html.DisplayFor(modelItem => item.LoaiXe.TenLoaiXe)
             </td>
@@ -47,7 +63,8 @@
                 @Html.DisplayFor(modelItem => item.Gia)
             </td>
             <td>
-                <img src="~/Assets/images/xe/@Url.Content(item.HinhAnh)" style="width:250px; height:200px" alt="Image" />
+                @*@Html.DisplayFor(modelItem => item.HinhAnh)*@
+                <img src="~/Assets/images/xe/@Url.Content(item.HinhAnh)" style="width:250px; height:200px" alt="Lỗi" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MoTa)
@@ -59,8 +76,6 @@
             </td>
         </tr>
     }
-    
+
 </table>
-<p>
-    <input type="submit" value="Create" href="@Url.Action("Create","Xes")" class="btn btn-outline-success" />
-</p>
+

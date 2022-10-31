@@ -139,7 +139,11 @@ namespace DoAnChuyenNganh.Controllers
             //kiểm tra tên đăng nhập và mật khẩu
             string email = f["Email"].ToString();   //lấy chuỗi trong txtTenDangNhap
             string matKhau = f["MatKhau"].ToString();    //lấy chuỗi trong txtMatKhau
-
+            ThanhVien admin = dbContext.ThanhViens.SingleOrDefault(n => n.Email == email && n.MatKhau == matKhau && n.MaLoaiThanhVien == 1);
+            if (admin != null)
+            {
+                return RedirectToAction("Admin", "Admin");
+            }
             ThanhVien tv = dbContext.ThanhViens.SingleOrDefault(n => n.Email == email && n.MatKhau == matKhau);      //so sánh với tk và mk trong csdl
             if (tv != null)
             {
@@ -157,6 +161,7 @@ namespace DoAnChuyenNganh.Controllers
                     Session["TaiKhoan"] = tv;
                     return RedirectToAction("Index", "Home");
                 }
+
             }
             return Content("Tài khoản hoặc mật khẩu không chính xác.");
         }
