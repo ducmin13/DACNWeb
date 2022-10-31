@@ -1,0 +1,32 @@
+﻿@model DoAnChuyenNganh.Models.DiaDiem
+
+@{
+    ViewBag.Title = "UploadHinh";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h4>@Html.ActionLink("Địa Điểm", "Index") > Upload hình</h4>
+<div class="card shadow">
+    <div class="card-body">
+        <h3 class="text-info mb-3">Tên sản phẩm: @Model.TenDiaDiem</h3>
+        <div class="text-danger"> @ViewBag.ThongBao</div>
+
+        @using (Html.BeginForm("UploadHinh", "QuanLyDiaDiem", FormMethod.Post, htmlAttributes: new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <h4>Hình ảnh</h4>
+            <div class="custom-file mb-3">
+                <input type="file" class="custom-file-input" id="inputfile" name="HinhAnh" multiple>
+                <label class="custom-file-label" for="inputfile">Chọn hình ảnh</label>
+            </div>
+            <div class="form-group mt-4">
+                <button type="submit" class="btn btn-primary">Upload</button>
+                @Html.ActionLink("Trở về", "Index", null, htmlAttributes: new { @class = "btn btn-sm btn-secondary " })
+            </div>
+        }
+    </div>
+</div>
+
+
+

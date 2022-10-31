@@ -1,0 +1,36 @@
+﻿@model DoAnChuyenNganh.Models.ChuDe
+@{
+    ViewBag.Title = "Xoa";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h4>@Html.ActionLink("Chủ đề", "Index") > Xóa</h4>
+<div class="card shadow">
+    <div class="card-body">
+        <h4 class="card-title">Thông tin địa điểm</h4>
+        <hr />
+        <div class="row ">
+            <label class="col-sm-2 col-form-label font-weight-bold">@Html.DisplayNameFor(model => model.MaChuDe)</label>
+            <div class="col-sm-6 col-form-label">@Html.DisplayFor(model => model.MaChuDe)</div>
+        </div>
+        <div class="row ">
+            <label class="col-sm-2 col-form-label font-weight-bold">@Html.DisplayNameFor(model => model.TenChuDe)</label>
+            <div class="col-sm-6 col-form-label">@Html.DisplayFor(model => model.TenChuDe)</div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="Xóa" class="btn btn-sm btn-primary font-weight-bold w-25" />
+                    @Html.ActionLink("Trở về", "Index", null, htmlAttributes: new { @class = "btn btn-sm btn-secondary font-weight-bold w-25" })
+                }
+            </div>
+        </div>
+
+
+    </div>
+</div>
+

@@ -1,9 +1,10 @@
-﻿@model DoAnChuyenNganh.Models.Xe
+﻿@model DoAnChuyenNganh.Models.DiaDiem
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "ChinhSua";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
+
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -41,33 +42,34 @@
     });
 </script>
 
-<h4>@Html.ActionLink("Xes", "Index") > Chỉnh sửa</h4>
+<h4>@Html.ActionLink("Địa Điểm", "Index") > Chỉnh sửa</h4>
 <div class="card">
     <div class="card-body">
         <h4 class="card-title">Thông tin sản phẩm</h4>
         <hr />
-        @using (Html.BeginForm("Edit", "Xes", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("ChinhSua", "QuanLyDiaDiem", FormMethod.Post, new { @enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
             <div class="form-horizontal">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                @Html.Hidden("MaXe", Model.MaXe)
+                @Html.Hidden("MaDiaDiem", Model.MaDiaDiem)
+
                 <div class="form-group row">
                     <i class="fas fa-box fa-lg ml-3 col-form-label" style="color: rgba(71, 108, 218); height: 2em;width: 1em;"></i>
-                    @Html.LabelFor(model => model.TenXe, htmlAttributes: new { @class = "col-form-label font-weight-bold col-sm-2" })
+                    @Html.LabelFor(model => model.TenDiaDiem, htmlAttributes: new { @class = "col-form-label font-weight-bold col-sm-2" })
                     <div class="col-md-6">
-                        @Html.EditorFor(model => model.TenXe, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.TenXe, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.TenDiaDiem, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TenDiaDiem, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <i class="fas fa-coins fa-lg ml-3 col-form-label" style="color: rgba(71, 108, 218); height: 2em;width: 1em; "></i>
-                    @Html.LabelFor(model => model.Gia, htmlAttributes: new { @class = "col-form-label font-weight-bold col-sm-2" })
+                    @Html.LabelFor(model => model.NoiDung, htmlAttributes: new { @class = "col-form-label font-weight-bold col-sm-2" })
                     <div class="col-md-6">
-                        @Html.EditorFor(model => model.Gia, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Gia, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.NoiDung, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.NoiDung, "", new { @class = "text-danger" })
                     </div>
                 </div>
 
@@ -75,31 +77,7 @@
                     <i class="fas fa-image fa-lg ml-3 col-form-label" style="color: rgba(71, 108, 218); height: 2em;width: 1em;"></i>
                     @Html.LabelFor(model => model.HinhAnh, htmlAttributes: new { @class = "col-form-label font-weight-bold col-sm-2" })
                     <div class="col-md-6">
-                        <img src="@Url.Content("~/Assets/images/xe" + Model.HinhAnh)" width="150" height="150" />
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <i class="fas fa-list-ol fa-lg ml-3 col-form-label" style="color: rgba(71, 108, 218); height: 2em;width: 1em;"></i>
-                    @Html.LabelFor(model => model.MoTa, htmlAttributes: new { @class = "col-form-label font-weight-bold col-sm-2" })
-                    <div class="col-md-6">
-                        @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <i class="fas fa-warehouse fa-lg ml-3 col-form-label" style="color: rgba(71, 108, 218); height: 2em;width: 1em;"></i>
-                    @Html.LabelFor(model => model.MaNhaSanXuat, htmlAttributes: new { @class = "col-form-label font-weight-bold col-sm-2" })
-                    <div class="col-md-6">
-                        @Html.DropDownList("MaNhaSanXuat", null, new { @class = "form-control" })
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <i class="fas fa-pallet fa-lg ml-3 col-form-label" style="color: rgba(71, 108, 218); height: 2em;width: 1em;"></i>
-                    @Html.LabelFor(model => model.MaLoaiXe, htmlAttributes: new { @class = "col-form-label font-weight-bold col-sm-2" })
-                    <div class="col-md-6">
-                        @Html.DropDownList("MaLoaiXe", null, new { @class = "form-control" })
+                        <img src="@Url.Content("~/Assets/images/dia_diem/" + Model.HinhAnh)" width="150" height="150" />
                     </div>
                 </div>
                 <div class="form-group row">

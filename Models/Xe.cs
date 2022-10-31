@@ -23,8 +23,7 @@ namespace DoAnChuyenNganh.Models
 
         public int? Gia { get; set; }
 
-        [StringLength(255)]
-        public string HinhAnh { get; set; }
+        public string HinhAnh{ get; set; }
 
         public string MoTa { get; set; }
 

@@ -1,0 +1,68 @@
+﻿@using DoAnChuyenNganh.Models
+@model IEnumerable<BaiViet>
+@{
+    ViewBag.Title = "Quản lý bài viết";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    WebGrid grid = new WebGrid(source: Model, rowsPerPage: 10); //khởi tạo control webgird
+
+}
+
+<div class="card">
+    <h2>@ViewBag.Title</h2>
+    <div class="card-body">
+        <p>
+            @Html.ActionLink("Thêm mới", "TaoMoi", null, htmlAttributes: new { @class = "btn btn-sm btn-warning font-weight-bold " })
+        </p>
+        @using (Html.BeginForm("Index", "QuanLyBaiViet", FormMethod.Get, new { @class = "form-inline" }))
+        {
+            <div class="form-group form-inline" style="display: flex;">
+                <input type="Text" style="width: 300px" class="form-control col-md-10" value="@ViewBag.Keyword"
+                       name="searchString" placeholder="Nhập từ khóa">
+
+            </div>
+            <input type="submit" class="btn btn-info" value="Tìm Kiếm" style="margin-left:-40px">
+        }
+        <div id="divPartialView">
+            @*@Html.Partial("_DiaDiemPartial")*@
+            @if (grid != null)
+            {
+                <div id="list" class="table-responsive">
+                    @grid.GetHtml(
+                    tableStyle: "table table-bordered table-hover",
+                    headerStyle: "",
+                    footerStyle: "text-center",
+                    numericLinksCount: 10,
+                    mode: WebGridPagerModes.All, firstText: "Trang đầu", lastText: "Trang cuối",
+                    columns: grid.Columns(
+                        grid.Column("MaBaiViet", "Mã Bài Viết"),
+                        grid.Column("TieuDeChinh", "Tiêu đề chính"),
+                        grid.Column("NoiDungChinh", "Nội Dung Chính"),
+                        grid.Column("TieuDe1", "Tiêu đề 1"),
+                        grid.Column("TieuDe2", "Tiêu đề 2"),
+                        grid.Column("TieuDe3", "Tiêu đề 3"),
+                        grid.Column("NoiDung1", "Nội dung 1"),
+                        grid.Column("NoiDung2", "Nội dung 2"),
+                        grid.Column("NoiDung3", "Nội dung 3"),
+                        grid.Column("NgayDang", "Ngày đăng  "),
+                        grid.Column("SoLuotXem", "Số lượt xem"),
+                        grid.Column("SoLuotThich", "Số lượt thích"),
+                        grid.Column("ThanhVien.TenHienThi", "Tên Thành Viên"),
+                        grid.Column("HinhAnh", "Hình ảnh", format: p => Html.Raw("<img width=\"150\" height=\"150\" src=\"../Assets/images/bai_viet/" + p.HinhAnh + "\">")),
+                        //grid.Column("ChuDe.TenChuDe", "Chủ đề"),
+                        grid.Column(format: p => Html.ActionLink("Chỉnh sửa", "ChinhSua", new { id = p.MaBaiViet })),
+                grid.Column(format: p => Html.ActionLink("Xóa", "Xoa", new { id = p.MaBaiViet })),
+                grid.Column(format: p => Html.ActionLink("Upload Hình", "UploadHinh", new { id = p.MaBaiViet }))
+                )
+                    )
+                </div>
+
+            }
+
+        </div>
+    </div>
+</div>
+
+
+
+
+

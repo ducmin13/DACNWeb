@@ -25,7 +25,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Quản lý Website
+        Quản lý hệ thống
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
@@ -39,6 +39,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Chức năng</h6>
                 <a class="collapse-item" href="@Url.Action("Index","Xes")">Danh sách xe</a>
+                <a class="collapse-item" href="@Url.Action("Index","QuanLyLoaiXe")">Loại xe</a>
             </div>
         </div>
 
@@ -57,7 +58,7 @@
              data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Chức năng</h6>
-                <a class="collapse-item" href="utilities-color.html">Danh sách tài xế</a>
+                <a class="collapse-item" href="@Url.Action("Index","QuanLyTaiXe")">Tài xế</a>
                 <a class="collapse-item" href="utilities-border.html">Yêu cầu làm tài xế</a>
             </div>
         </div>
@@ -83,7 +84,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Quản lý tài khoản
+        Quản lý Website
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
@@ -95,7 +96,7 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Login Screens:</h6>
+                <h6 class="collapse-header">Chức năng:</h6>
                 <a class="collapse-item" href="@Url.Action("Index","LoaiThanhViens")">Quản lý quyền</a>
                 <a class="collapse-item" href="@Url.Action("Index","ThanhViens")">Danh sách tài khoản</a>
                 @*<a class="collapse-item" href="forgot-password.html">Forgot Password</a>
@@ -103,6 +104,26 @@
                     <h6 class="collapse-header">Other Pages:</h6>
                     <a class="collapse-item" href="404.html">404 Page</a>
                     <a class="collapse-item" href="blank.html">Blank Page</a>*@
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse2"
+           aria-expanded="true" aria-controls="collapse2">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Quản lý Content</span>
+        </a>
+        <div id="collapse2" class="collapse" aria-labelledby="heading2" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Chức năng:</h6>
+                <a class="collapse-item" href="@Url.Action("Index","QuanLyBaiViet")">Quản lý bài viết</a>
+                <a class="collapse-item" href="@Url.Action("Index","QuanLyChuDe")">Quản lý chủ đề</a>
+                <a class="collapse-item" href="@Url.Action("Index","QuanLyDiaDiem")">Quản lý địa điểm</a>
+                @*<a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+        <div class="collapse-divider"></div>
+        <h6 class="collapse-header">Other Pages:</h6>
+        <a class="collapse-item" href="404.html">404 Page</a>
+        <a class="collapse-item" href="blank.html">Blank Page</a>*@
             </div>
         </div>
     </li>
