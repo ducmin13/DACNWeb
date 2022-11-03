@@ -47,7 +47,7 @@
                         grid.Column("SoLuotXem", "Số lượt xem"),
                         grid.Column("SoLuotThich", "Số lượt thích"),
                         grid.Column("ThanhVien.TenHienThi", "Tên Thành Viên"),
-                        grid.Column("HinhAnh", "Hình ảnh", format: p => Html.Raw("<img width=\"150\" height=\"150\" src=\"../Assets/images/bai_viet/" + p.HinhAnh + "\">")),
+                        grid.Column("HinhAnh", "Hình ảnh", format: p => Html.Raw("<img width=\"250\" height=\"200\" src=\"../Assets/images/bai_viet/" + p.HinhAnh + "\">")),
                         //grid.Column("ChuDe.TenChuDe", "Chủ đề"),
                         grid.Column(format: p => Html.ActionLink("Chỉnh sửa", "ChinhSua", new { id = p.MaBaiViet })),
                 grid.Column(format: p => Html.ActionLink("Xóa", "Xoa", new { id = p.MaBaiViet })),

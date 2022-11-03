@@ -1,15 +1,16 @@
 ﻿@using DoAnChuyenNganh.Models
 @model IEnumerable<LoaiXe>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Loại xe";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
     WebGrid grid = new WebGrid(source: Model, rowsPerPage: 10); //khởi tạo control webgird
 
 }
 
-<h2>@ViewBag.Title</h2>
+
 <div class="card">
     <div class="card-body">
+        <h2>@ViewBag.Title</h2>
         <p>
             @Html.ActionLink("Thêm mới", "TaoMoi", null, htmlAttributes: new { @class = "btn btn-sm btn-warning font-weight-bold " })
         </p>
@@ -35,7 +36,6 @@
                     columns: grid.Columns(
                         grid.Column("MaLoaiXe", "Mã loại xe"),
                         grid.Column("TenLoaiXe", "Tên loại xe"),
-                        grid.Column(format: p => Html.ActionLink("Chỉnh sửa", "ChinhSua", new { id = p.MaLoaiXe })),
                 grid.Column(format: p => Html.ActionLink("Xóa", "Xoa", new { id = p.MaLoaiXe }))
                 )
                     )

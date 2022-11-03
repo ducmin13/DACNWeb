@@ -21,6 +21,8 @@ namespace DoAnChuyenNganh.Models
         [StringLength(255)]
         public string TenLoaiXe { get; set; }
 
+        public int? Status { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Xe> Xes { get; set; }
     }

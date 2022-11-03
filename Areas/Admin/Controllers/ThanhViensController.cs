@@ -15,10 +15,14 @@ namespace DoAnChuyenNganh.Areas.Admin.Controllers
         private DoAnChuyenNganhContext db = new DoAnChuyenNganhContext();
 
         // GET: Admin/ThanhViens
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
-            var thanhViens = db.ThanhViens.Include(t => t.LoaiThanhVien);
-            return View(thanhViens.ToList());
+            ViewBag.Keyword = searchString;
+            var all_tv = db.ThanhViens.Where(n => n.Email != null).OrderBy(n => n.MaLoaiThanhVien);
+            if (!string.IsNullOrEmpty(searchString)) all_tv =
+            (IOrderedQueryable<ThanhVien>)all_tv.Where(a => a.Email.Contains(searchString));
+
+            return View(all_tv);
         }
 
         // GET: Admin/ThanhViens/Details/5

@@ -1,0 +1,67 @@
+﻿@model DoAnChuyenNganh.Models.TaiXe
+
+@{
+    ViewBag.Title = "Xoa";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="flex-md-fill">
+    <h2>Xóa</h2>
+    <h3>Are you sure you want to delete this?</h3>
+    <h4>TaiXe</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenTaiXe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenTaiXe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SoDienThoai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoDienThoai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HinhAnhTaiXe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HinhAnhTaiXe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KinhNghiem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KinhNghiem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BangLai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BangLai)
+        </dd>
+
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

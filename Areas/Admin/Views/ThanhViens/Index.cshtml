@@ -1,21 +1,31 @@
 ﻿@model IEnumerable<DoAnChuyenNganh.Models.ThanhVien>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Danh sách tài khoản";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
 
 <table class="table table-hover">
     <tr>
+        <td align="left" style="height:150px">
+            <h2>@ViewBag.Title</h2>
+            <a href="@Url.Action("Create","ThanhViens")" class="btn btn-outline-success">Create</a>
+            @using (Html.BeginForm("Index", "ThanhViens", FormMethod.Get, new { @class = "form-inline" }))
+            {
+                <br />
+                <div class="form-group form-inline" style="display: flex;">
+                    <input type="Text" style="width: 300px" class="form-control col-md-10" value="@ViewBag.Keyword"
+                           name="searchString" placeholder="Từ khóa">
+
+                </div>
+                <input type="submit" class="btn btn-info" value="Tìm Kiếm" style="margin-left:-40px">
+            }
+        </td>
+    </tr>
+    <tr style="height:50px;">
         <th>
             @Html.DisplayNameFor(model => model.LoaiThanhVien.TenLoaiThanhVien)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MatKhau)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.XacNhanMatKhau)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Email)
@@ -32,7 +42,9 @@
         <th>
             @Html.DisplayNameFor(model => model.DienThoai)
         </th>
-        <th></th>
+        <th>
+            Tác vụ
+        </th>
     </tr>
 
     @foreach (var item in Model)
@@ -40,12 +52,6 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.LoaiThanhVien.TenLoaiThanhVien)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MatKhau)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.XacNhanMatKhau)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
@@ -69,7 +75,5 @@
             </td>
         </tr>
     }
-    <p>
-        <a href="@Url.Action("Create","ThanhViens")" class="btn btn-outline-success">Create</a>
-    </p>
+
 </table>

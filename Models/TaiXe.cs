@@ -9,34 +9,24 @@ namespace DoAnChuyenNganh.Models
     [Table("TaiXe")]
     public partial class TaiXe
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TaiXe()
-        {
-            Xes = new HashSet<Xe>();
-        }
-
         [Key]
         public int MaTaiXe { get; set; }
 
         [StringLength(255)]
         public string TenTaiXe { get; set; }
 
-        [Column(TypeName = "date")]
-        public DateTime? NamSinh { get; set; }
-
-        public string DiaChi { get; set; }
-
-        [StringLength(255)]
+        [StringLength(10)]
         public string SoDienThoai { get; set; }
 
         [StringLength(255)]
-        public string Email { get; set; }
+        public string HinhAnhTaiXe { get; set; }
 
-        public int? MaThanhVien { get; set; }
+        [StringLength(255)]
+        public string KinhNghiem { get; set; }
 
-        public virtual ThanhVien ThanhVien { get; set; }
+        [StringLength(255)]
+        public string BangLai { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Xe> Xes { get; set; }
+        public int? Status { get; set; }
     }
 }

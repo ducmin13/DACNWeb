@@ -5,9 +5,10 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 
 }
-<h2>@ViewBag.Title</h2>
-<div class="card">
+
+<div class="card flex-md-fill">
     <div class="card-body">
+        <h2>@ViewBag.Title</h2>
         <p>
             @Html.ActionLink("Thêm mới", "TaoMoi", null, htmlAttributes: new { @class = "btn btn-sm btn-warning font-weight-bold " })
         </p>
@@ -21,7 +22,7 @@
             <input type="submit" class="btn btn-info" value="Tìm Kiếm" style="margin-left:-40px">
         }
         <div id="divPartialView">
-            @Html.Partial("_DiaDiemPartial")
+            @Html.Partial("DiaDiemPartial")
         </div>
     </div>
 </div>

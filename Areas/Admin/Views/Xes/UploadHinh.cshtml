@@ -1,5 +1,4 @@
-﻿@model DoAnChuyenNganh.Models.DiaDiem
-
+﻿@model DoAnChuyenNganh.Models.Xe
 @{
     ViewBag.Title = "UploadHinh";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
@@ -7,12 +6,12 @@
 
 
 <div class="card shadow flex-md-fill">
+    <h4>@Html.ActionLink("Thêm hình", "Index") > Upload hình</h4>
     <div class="card-body">
-        <h4>@Html.ActionLink("Địa Điểm", "Index") > Upload hình</h4>
-        <h3 class="text-info mb-3">Tên sản phẩm: @Model.TenDiaDiem</h3>
+        <h3 class="text-info mb-3">Tên: @Model.TenXe</h3>
         <div class="text-danger"> @ViewBag.ThongBao</div>
 
-        @using (Html.BeginForm("UploadHinh", "QuanLyDiaDiem", FormMethod.Post, htmlAttributes: new { enctype = "multipart/form-data" }))
+        @using (Html.BeginForm("UploadHinh", "Xes", FormMethod.Post, htmlAttributes: new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
 
@@ -28,6 +27,3 @@
         }
     </div>
 </div>
-
-
-

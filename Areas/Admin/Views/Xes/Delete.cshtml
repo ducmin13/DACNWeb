@@ -5,85 +5,60 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Xe</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.HinhThucDatXe.TenHinhThucDatXe)
-        </dt>
+<div class="card shadow flex-md-fill">
+    <div class="card-body">
+        <h4>@Html.ActionLink("Chủ đề", "Index") > Xóa</h4>
+        <h4 class="card-title">Thông tin</h4>
+        <hr />
+        <div class="row ">
+            <label class="col-sm-2 col-form-label font-weight-bold">@Html.DisplayNameFor(model => model.HinhThucDatXe.TenHinhThucDatXe)</label>
+            <div class="col-sm-6 col-form-label">@Html.DisplayFor(model => model.HinhThucDatXe.TenHinhThucDatXe)</div>
+        </div>
+        <div class="row ">
+            <label class="col-sm-2 col-form-label font-weight-bold">@Html.DisplayNameFor(model => model.LoaiXe.TenLoaiXe)</label>
+            <div class="col-sm-6 col-form-label">@Html.DisplayFor(model => model.LoaiXe.TenLoaiXe)</div>
+        </div>
+        <div class="row ">
+            <label class="col-sm-2 col-form-label font-weight-bold">@Html.DisplayNameFor(model => model.NhaSanXuat.TenNhaSanXuat)</label>
+            <div class="col-sm-6 col-form-label">@Html.DisplayFor(model => model.NhaSanXuat.TenNhaSanXuat)</div>
+        </div>
+        <div class="row ">
+            <label class="col-sm-2 col-form-label font-weight-bold">@Html.DisplayNameFor(model => model.TenXe)</label>
+            <div class="col-sm-6 col-form-label">@Html.DisplayFor(model => model.TenXe)</div>
+        </div>
+        <div class="row ">
+            <label class="col-sm-2 col-form-label font-weight-bold">@Html.DisplayNameFor(model => model.Gia)</label>
+            <div class="col-sm-6 col-form-label">@Html.DisplayFor(model => model.Gia)</div>
+        </div>
+        <div class="row ">
+            <label class="col-sm-2 col-form-label font-weight-bold">@Html.DisplayNameFor(model => model.HinhAnh)</label>
+            <div class="col-sm-6 col-form-label">@Html.DisplayFor(model => model.HinhAnh)</div>
+        </div>
+        <div class="row ">
+            <label class="col-sm-2 col-form-label font-weight-bold">@Html.DisplayNameFor(model => model.MoTa)</label>
+            <div class="col-sm-6 col-form-label">@Html.DisplayFor(model => model.MoTa)</div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-sm-2">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
 
-        <dd>
-            @Html.DisplayFor(model => model.HinhThucDatXe.TenHinhThucDatXe)
-        </dd>
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Delete" href="@Url.Action("Delete","Xes")" class="btn btn-outline-danger" />
+                        <a href="@Url.Action("Index","Xes")" class="btn btn-outline-secondary">Back to list</a>
+                    </div>
+                }
+            </div>
+            
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LoaiXe.TenLoaiXe)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LoaiXe.TenLoaiXe)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NhaSanXuat.TenNhaSanXuat)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NhaSanXuat.TenNhaSanXuat)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ThanhVien.MatKhau)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ThanhVien.MatKhau)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TenXe)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TenXe)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Gia)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Gia)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.HinhAnh)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.HinhAnh)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MoTa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MoTa)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-<div class="form-actions no-color">
-    <input type="submit" value="Delete" href="@Url.Action("Delete","Xes")" class="btn btn-outline-danger" />
-    <a href="@Url.Action("Index","Xes")" class="btn btn-outline-secondary">Back to list</a>
+    </div>
 </div>
-    }
-</div>
+
+
+
+

@@ -16,6 +16,7 @@ namespace DoAnChuyenNganh.Models
         public virtual DbSet<BinhLuanBaiViet> BinhLuanBaiViets { get; set; }
         public virtual DbSet<ChiTietDatXe> ChiTietDatXes { get; set; }
         public virtual DbSet<ChuDe> ChuDes { get; set; }
+        public virtual DbSet<ChuXe> ChuXes { get; set; }
         public virtual DbSet<DatXe> DatXes { get; set; }
         public virtual DbSet<DiaDiem> DiaDiems { get; set; }
         public virtual DbSet<HinhThucDatXe> HinhThucDatXes { get; set; }
@@ -26,12 +27,18 @@ namespace DoAnChuyenNganh.Models
         public virtual DbSet<NhaSanXuat> NhaSanXuats { get; set; }
         public virtual DbSet<PhanQuyen> PhanQuyens { get; set; }
         public virtual DbSet<Quyen> Quyens { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<TaiXe> TaiXes { get; set; }
         public virtual DbSet<ThanhVien> ThanhViens { get; set; }
         public virtual DbSet<Xe> Xes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<BaiViet>()
+                .Property(e => e.HinhAnh)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ChuXe>()
                 .Property(e => e.HinhAnh)
                 .IsUnicode(false);
 
@@ -45,6 +52,14 @@ namespace DoAnChuyenNganh.Models
 
             modelBuilder.Entity<KhachHang>()
                 .Property(e => e.Email)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TaiXe>()
+                .Property(e => e.SoDienThoai)
+                .IsFixedLength();
+
+            modelBuilder.Entity<TaiXe>()
+                .Property(e => e.HinhAnhTaiXe)
                 .IsUnicode(false);
 
             modelBuilder.Entity<ThanhVien>()

@@ -140,12 +140,14 @@
     <Compile Include="Areas\Admin\Controllers\LoaiThanhViensController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyBaiVietController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyChuDeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuanLyChuXeController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyDiaDiemController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyLoaiXeController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuanLyTaiXeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ThanhViensController.cs" />
     <Compile Include="Areas\Admin\Controllers\XesController.cs" />
     <Compile Include="Controllers\BaiVietController.cs" />
+    <Compile Include="Controllers\ChiTietXeController.cs" />
     <Compile Include="Controllers\ChuDeController.cs" />
     <Compile Include="Controllers\DatXeController.cs" />
     <Compile Include="Controllers\DiaDiemController.cs" />
@@ -160,6 +162,7 @@
     <Compile Include="Models\BinhLuanBaiViet.cs" />
     <Compile Include="Models\ChiTietDatXe.cs" />
     <Compile Include="Models\ChuDe.cs" />
+    <Compile Include="Models\ChuXe.cs" />
     <Compile Include="Models\DatXe.cs" />
     <Compile Include="Models\DiaDiem.cs" />
     <Compile Include="Models\DoAnChuyenNganhContext.cs" />
@@ -171,6 +174,8 @@
     <Compile Include="Models\NhaSanXuat.cs" />
     <Compile Include="Models\PhanQuyen.cs" />
     <Compile Include="Models\Quyen.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Models\TaiXe.cs" />
     <Compile Include="Models\ThanhVien.cs" />
     <Compile Include="Models\Xe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -186,6 +191,7 @@
     <Content Include="Assets\css\css\bootstrap-reboot.css" />
     <Content Include="Assets\css\css\mixins\_text-hide.css" />
     <Content Include="Assets\css\css\sb-admin-2.min.css" />
+    <Content Include="Assets\css\css\style2.css" />
     <Content Include="Assets\css\flaticon.css" />
     <Content Include="Assets\css\icomoon.css" />
     <Content Include="Assets\css\ionicons.min.css" />
@@ -239,15 +245,20 @@
     <Content Include="Assets\images\xe\peugeot1.jpg" />
     <Content Include="Assets\images\xe\renault1.jpg" />
     <Content Include="Assets\images\xe\toyota1.jpg" />
+    <Content Include="Assets\js\accordions.js" />
     <Content Include="Assets\js\aos.js" />
     <Content Include="Assets\js\bootstrap-datepicker.js" />
     <Content Include="Assets\js\bootstrap.min.js" />
     <Content Include="Assets\js\chart-area-demo.js" />
     <Content Include="Assets\js\chart-pie-demo.js" />
+    <Content Include="Assets\js\custom.js" />
     <Content Include="Assets\js\google-map.js" />
+    <Content Include="Assets\js\imgfix.min.js" />
+    <Content Include="Assets\js\jquery-2.1.0.min.js" />
     <Content Include="Assets\js\jquery-3.2.1.min.js" />
     <Content Include="Assets\js\jquery-migrate-3.0.1.min.js" />
     <Content Include="Assets\js\jquery.animateNumber.min.js" />
+    <Content Include="Assets\js\jquery.counterup.min.js" />
     <Content Include="Assets\js\jquery.easing.1.3.js" />
     <Content Include="Assets\js\jquery.magnific-popup.min.js" />
     <Content Include="Assets\js\jquery.min.js" />
@@ -255,12 +266,16 @@
     <Content Include="Assets\js\jquery.timepicker.min.js" />
     <Content Include="Assets\js\jquery.waypoints.min.js" />
     <Content Include="Assets\js\main.js" />
+    <Content Include="Assets\js\mixitup.js" />
     <Content Include="Assets\js\owl.carousel.min.js" />
+    <Content Include="Assets\js\popper.js" />
     <Content Include="Assets\js\popper.min.js" />
     <Content Include="Assets\js\range.js" />
     <Content Include="Assets\js\sb-admin-2.js" />
     <Content Include="Assets\js\sb-admin-2.min.js" />
     <Content Include="Assets\js\scrollax.min.js" />
+    <Content Include="Assets\js\scrollreveal.min.js" />
+    <Content Include="Assets\js\waypoints.min.js" />
     <Content Include="Assets\vendor\bootstrap\js\bootstrap.bundle.js" />
     <Content Include="Assets\vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="Assets\vendor\bootstrap\js\bootstrap.js" />
@@ -2221,7 +2236,6 @@
     <Content Include="Areas\Admin\Views\ThanhViens\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Xes\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Xes\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Xes\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Xes\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Xes\Index.cshtml" />
     <Content Include="Areas\Admin\Views\LoaiThanhViens\Create.cshtml" />
@@ -2245,12 +2259,9 @@
     <Content Include="Areas\Admin\Views\QuanLyDiaDiem\Xoa.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyLoaiXe\Index.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyLoaiXe\TaoMoi.cshtml" />
-    <Content Include="Areas\Admin\Views\QuanLyLoaiXe\ChinhSua.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyLoaiXe\Xoa.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyTaiXe\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\QuanLyTaiXe\TaoMoi.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyTaiXe\ChinhSua.cshtml" />
-    <Content Include="Areas\Admin\Views\QuanLyDiaDiem\DiaDiemPartial.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -2259,6 +2270,12 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Areas\Admin\Views\Xes\UploadHinh.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyDiaDiem\DiaDiemPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyTaiXe\TaoMoi.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyTaiXe\Xoa.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyChuXe\QuanLyChuXe.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyChuXe\YeuCauChoThueXe.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -2306,6 +2323,7 @@
     <Content Include="Views\DatXe\DatXe.cshtml" />
     <Content Include="Views\Home\DangNhap.cshtml" />
     <Content Include="Views\Home\DangKy.cshtml" />
+    <Content Include="Views\ChiTietXe\ChiTietXe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

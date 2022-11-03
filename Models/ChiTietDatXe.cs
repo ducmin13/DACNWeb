@@ -18,6 +18,14 @@ namespace DoAnChuyenNganh.Models
 
         public int? TongThanhToan { get; set; }
 
+        public int? MaThanhVien { get; set; }
+
+        public int? MaLoaiXe { get; set; }
+
+        public int? MaHinhThuc { get; set; }
+
+        public int? Status { get; set; }
+
         public virtual DatXe DatXe { get; set; }
 
         public virtual Xe Xe { get; set; }

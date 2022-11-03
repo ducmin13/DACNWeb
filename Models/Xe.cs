@@ -23,7 +23,8 @@ namespace DoAnChuyenNganh.Models
 
         public int? Gia { get; set; }
 
-        public string HinhAnh{ get; set; }
+        [StringLength(255)]
+        public string HinhAnh { get; set; }
 
         public string MoTa { get; set; }
 
@@ -34,6 +35,8 @@ namespace DoAnChuyenNganh.Models
         public int? MaThanhVien { get; set; }
 
         public int? MaHinhThucDatXe { get; set; }
+
+        public int? Status { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDatXe> ChiTietDatXes { get; set; }

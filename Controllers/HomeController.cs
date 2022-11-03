@@ -64,14 +64,14 @@ namespace DoAnChuyenNganh.Controllers
                     ModelState.AddModelError("", "Tên đăng nhập đã tồn tại");
                 }
                 else
-                {               
+                {
                     tv.MaLoaiThanhVien = 2;
                     dbContext.ThanhViens.Add(tv);
                     dbContext.SaveChanges();
                     ViewBag.ThongBaoThanhCong = "Đăng ký thành công";
                     // Reset the captcha if your app's workflow continues with the same view
                     MvcCaptcha.ResetCaptcha("ExampleCaptcha");
-                    return RedirectToAction("Index","Home");
+                    return RedirectToAction("Index", "Home");
                 }
             }
             else
@@ -107,18 +107,18 @@ namespace DoAnChuyenNganh.Controllers
 
         [HttpPost]
         [CaptchaValidationActionFilter("CaptchaCode", "ExampleCaptcha", "Không hợp lệ!")]
-        public ActionResult DangKyChuXe(ThanhVien tv)    //dùng post để truyền data lên csdl, dùng biến tv trong model thay formcollection
+        public ActionResult HuongDanDangKyChuXe(ChuXe cx)    //dùng post để truyền data lên csdl, dùng biến tv trong model thay formcollection
         {
 
             if (ModelState.IsValid)
             {
-                    tv.MaLoaiThanhVien = 3;
-                    ViewBag.ThongBaoThanhCong = "Đăng ký thành công! Chúng tôi sẽ liên hệ với bạn trong thời gian tới.";
-                    dbContext.ThanhViens.Add(tv);
-                    dbContext.SaveChanges();
-                    // Reset the captcha if your app's workflow continues with the same view
-                    MvcCaptcha.ResetCaptcha("ExampleCaptcha");
-                
+                cx.Status = 0;
+                ViewBag.ThongBaoThanhCong = "Đăng ký thành công! Chúng tôi sẽ liên hệ với bạn trong thời gian tới.";
+                dbContext.ChuXes.Add(cx);
+                dbContext.SaveChanges();
+                // Reset the captcha if your app's workflow continues with the same view
+                MvcCaptcha.ResetCaptcha("ExampleCaptcha");
+
             }
             else
             {
@@ -163,7 +163,7 @@ namespace DoAnChuyenNganh.Controllers
                 }
 
             }
-            return Content("Tài khoản hoặc mật khẩu không chính xác.");
+            return Content("Tài khoản hoặc mật khẩu không chính xác");
         }
 
         //phân quyền

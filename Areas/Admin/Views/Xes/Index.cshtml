@@ -1,4 +1,4 @@
-﻿
+﻿@using PagedList.Mvc;
 @model IEnumerable<DoAnChuyenNganh.Models.Xe>
 @{
     ViewBag.Title = "Danh sách xe";
@@ -23,7 +23,7 @@
             }
         </td>
     </tr>
-    <tr style="height:50px;" >
+    <tr style="height:50px;">
         <th>
             Loại xe
         </th>
@@ -49,7 +49,7 @@
 
     @foreach (var item in Model)
     {
-        <tr >
+        <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.LoaiXe.TenLoaiXe)
             </td>
@@ -63,19 +63,22 @@
                 @Html.DisplayFor(modelItem => item.Gia)
             </td>
             <td>
-                @*@Html.DisplayFor(modelItem => item.HinhAnh)*@
-                <img src="~/Assets/images/xe/@Url.Content(item.HinhAnh)" style="width:250px; height:200px" alt="Lỗi" />
+                <img src="~/Assets/images/xe/@Url.Content(item.HinhAnh)" style="width:250px; height:200px" alt="Lỗi load hình" />
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MoTa)
             </td>
             <td>
                 <a href="@Url.Action("Edit","Xes", new {id=item.MaXe})" class="btn btn-outline-primary">Edit</a>
-                <a href="@Url.Action("Details","Xes", new {id=item.MaXe})" class="btn btn-outline-info">Details</a>
+                <a href="@Url.Action("UploadHinh","Xes", new {id=item.MaXe})" class="btn btn-info">Upload Img</a>
                 <a href="@Url.Action("Delete","Xes", new {id=item.MaXe})" class="btn btn-outline-danger">Delete</a>
             </td>
         </tr>
     }
-
 </table>
+@*<br />
+Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page }))*@
 
