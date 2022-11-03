@@ -15,9 +15,9 @@ namespace DoAnChuyenNganh.Areas.Admin.Controllers
         public ActionResult Index(string searchString)
         {
             ViewBag.Keyword = searchString;
-            var all_taixe = db.ThanhViens.Where(n => n.MaLoaiThanhVien == 4).OrderBy(n => n.MaThanhVien);
+            var all_taixe = db.TaiXes.Where(n => n.Status == 1).OrderBy(n => n.MaTaiXe);
             if (!string.IsNullOrEmpty(searchString)) all_taixe =
-            (IOrderedQueryable<ThanhVien>)all_taixe.Where(a => a.TenHienThi.Contains(searchString));
+            (IOrderedQueryable<TaiXe>)all_taixe.Where(a => a.TenTaiXe.Contains(searchString));
 
             return View(all_taixe);
         }
@@ -31,11 +31,10 @@ namespace DoAnChuyenNganh.Areas.Admin.Controllers
 
         [ValidateInput(false)]
         [HttpPost]
-        public ActionResult TaoMoi(ThanhVien thanhVien)
+        public ActionResult TaoMoi(TaiXe taixe)
         {
             //ViewBag.MaLoaiThanhVien = new SelectList(db.LoaiThanhViens.OrderBy(n => n.MaLoaiThanhVien), "MaLoaiThanhVien", "TenLoaiThanhVien");
-            thanhVien.MaLoaiThanhVien = 4;
-            db.ThanhViens.Add(thanhVien);
+            db.TaiXes.Add(taixe);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -49,21 +48,21 @@ namespace DoAnChuyenNganh.Areas.Admin.Controllers
                 Response.StatusCode = 404;
                 return null;
             }
-            ThanhVien thanhVien = db.ThanhViens.SingleOrDefault(n => n.MaThanhVien == id);
-            if (thanhVien == null)
+            TaiXe taiXe = db.TaiXes.SingleOrDefault(n => n.MaTaiXe == id);
+            if (taiXe == null)
             {
                 return HttpNotFound();
             }
 
-            return View(thanhVien);
+            return View(taiXe);
         }
 
         [ValidateInput(false)]
         [HttpPost, ActionName("ChinhSua")]
         public ActionResult CapNhat(int id)
         {
-            ThanhVien thanhVien = db.ThanhViens.SingleOrDefault(n => n.MaThanhVien == id);
-            UpdateModel(thanhVien);
+            TaiXe taixe = db.TaiXes.SingleOrDefault(n => n.MaTaiXe == id);
+            UpdateModel(taixe);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -76,13 +75,13 @@ namespace DoAnChuyenNganh.Areas.Admin.Controllers
                 Response.StatusCode = 404;
                 return null;
             }
-            BaiViet baiViet = db.BaiViets.Find(id);
-            if (baiViet == null)
+            TaiXe taiXe = db.TaiXes.Find(id);
+            if (taiXe == null)
             {
                 return HttpNotFound();
             }
 
-            return View(baiViet);
+            return View(taiXe);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -118,24 +117,24 @@ namespace DoAnChuyenNganh.Areas.Admin.Controllers
                 Response.StatusCode = 404;
                 return null;
             }
-            BaiViet baiViet = db.BaiViets.SingleOrDefault(n => n.MaBaiViet == id);
-            if (baiViet == null)
+            TaiXe taiXe = db.TaiXes.SingleOrDefault(n => n.MaTaiXe == id);
+            if (taiXe == null)
             {
                 return HttpNotFound();
             }
 
-            return View(baiViet);
+            return View(taiXe);
         }
 
         [HttpPost]
         public ActionResult Xoa(int id)
         {
-            BaiViet baiViet = db.BaiViets.SingleOrDefault(n => n.MaBaiViet == id);
-            if (baiViet == null)
+            TaiXe taiXe = db.TaiXes.SingleOrDefault(n => n.MaTaiXe == id);
+            if (taiXe == null)
             {
                 return HttpNotFound();
             }
-            db.BaiViets.Remove(baiViet);
+            db.TaiXes.Remove(taiXe);
             db.SaveChanges();
 
             return RedirectToAction("Index");

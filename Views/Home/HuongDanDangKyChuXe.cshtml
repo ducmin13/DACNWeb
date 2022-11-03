@@ -1,4 +1,4 @@
-﻿@model DoAnChuyenNganh.Models.ThanhVien
+﻿@model DoAnChuyenNganh.Models.ChuXe
 @using BotDetect.Web.Mvc;
 @{
     ViewBag.Title = "HuongDanDangKyChuXe";
@@ -64,7 +64,6 @@
     </div>
 </section>
 
-
 <section class="vh-100 bg-image">
     <div class="mask d-flex align-items-center h-100 gradient-custom-3">
         <div class="container h-100">
@@ -74,6 +73,7 @@
                         <div class="card-body p-5">
                             <h2 class="text-uppercase text-center mb-5">Đăng ký xe cho thuê</h2>
                             <span style="color: #39b900; font-size: 20px">@ViewBag.ThongBaoThanhCong</span>
+                            <span style="color: #ff0000; font-size: 20px">@ViewBag.ThongBaoThatBai</span>
                             @using (Html.BeginForm())
                             {
                                 @Html.AntiForgeryToken()
@@ -81,35 +81,53 @@
 
 
                                 <div class="form-outline mb-4">
-                                    <label class="form-label" for="form3Example1cg">Họ tên</label>
+                                    <label class="form-label" for="form3Example1cg">Họ tên chủ xe</label>
 
                                     <input type="text" id="form3Example1cg" class="form-control form-control-lg"
-                                           name="HoTen" />
-                                    @Html.ValidationMessageFor(model => model.HoTen, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
+                                           name="TenChuXe" />
+                                    @Html.ValidationMessageFor(model => model.TenChuXe, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
 
                                 </div>
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="form3Example4cdg">Số điện thoại</label>
                                     <input type="text" id="form3Example4cdg" class="form-control form-control-lg"
-                                           name="DienThoai" />
-                                    @Html.ValidationMessageFor(model => model.DienThoai, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
+                                           name="SoDienThoai" />
+                                    @Html.ValidationMessageFor(model => model.SoDienThoai, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
                                 </div>
 
                                 <div class="form-outline mb-4">
-                                    <label class="form-label" for="form3Example1cg">Email</label>
-
-                                    <input type="email" id="form3Example1cg" class="form-control form-control-lg"
-                                           name="Email" />
-                                    @Html.ValidationMessageFor(model => model.Email, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
-
-                                </div>
-                                <div class="form-outline mb-4">
-                                    <label class="form-label" for="form3Example1cg">Ngày Sinh</label>
+                                    <label class="form-label" for="form3Example1cg">Tên xe</label>
 
                                     <input type="text" id="form3Example1cg" class="form-control form-control-lg"
-                                           name="NgaySinh" />
-                                    @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
+                                           name="TenXe" />
+                                    @Html.ValidationMessageFor(model => model.TenXe, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
 
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example1cg">Số chỗ </label>
+                                    @{
+                                        List<SelectListItem> listItems = new List<SelectListItem>();
+                                        listItems.Add(new SelectListItem
+                                        {
+                                            Text = "4 chỗ",
+                                            Value = "4"
+                                        });
+                                        listItems.Add(new SelectListItem
+                                        {
+                                            Text = "7 chỗ",
+                                            Value = "7",
+                                        });
+                                    }
+
+                                    @Html.DropDownListFor(model => model.SoCho, listItems, "-- Chọn --")
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example1cg">Hình ảnh xe</label>
+
+                                    <input type="text" id="form3Example1cg" class="form-control form-control-lg"
+                                           name="HinhAnh" />
+                                    @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
                                 </div>
 
                                 <div class="form-outline mb-4">
@@ -117,10 +135,6 @@
                                     @Html.TextBox("CaptchaCode")
                                 </div>
 
-                                <div>
-                                    <span style="color: #ff0000; font-size: 20px">@ViewBag.ThongBaoThatBai</span>
-                                    @* <span style="color: #39b900; font-size: 20px">@ViewBag.ThongBaoThanhCong</span>*@
-                                </div>
 
                                 <div class="d-flex justify-content-center">
                                     <button type="submit"
@@ -137,4 +151,5 @@
         </div>
     </div>
 </section>
+
 <br />

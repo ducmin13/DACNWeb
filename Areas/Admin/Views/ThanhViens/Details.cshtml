@@ -5,12 +5,13 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Details</h2>
+
 
 <div>
+    <h2>Details</h2>
     <h4>ThanhVien</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal" style="margin-left:50px">
         <dt>
             @Html.DisplayNameFor(model => model.LoaiThanhVien.TenLoaiThanhVien)
         </dt>
@@ -74,10 +75,10 @@
         <dd>
             @Html.DisplayFor(model => model.DienThoai)
         </dd>
-
+        <p>
+            <a href="@Url.Action("Edit","ThanhViens", new {id=Model.MaThanhVien})" class="btn btn-outline-primary">Edit</a> |
+            <a href="@Url.Action("Index","ThanhViens")" class="btn btn-outline-secondary">Back to list</a>
+        </p>
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaThanhVien }) |
-    <a href="@Url.Action("Index","ThanhViens")" class="btn btn-outline-secondary">Back to list</a>
-</p>
+

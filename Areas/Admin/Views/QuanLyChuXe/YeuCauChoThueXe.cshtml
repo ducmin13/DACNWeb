@@ -1,18 +1,19 @@
 ﻿@using DoAnChuyenNganh.Models
-@model IEnumerable<ChuDe>
+@model IEnumerable<ChuXe>
 @{
-    ViewBag.Title = "Chủ đề";
+    ViewBag.Title = "Danh sách yêu  cầu";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
     WebGrid grid = new WebGrid(source: Model, rowsPerPage: 10); //khởi tạo control webgird
 
 }
-<div class="card">
+
+<div class="card flex-md-fill">
     <h2>@ViewBag.Title</h2>
     <div class="card-body">
-        <p>
-            @Html.ActionLink("Thêm mới", "TaoMoi", null, htmlAttributes: new { @class = "btn btn-sm btn-warning font-weight-bold " })
-        </p>
-        @using (Html.BeginForm("Index", "QuanLyChuDe", FormMethod.Get, new { @class = "form-inline" }))
+        @*<p>
+                @Html.ActionLink("Thêm mới", "TaoMoi", null, htmlAttributes: new { @class = "btn btn-sm btn-warning font-weight-bold " })
+            </p>*@
+        @using (Html.BeginForm("YeuCauChoThueXe", "QuanLyChuXe", FormMethod.Get, new { @class = "form-inline" }))
         {
             <div class="form-group form-inline" style="display: flex;">
                 <input type="Text" style="width: 300px" class="form-control col-md-10" value="@ViewBag.Keyword"
@@ -33,10 +34,13 @@
                     numericLinksCount: 10,
                     mode: WebGridPagerModes.All, firstText: "Trang đầu", lastText: "Trang cuối",
                     columns: grid.Columns(
-                        grid.Column("MaChuDe", "Mã chủ đề"),
-                        grid.Column("TenChuDe", "Tên chủ đề"),
-                        grid.Column(format: p => Html.ActionLink("Chỉnh sửa", "ChinhSua", new { id = p.MaChuDe })),
-                grid.Column(format: p => Html.ActionLink("Xóa", "Xoa", new { id = p.MaChuDe }))
+                        grid.Column("TenChuXe", "Tên chủ xe"),
+                        grid.Column("SoDienThoai", "Số điện thoại"),
+                        grid.Column("TenXe", "Tên xe"),
+                        grid.Column("SoCho", "Số chỗ"),
+                        grid.Column("HinhAnh", "Hình ảnh")
+                //        grid.Column(format: p => Html.ActionLink("Chấp nhận", "ChapNhan", new { id = p.MaTaiXe })),
+                //grid.Column(format: p => Html.ActionLink("Từ chối", "TuChoi", new { id = p.MaTaiXe }))
                 )
                     )
                 </div>

@@ -15,6 +15,7 @@ namespace DoAnChuyenNganh.Areas.Admin.Controllers
         private DoAnChuyenNganhContext db = new DoAnChuyenNganhContext();
 
         // GET: Admin/Xes
+
         public ActionResult Index(string searchString)
         {
             ViewBag.Keyword = searchString;
@@ -132,6 +133,47 @@ namespace DoAnChuyenNganh.Areas.Admin.Controllers
         {
             Xe xe = db.Xes.Find(id);
             db.Xes.Remove(xe);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult UploadHinh(int? id)
+        {
+            if (id == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            Xe xe = db.Xes.Find(id);
+            if (xe == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(xe);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UploadHinh(int id, HttpPostedFileBase HinhAnh)
+        {
+            Xe xe = db.Xes.Find(id);
+
+            if (HinhAnh != null)
+            {
+                string path = Server.MapPath("~/Assets/images/xe/");
+                string Ten = null;
+                HinhAnh.SaveAs(path + HinhAnh.FileName);
+                Ten = HinhAnh.FileName;
+
+                if (!string.IsNullOrEmpty(xe.HinhAnh))
+                {
+                    string pathAndFname = Server.MapPath($"~/Assets/images/xe/{xe.HinhAnh}");
+                    if (System.IO.File.Exists(pathAndFname))
+                        System.IO.File.Delete(pathAndFname);
+                }
+                xe.HinhAnh = Ten;
+            }
             db.SaveChanges();
             return RedirectToAction("Index");
         }

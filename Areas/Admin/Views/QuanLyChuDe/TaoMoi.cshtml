@@ -4,12 +4,6 @@
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<link rel="stylesheet" href="/resources/demos/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="~/Content/AdminLayout/tinymce/js/tinymce/tinymce.min.js"></script>
-
 <script>
     //script cho text editor tinymce
     tinymce.init({
@@ -43,7 +37,7 @@
 </script>
 
 <h4>@Html.ActionLink("Chủ đề", "Index") >Tạo mới</h4>
-<div class="card">
+<div class="card flex-md-fill">
     <div class="card-body">
         <h4 class="card-title">Tạo mới chủ đề</h4>
         <hr />

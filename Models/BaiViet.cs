@@ -48,6 +48,8 @@ namespace DoAnChuyenNganh.Models
 
         public int? MaChuDe { get; set; }
 
+        public int? Status { get; set; }
+
         public virtual ChuDe ChuDe { get; set; }
 
         public virtual ThanhVien ThanhVien { get; set; }

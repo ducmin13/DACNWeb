@@ -45,20 +45,34 @@
 
     </li>
 
-
-
-    <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
            aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Tài xế</span>
+            <span>Chủ xe</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
              data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Chức năng</h6>
-                <a class="collapse-item" href="@Url.Action("Index","QuanLyTaiXe")">Tài xế</a>
+                <a class="collapse-item" href="@Url.Action("QuanLyChuXe","QuanLyChuXe")">Danh sách chủ xe</a>
+                <a class="collapse-item" href="@Url.Action("YeuCauChoThueXe","QuanLyChuXe")">Yêu cầu cho thuê xe</a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities1"
+           aria-expanded="true" aria-controls="collapseUtilities1">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Tài xế</span>
+        </a>
+        <div id="collapseUtilities1" class="collapse" aria-labelledby="headingUtilities1"
+             data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Chức năng</h6>
+                <a class="collapse-item" href="@Url.Action("Index","QuanLyTaiXe")">Danh sách tài xế</a>
                 <a class="collapse-item" href="utilities-border.html">Yêu cầu làm tài xế</a>
             </div>
         </div>
@@ -120,10 +134,10 @@
                 <a class="collapse-item" href="@Url.Action("Index","QuanLyChuDe")">Quản lý chủ đề</a>
                 <a class="collapse-item" href="@Url.Action("Index","QuanLyDiaDiem")">Quản lý địa điểm</a>
                 @*<a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-        <div class="collapse-divider"></div>
-        <h6 class="collapse-header">Other Pages:</h6>
-        <a class="collapse-item" href="404.html">404 Page</a>
-        <a class="collapse-item" href="blank.html">Blank Page</a>*@
+                    <div class="collapse-divider"></div>
+                    <h6 class="collapse-header">Other Pages:</h6>
+                    <a class="collapse-item" href="404.html">404 Page</a>
+                    <a class="collapse-item" href="blank.html">Blank Page</a>*@
             </div>
         </div>
     </li>
