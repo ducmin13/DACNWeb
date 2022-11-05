@@ -104,24 +104,13 @@
 
                                 </div>
                                 <div class="form-outline mb-4">
-                                    <label class="form-label" for="form3Example1cg">Số chỗ </label>
-                                    @{
-                                        List<SelectListItem> listItems = new List<SelectListItem>();
-                                        listItems.Add(new SelectListItem
-                                        {
-                                            Text = "4 chỗ",
-                                            Value = "4"
-                                        });
-                                        listItems.Add(new SelectListItem
-                                        {
-                                            Text = "7 chỗ",
-                                            Value = "7",
-                                        });
-                                    }
-
-                                    @Html.DropDownListFor(model => model.SoCho, listItems, "-- Chọn --")
+                                    <label class="form-label" for="form3Example1cg">Số chỗ</label>
+                                    <div class="col-mb-4">
+                                        @Html.DropDownList("MaLoaiXe", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.MaLoaiXe, "", new { @class = "text-danger" })
+                                    </div>
                                 </div>
-
+                                
                                 <div class="form-outline mb-4">
                                     <label class="form-label" for="form3Example1cg">Hình ảnh xe</label>
 
