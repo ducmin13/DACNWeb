@@ -39,8 +39,8 @@
                         grid.Column("TenXe", "Tên xe"),
                         grid.Column("SoCho", "Số chỗ"),
                         grid.Column("HinhAnh", "Hình ảnh"),
-                        grid.Column(format: p => Html.ActionLink("Chỉnh sửa", "ChinhSua", new { id = p.MaTaiXe })),
-                grid.Column(format: p => Html.ActionLink("Xóa", "Xoa", new { id = p.MaTaiXe }))
+                        grid.Column(format: p => Html.ActionLink("Chỉnh sửa", "ChinhSua", new { id = p.MaChuXe })),
+                grid.Column(format: p => Html.ActionLink("Xóa", "Xoa", new { id = p.MaChuXe }))
                 )
                     )
                 </div>

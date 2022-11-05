@@ -102,6 +102,7 @@ namespace DoAnChuyenNganh.Controllers
 
         public ActionResult HuongDanDangKyChuXe()
         {
+            ViewBag.MaLoaiXe = new SelectList(dbContext.LoaiXes, "MaLoaiXe", "TenLoaiXe");
             return View();
         }
 
@@ -109,7 +110,7 @@ namespace DoAnChuyenNganh.Controllers
         [CaptchaValidationActionFilter("CaptchaCode", "ExampleCaptcha", "Không hợp lệ!")]
         public ActionResult HuongDanDangKyChuXe(ChuXe cx)    //dùng post để truyền data lên csdl, dùng biến tv trong model thay formcollection
         {
-
+            ViewBag.MaLoaiXe = new SelectList(dbContext.LoaiXes, "MaLoaiXe", "TenLoaiXe");
             if (ModelState.IsValid)
             {
                 cx.Status = 0;

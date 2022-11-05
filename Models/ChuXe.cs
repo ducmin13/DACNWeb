@@ -21,7 +21,7 @@ namespace DoAnChuyenNganh.Models
         [StringLength(255)]
         public string TenXe { get; set; }
 
-        public int? SoCho { get; set; }
+        public int? MaLoaiXe { get; set; }
 
         [StringLength(255)]
         public string HinhAnh { get; set; }
