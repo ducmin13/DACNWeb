@@ -23,7 +23,6 @@
             <input type="submit" class="btn btn-info" value="Tìm Kiếm" style="margin-left:-40px">
         }
         <div id="divPartialView">
-            @*@Html.Partial("_DiaDiemPartial")*@
             @if (grid != null)
             {
                 <div id="list" class="table-responsive">
@@ -38,15 +37,12 @@
                         grid.Column("SoDienThoai", "Số điện thoại"),
                         grid.Column("TenXe", "Tên xe"),
                         grid.Column("SoCho", "Số chỗ"),
-                        grid.Column("HinhAnh", "Hình ảnh")
-                //        grid.Column(format: p => Html.ActionLink("Chấp nhận", "ChapNhan", new { id = p.MaTaiXe })),
-                //grid.Column(format: p => Html.ActionLink("Từ chối", "TuChoi", new { id = p.MaTaiXe }))
+                        grid.Column("HinhAnh", "Hình ảnh"),
+                        grid.Column(format: p => Html.ActionLink("Chi tiết","ChiTiet", new { id = p.MaChuXe }))
                 )
                     )
                 </div>
-
             }
-
         </div>
     </div>
 </div>

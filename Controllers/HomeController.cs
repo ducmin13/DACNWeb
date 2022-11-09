@@ -15,6 +15,7 @@ namespace DoAnChuyenNganh.Controllers
     {
         DoAnChuyenNganhContext dbContext = new DoAnChuyenNganhContext();
 
+        [HttpGet]
         public ActionResult Index()
         {
             //Lần lượt tạo các viewbag để lấy list từ csdl
@@ -33,7 +34,28 @@ namespace DoAnChuyenNganh.Controllers
 
             return View();
         }
-
+        [HttpPost]
+        public ActionResult Index(DatXe dx)
+        {
+            dbContext.DatXes.Add(dx);
+            dbContext.SaveChanges();
+           
+            return RedirectToAction("ViTri", "Home");
+        }
+        public List<ViTri> LayVitri()
+        {
+            List<ViTri> lstVitri = Session["ViTri"] as List<ViTri>;
+            if (lstVitri == null)
+            {
+                lstVitri = new List<ViTri>();
+                Session["ViTri"] = lstVitri;
+            }
+            return lstVitri;
+        }
+        public ActionResult Vitri()
+        {
+            return View();
+        }
         public ActionResult HeaderPartial()
         {
             return PartialView();
@@ -102,6 +124,7 @@ namespace DoAnChuyenNganh.Controllers
 
         public ActionResult HuongDanDangKyChuXe()
         {
+            ViewBag.MaLoaiXe = new SelectList(dbContext.LoaiXes, "MaLoaiXe", "TenLoaiXe");
             return View();
         }
 
@@ -109,7 +132,7 @@ namespace DoAnChuyenNganh.Controllers
         [CaptchaValidationActionFilter("CaptchaCode", "ExampleCaptcha", "Không hợp lệ!")]
         public ActionResult HuongDanDangKyChuXe(ChuXe cx)    //dùng post để truyền data lên csdl, dùng biến tv trong model thay formcollection
         {
-
+            ViewBag.MaLoaiXe = new SelectList(dbContext.LoaiXes, "MaLoaiXe", "TenLoaiXe");
             if (ModelState.IsValid)
             {
                 cx.Status = 0;

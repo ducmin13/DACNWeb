@@ -33,7 +33,7 @@
                                     </span>
                                     <p class="price ml-auto">@item.Gia.Value.ToString("#,##0").Replace(',', '.') VNĐ<span>/ngày</span></p>
                                 </div>
-                                <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Đặt xe</a> <a href="#" class="btn btn-secondary py-2 ml-1">Chi tiết</a></p>
+                                <p class="d-flex mb-0 d-block"><a href="@Url.Action("ThemGioHang","DatXe", new { @iMaXe = item.MaXe, @strURL = Request.Url.ToString()})" class="btn btn-primary py-2 mr-1">Đặt xe</a> <a href="#" class="btn btn-secondary py-2 ml-1">Chi tiết</a></p>
                             </div>
                         </div>
                     </div>

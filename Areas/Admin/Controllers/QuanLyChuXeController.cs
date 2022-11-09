@@ -31,6 +31,42 @@ namespace DoAnChuyenNganh.Areas.Admin.Controllers
             return View(chuxe);
         }
 
+        public ActionResult ChiTiet()
+        {
+            return View();
+        }
+
+
+        [HttpGet]
+        public ActionResult ChiTiet(int? id)
+        {
+            //lấy sp cần chỉnh sửa
+            if (id == null)
+            {
+                Response.StatusCode = 404;
+                return null;
+            }
+            ChuXe cx = db.ChuXes.SingleOrDefault(n => n.MaChuXe == id);
+            if (cx == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(cx);
+        }
+
+        [ValidateInput(false)]
+        [HttpPost, ActionName("ChiTiet")]
+        public ActionResult CapNhat(int id)
+        {
+       
+            ChuXe cx = db.ChuXes.SingleOrDefault(n => n.MaChuXe == id);
+            cx.Status = 1;
+            UpdateModel(cx);
+            db.SaveChanges();
+            return RedirectToAction("QuanLyChuXe");
+        }
+
 
     }
 }
