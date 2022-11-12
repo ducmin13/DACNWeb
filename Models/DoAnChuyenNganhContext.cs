@@ -8,7 +8,7 @@ namespace DoAnChuyenNganh.Models
     public partial class DoAnChuyenNganhContext : DbContext
     {
         public DoAnChuyenNganhContext()
-            : base("name=DoAnChuyenNganhContext")
+            : base("name=DoAnChuyenNganhContext1")
         {
         }
 

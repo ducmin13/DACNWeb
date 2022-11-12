@@ -22,9 +22,27 @@
             </div>
             <input type="submit" class="btn btn-info" value="Tìm Kiếm" style="margin-left:-40px">
         }
-    <div id="divPartialView">
-        @Html.Partial("_IndexPartial")
-             
-    </div>
+        <div id="divPartialView">
+            @if (grid != null)
+            {
+                <div id="list" class="table-responsive">
+                    @grid.GetHtml(
+                    tableStyle: "table table-bordered table-hover",
+                    headerStyle: "",
+                    footerStyle: "text-center",
+                    numericLinksCount: 10,
+                    mode: WebGridPagerModes.All, firstText: "Trang đầu", lastText: "Trang cuối",
+                    columns: grid.Columns(
+                        grid.Column("TenChuXe", "Tên chủ xe"),
+                        grid.Column("SoDienThoai", "Số điện thoại"),
+                        grid.Column("TenXe", "Tên xe"),
+                        grid.Column("SoCho", "Số chỗ"),
+                        grid.Column("HinhAnh", "Hình ảnh"),
+                        grid.Column(format: p => Html.ActionLink("Chi tiết","ChiTiet", new { id = p.MaChuXe }))
+                )
+                    )
+                </div>
+            }
+        </div>
     </div>
 </div>
