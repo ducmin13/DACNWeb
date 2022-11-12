@@ -177,8 +177,9 @@
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\TaiXe.cs" />
     <Compile Include="Models\ThanhVien.cs" />
-    <Compile Include="Models\ViTri.cs" />
     <Compile Include="Models\Xe.cs" />
+    <Compile Include="MoMo\MoMoSecurity.cs" />
+    <Compile Include="MoMo\PaymentRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2277,6 +2278,7 @@
     <Content Include="Areas\Admin\Views\QuanLyChuXe\QuanLyChuXe.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyChuXe\YeuCauChoThueXe.cshtml" />
     <Content Include="Areas\Admin\Views\QuanLyChuXe\ChiTiet.cshtml" />
+    <Content Include="Areas\Admin\Views\QuanLyChuXe\_IndexPartial.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -2328,6 +2330,8 @@
     <Content Include="Views\ChiTietXe\ChiTietXe.cshtml" />
     <Content Include="Views\Home\Vitri.cshtml" />
     <Content Include="Views\DatXe\DatHang.cshtml" />
+    <Content Include="Views\DatXe\Xacnhandon.cshtml" />
+    <Content Include="Views\DatXe\ThanhToanThanhCong.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

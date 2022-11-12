@@ -1,4 +1,4 @@
- namespace DoAnChuyenNganh.Models
+namespace DoAnChuyenNganh.Models
 {
     using System;
     using System.Collections.Generic;
@@ -23,19 +23,23 @@
         public DateTime? NgayKetThuc { get; set; }
 
         public int? MaHinhThuc { get; set; }
-        
+
         public int? MaThanhVien { get; set; }
 
         [StringLength(255)]
-        public string HoTen { get; set; }
         public string ViTriBatDau { get; set; }
+
+        [StringLength(255)]
         public string ViTriKetThuc { get; set; }
+
+        [StringLength(255)]
+        public string HoTen { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDatXe> ChiTietDatXes { get; set; }
 
         public virtual HinhThucThanhToan HinhThucThanhToan { get; set; }
 
-        public virtual KhachHang KhachHang { get; set; }
+        public virtual ThanhVien ThanhVien { get; set; }
     }
 }

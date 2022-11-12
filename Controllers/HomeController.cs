@@ -42,19 +42,25 @@ namespace DoAnChuyenNganh.Controllers
            
             return RedirectToAction("ViTri", "Home");
         }
-        public List<ViTri> LayVitri()
+        public List<GioHang> LayVitri()
         {
-            List<ViTri> lstVitri = Session["ViTri"] as List<ViTri>;
+            List<GioHang> lstVitri = Session["GioHang"] as List<GioHang>;
             if (lstVitri == null)
             {
-                lstVitri = new List<ViTri>();
-                Session["ViTri"] = lstVitri;
+                lstVitri = new List<GioHang>();
+                Session["GioHang"] = lstVitri;
             }
             return lstVitri;
         }
         public ActionResult Vitri()
         {
-            return View();
+            List<GioHang> lstgh = Session["GioHang"] as List<GioHang>;
+            if (lstgh == null)
+            {
+                lstgh = new List<GioHang>();
+                Session["GioHang"] = lstgh;
+            }         
+            return View(lstgh);
         }
         public ActionResult HeaderPartial()
         {
