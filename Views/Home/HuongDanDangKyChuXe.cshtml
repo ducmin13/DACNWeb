@@ -112,20 +112,26 @@
                                 </div>
                                 
                                 <div class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example1cg">Số chỗ</label>
+                                    <div class="col-mb-4">
+                                        @Html.DropDownList("MaLoaiXe", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.MaLoaiXe, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>                           
+                                @*<div class="form-outline mb-4">
                                     <label class="form-label" for="form3Example1cg">Hình ảnh xe</label>
 
                                     <input type="text" id="form3Example1cg" class="form-control form-control-lg"
                                            name="HinhAnh" />
                                     @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
-                                </div>
+                                </div>*@
 
                                 <div class="form-outline mb-4">
                                     @Html.Captcha(exampleCaptcha)
                                     @Html.TextBox("CaptchaCode")
                                 </div>
 
-
-                                <div class="d-flex justify-content-center">
+                                <div class="form-outline mb-4">
                                     <button type="submit"
                                             class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
                                         Đăng ký

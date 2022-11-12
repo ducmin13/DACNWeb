@@ -15,6 +15,7 @@ namespace DoAnChuyenNganh.Controllers
     {
         DoAnChuyenNganhContext dbContext = new DoAnChuyenNganhContext();
 
+        [HttpGet]
         public ActionResult Index()
         {
             //Lần lượt tạo các viewbag để lấy list từ csdl
@@ -33,7 +34,34 @@ namespace DoAnChuyenNganh.Controllers
 
             return View();
         }
-
+        [HttpPost]
+        public ActionResult Index(DatXe dx)
+        {
+            dbContext.DatXes.Add(dx);
+            dbContext.SaveChanges();
+           
+            return RedirectToAction("ViTri", "Home");
+        }
+        public List<GioHang> LayVitri()
+        {
+            List<GioHang> lstVitri = Session["GioHang"] as List<GioHang>;
+            if (lstVitri == null)
+            {
+                lstVitri = new List<GioHang>();
+                Session["GioHang"] = lstVitri;
+            }
+            return lstVitri;
+        }
+        public ActionResult Vitri()
+        {
+            List<GioHang> lstgh = Session["GioHang"] as List<GioHang>;
+            if (lstgh == null)
+            {
+                lstgh = new List<GioHang>();
+                Session["GioHang"] = lstgh;
+            }         
+            return View(lstgh);
+        }
         public ActionResult HeaderPartial()
         {
             return PartialView();
