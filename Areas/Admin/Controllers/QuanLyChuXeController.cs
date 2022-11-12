@@ -19,7 +19,6 @@ namespace DoAnChuyenNganh.Areas.Admin.Controllers
             (IOrderedQueryable<ChuXe>)chuxe.Where(n => n.TenChuXe.Contains(searchString));
 
             return View(chuxe);
-            
         }
 
         public ActionResult YeuCauChoThueXe(string searchString)

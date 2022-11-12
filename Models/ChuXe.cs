@@ -27,6 +27,5 @@ namespace DoAnChuyenNganh.Models
         public string HinhAnh { get; set; }
 
         public int? Status { get; set; }
-        public virtual LoaiXe LoaiXe { get; set; }
     }
 }
