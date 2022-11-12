@@ -2,8 +2,9 @@
 @{ ViewBag.Title = "DatHang";
    }
 
+
 <div class="container">
-    <h3 style="text-align:center;color:red;font-size:50px;margin-top:20px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Đặt Xe </h3>
+    <h3 style="text-align:center;color:red;font-size:50px;margin-top:20px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">GIỎ HÀNG</h3>
     <div class="row">
         <div class="col-md-8">
             <table class="table table-bordered" style="margin-left:250px">
@@ -11,9 +12,9 @@
                     <tr>
                         <th style="width:20px">ID</th>
                         <th style="width:100px">Hình Ảnh</th>
-                        <th>Tên Xe</th>
-                        <th>Số ngày</th>
-                        <th>Giá</th>
+                        <th>Tên Sản Phẩm</th>
+                        <th>Số Lượng</th>
+                        <th>Giá Bán</th>
                         <th>Thành Tiền</th>
 
                     </tr>
@@ -36,8 +37,8 @@
 
     </tbody>}
                 <tr style="font-weight:bold; text-align:right;color:red">
-                    <td colspan="4">Số ngày: @ViewBag.Tongsoluong</td>
-                    
+                    <td colspan="4">Số lượng: @ViewBag.Tongsoluong</td>
+                    <td colspan="3">Giảm 20%</td>
                     <td colspan="5"> Tổng tiền :@String.Format("{0:0,0}", ViewBag.Tongtien)  VNĐ</td>
 
 
@@ -76,15 +77,15 @@
                                                                     <td style="font-weight:bold">@DateTime.Now.ToShortDateString()</td>
                                                                 </tr>
                                                                                 <tr style="height:40px">
-                                                                                    <td>Ngày Giao Xe</td>
+                                                                                    <td>Ngày Giao Hàng</td>
                                                                                     <td style="font-weight:bold">
-                                                                                        <input type="date" name="NGAYGIAO" id="NgayKetThuc"/>
+                                                                                        <input type="date" name="NGAYGIAO" />
                                                                                     </td>
                                                                                 </tr>
                                                                                                 <tr style="height:40px">
                                                                                                     <td></td>
                                                                                                     <td>
-                                                                                                        <input type="Submit" value="ĐỒNG Ý ĐẶT" class="btn btn-danger" />
+                                                                                                        <input type="Submit" value="ĐỒNG Ý ĐẶT HÀNG" class="btn btn-danger" />
                                                                                                     </td>
                                                                                                 </tr>}
 

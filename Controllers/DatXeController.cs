@@ -4,8 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DoAnChuyenNganh.Models;
-using DoAnChuyenNganh.MoMo;
-using Newtonsoft.Json.Linq;
 
 namespace DoAnChuyenNganh.Controllers
 {
@@ -19,7 +17,7 @@ namespace DoAnChuyenNganh.Controllers
             List<GioHang> lstGiohang = Laygiohang();
             if (lstGiohang.Count == 0)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Site");
             }
             ViewBag.Tongsoluong = TongSoLuong();
             ViewBag.Tongtien = TongTien();
@@ -54,20 +52,11 @@ namespace DoAnChuyenNganh.Controllers
 
         private int TongSoLuong()
         {
-
             int iTongSoLuong = 0;
             List<GioHang> lstGiohang = Session["GioHang"] as List<GioHang>;
             if (lstGiohang != null)
             {
-                //var ngaybatdau 
-                DateTime iNgayBatDau = new DateTime();
-
-                DateTime iNgayKetThuc = new DateTime();
-                DateTime ngaybatdau = Convert.ToDateTime(iNgayBatDau);
-                DateTime ngayketthuc = Convert.ToDateTime(iNgayKetThuc);
-                TimeSpan Time = ngaybatdau - ngayketthuc;
-                int TongSoNgay = Time.Days;
-                iTongSoLuong = TongSoNgay;      
+                iTongSoLuong = lstGiohang.Sum(n => n.iSL);
             }
             return iTongSoLuong;
         }
@@ -87,7 +76,7 @@ namespace DoAnChuyenNganh.Controllers
         {
             if (Session["TAIKHOAN"] == null || Session["TAIKHOAN"].ToString() == "")
             {
-                return RedirectToAction("DangNhap", "Home");
+                return RedirectToAction("DatXe", "DatXe");
             }
 
             List<GioHang> lstGiohang = Laygiohang();
@@ -103,16 +92,18 @@ namespace DoAnChuyenNganh.Controllers
             DatXe dx = new DatXe();
            
             ThanhVien tv = (ThanhVien)Session["TAIKHOAN"];
-            List<GioHang> laygh = Laygiohang();        
+            List<GioHang> laygh = Laygiohang();
+            GioHang gh = new GioHang(1);
             dx.MaThanhVien = tv.MaThanhVien;
             dx.HoTen = tv.HoTen;
-            DateTime NgayDat = Convert.ToDateTime(DateTime.Now);
-            var ngayketthuc = String.Format("{0:dd/mm/yyyy}", collection["NGAYGIAO"]);
-
-            DateTime NgayKetThuc = Convert.ToDateTime(DateTime.Parse(ngayketthuc));
-            TimeSpan SoNgay = NgayKetThuc - NgayDat;
+            dx.NgayDat = DateTime.Now;
+            var ngayketthuc = String.Format("{0:MM/dd/yyyy}", collection["NGAYGIAO"]);
+            dx.NgayDat = DateTime.Parse(ngayketthuc);
+            dx.ViTriBatDau = gh.iViTriKetThuc;
             db.DatXes.Add(dx);
             db.SaveChanges();
+
+
 
             foreach (var item in laygh)
             {
@@ -128,76 +119,5 @@ namespace DoAnChuyenNganh.Controllers
             return RedirectToAction("Xacnhandonhang", "Giohang");
 
         }
-        public ActionResult Xacnhandon(FormCollection f)
-        {
-            if (Session["TAIKHOAN"] == null || Session["TAIKHOAN"].ToString() == "")
-            {
-                return RedirectToAction("Login", "KhachHang");
-            }
-            List<GioHang> lstGiohang = Laygiohang();
-            ViewBag.Tongsoluong = TongSoLuong();
-            ViewBag.Tongtien = TongTien();
-            return View();
-
-        }
-
-        //public ActionResult Index()
-        //{
-        //    return View();
-        //}
-        public ActionResult Payment()
-        {
-            string endpoint = "https://payment.momo.vn/gw_payment/transactionProcessor";
-            string partnerCode = "MOMOQUFO20220604";
-            string accessKey = "CBnwSz6apdin7hlg";
-            string serectkey = "SH3p93lEUXFTFWigQDaIRGgdlnmvJcRm";
-            string orderInfo = "Hiep Thanh";
-            string returnUrl = "https://localhost:44394/Home/Index";
-            string notifyurl = "http://ba1adf48beba.ngrok.io/Home/Index";
-            string amount = TongTien().ToString();
-            string orderid = DateTime.Now.Ticks.ToString();
-            string requestId = DateTime.Now.Ticks.ToString();
-            string extraData = "";
-
-            string rawHash = "partnerCode=" +
-                partnerCode + "&accessKey=" +
-                accessKey + "&requestId=" +
-                requestId + "&amount=" +
-                amount + "&orderId=" +
-                orderid + "&orderInfo=" +
-                orderInfo + "&returnUrl=" +
-                returnUrl + "&notifyUrl=" +
-                notifyurl + "&extraData=" +
-                extraData;
-
-            MoMoSecurity crypto = new MoMoSecurity();
-
-            string signature = crypto.signSHA256(rawHash, serectkey);
-
-
-            JObject message = new JObject
-            {
-                { "partnerCode", partnerCode },
-                { "accessKey", accessKey },
-                { "requestId", requestId },
-                { "amount", amount},
-                { "orderId", orderid },
-                { "orderInfo", orderInfo },
-                { "returnUrl", returnUrl },
-                { "notifyUrl", notifyurl },
-                { "extraData", extraData },
-                { "requestType", "captureMoMoWallet" },
-                { "signature", signature }
-            };
-            string responseFromMomo = PaymentRequest.sendPaymentRequest(endpoint, message.ToString());
-            JObject jmessage = JObject.Parse(responseFromMomo);
-            Session["Giohang"] = null;
-            return Redirect(jmessage.GetValue("payUrl").ToString());
-        }
-
-        public ActionResult ThanhToanThanhCong()
-        {
-            return View();
         }
     }
-}

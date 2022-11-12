@@ -17,7 +17,7 @@ namespace DoAnChuyenNganh.Controllers
             return PartialView();
         }
 
-        public ActionResult HienThiToanBoXe(int page = 1, int pageSize = 4)
+        public ActionResult HienThiToanBoXe(int page = 1, int pageSize = 8)
         {
             //List hãng xe
             var lstNhaSanXuat = dbContext.NhaSanXuats.ToList();
@@ -29,7 +29,7 @@ namespace DoAnChuyenNganh.Controllers
             return View(dbContext.Xes.OrderBy(x => x.MaXe).ToPagedList(page, pageSize));
         }
 
-        public ActionResult HienThiXeTheoNhaSanXuat(int? id, int page = 1, int pageSize = 6)
+        public ActionResult HienThiXeTheoNhaSanXuat(int? id, int page = 1, int pageSize = 8)
         {
             //List hãng xe
             var lstNhaSanXuat = dbContext.NhaSanXuats.ToList();
@@ -42,7 +42,7 @@ namespace DoAnChuyenNganh.Controllers
             return View(xes.OrderBy(x=>x.MaXe).ToPagedList(page,pageSize));
         }
 
-        public ActionResult HienThiXeTheoLoaiXe(int? id, int page = 1, int pageSize = 4)
+        public ActionResult HienThiXeTheoLoaiXe(int? id, int page = 1, int pageSize = 8)
         {
             //list hãng xe
             var lstNhaSanXuat = dbContext.NhaSanXuats.ToList();
