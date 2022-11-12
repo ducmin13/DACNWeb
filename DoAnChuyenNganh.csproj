@@ -153,6 +153,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoaiXeController.cs" />
     <Compile Include="Controllers\NhaSanXuatController.cs" />
+    <Compile Include="Controllers\TimKiemController.cs" />
     <Compile Include="Controllers\XeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2366,6 +2367,7 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\Home\" />
     <Folder Include="test\" />
+    <Folder Include="Views\TimKirm\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
