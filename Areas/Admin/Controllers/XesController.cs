@@ -73,6 +73,7 @@ namespace DoAnChuyenNganh.Areas.Admin.Controllers
         }
 
         // GET: Admin/Xes/Edit/5
+        [HttpGet]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -94,21 +95,19 @@ namespace DoAnChuyenNganh.Areas.Admin.Controllers
         // POST: Admin/Xes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        [HttpPost, ActionName("Edit")]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaXe,TenXe,Gia,HinhAnh,MoTa,MaNhaSanXuat,MaLoaiXe,MaThanhVien,MaHinhThucDatXe")] Xe xe)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(xe).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.MaHinhThucDatXe = new SelectList(db.HinhThucDatXes, "MaHinhThucDatXe", "TenHinhThucDatXe", xe.MaHinhThucDatXe);
-            ViewBag.MaLoaiXe = new SelectList(db.LoaiXes, "MaLoaiXe", "TenLoaiXe", xe.MaLoaiXe);
-            ViewBag.MaNhaSanXuat = new SelectList(db.NhaSanXuats, "MaNhaSanXuat", "TenNhaSanXuat", xe.MaNhaSanXuat);
-            ViewBag.MaThanhVien = new SelectList(db.ThanhViens, "MaThanhVien", "MatKhau", xe.MaThanhVien);
-            return View(xe);
+        public ActionResult Edit(int id)
+        {          
+                Xe sp = db.Xes.SingleOrDefault(n => n.MaXe == id);
+                UpdateModel(sp);
+                db.SaveChanges();                 
+            //ViewBag.MaHinhThucDatXe = new SelectList(db.HinhThucDatXes, "MaHinhThucDatXe", "TenHinhThucDatXe", xe.MaHinhThucDatXe);
+            //ViewBag.MaLoaiXe = new SelectList(db.LoaiXes, "MaLoaiXe", "TenLoaiXe", xe.MaLoaiXe);
+            //ViewBag.MaNhaSanXuat = new SelectList(db.NhaSanXuats, "MaNhaSanXuat", "TenNhaSanXuat", xe.MaNhaSanXuat);
+            //ViewBag.MaThanhVien = new SelectList(db.ThanhViens, "MaThanhVien", "MatKhau", xe.MaThanhVien);
+            return RedirectToAction("Index");
         }
 
         // GET: Admin/Xes/Delete/5

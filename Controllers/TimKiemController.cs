@@ -4,27 +4,26 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DoAnChuyenNganh.Models;
+using PagedList;
+
 namespace DoAnChuyenNganh.Controllers
 {
     public class TimKiemController : Controller
     {
         DoAnChuyenNganhContext db = new DoAnChuyenNganhContext();
-        // GET: TimKirm
-        public ActionResult Index()
+        
+       
+        
+       
+        public ActionResult TimXeCoTaiXe(string diachi/*, int page = 1, int pageSize = 8*/)
         {
-            return View();
+            var lstsp = db.Xes.Where(n => n.KhuVuc.Contains(diachi) && n.MaHinhThucDatXe == 1);
+            return View(lstsp.OrderBy(n => n.KhuVuc)/*.ToPagedList(page, pageSize)*/);
         }
-        public ActionResult CoTaiXe()
+        public ActionResult TimXeTuLai(string diachi/*, int page = 1, int pageSize = 8*/)
         {
-            return  View();
-        }
-        public ActionResult XacNhanXe(int id)
-        {
-            var xecotaixe = db.LoaiXes.Where(n => n.TenLoaiXe != null).OrderBy(n => n.MaLoaiXe);
-            if (!string.IsNullOrEmpty(searchString)) all_loaixe =
-            (IOrderedQueryable<LoaiXe>)all_loaixe.Where(a => a.TenLoaiXe.Contains(searchString));
-
-            return View(all_loaixe);
+            var lstsp = db.Xes.Where(n => n.KhuVuc.Contains(diachi) && n.MaHinhThucDatXe == 2);
+            return View(lstsp.OrderBy(n => n.KhuVuc));
         }
     }
 }

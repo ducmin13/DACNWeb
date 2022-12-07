@@ -19,9 +19,17 @@ namespace DoAnChuyenNganh.Models
 
         public int iSL { get; set; }
 
+        public DateTime iNgayDat { get; set; }
+
+        public DateTime iNgayKetThuc { get; set; }
+
+        public int? iMaHinhThucDatXe { get; set; }
+
         public String iViTriBatDau { get; set; }
 
         public String iViTriKetThuc { get; set; }
+
+        public int? iMaTaiXe { get; set; }
 
         public Double iTHANHTIEN
         {
@@ -34,7 +42,12 @@ namespace DoAnChuyenNganh.Models
             iTenXe = xe.TenXe;
             iHinhAnh = xe.HinhAnh;
             iGia = double.Parse(xe.Gia.ToString());
-            iSL = 1;
+            iMaHinhThucDatXe = xe.MaHinhThucDatXe;
+            iMaTaiXe = xe.MaThanhVien;
+            iNgayDat = DateTime.Parse(xe.NgayBatDau.ToString());
+            iNgayKetThuc = DateTime.Parse(xe.NgayKetThuc.ToString());
+            iViTriBatDau = xe.ViTriBatDau;
+            iViTriKetThuc = xe.ViTriKetThuc;
         }
     }
 }

@@ -22,13 +22,18 @@ namespace DoAnChuyenNganh.Models
         public virtual DbSet<HinhThucDatXe> HinhThucDatXes { get; set; }
         public virtual DbSet<HinhThucThanhToan> HinhThucThanhToans { get; set; }
         public virtual DbSet<KhachHang> KhachHangs { get; set; }
+        public virtual DbSet<LienHe> LienHes { get; set; }
         public virtual DbSet<LoaiThanhVien> LoaiThanhViens { get; set; }
         public virtual DbSet<LoaiXe> LoaiXes { get; set; }
         public virtual DbSet<NhaSanXuat> NhaSanXuats { get; set; }
         public virtual DbSet<PhanQuyen> PhanQuyens { get; set; }
+        public virtual DbSet<QuanHuyen> QuanHuyens { get; set; }
         public virtual DbSet<Quyen> Quyens { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TaiXe> TaiXes { get; set; }
+        public virtual DbSet<ThanhPho> ThanhPhoes { get; set; }
         public virtual DbSet<ThanhVien> ThanhViens { get; set; }
+        public virtual DbSet<XaPhuong> XaPhuongs { get; set; }
         public virtual DbSet<Xe> Xes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -60,6 +65,11 @@ namespace DoAnChuyenNganh.Models
             modelBuilder.Entity<TaiXe>()
                 .Property(e => e.HinhAnhTaiXe)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<ThanhPho>()
+                .HasMany(e => e.QuanHuyens)
+                .WithOptional(e => e.ThanhPho)
+                .HasForeignKey(e => e.IdThanhPho);
 
             modelBuilder.Entity<ThanhVien>()
                 .Property(e => e.MatKhau)

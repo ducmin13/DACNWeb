@@ -34,24 +34,7 @@ namespace DoAnChuyenNganh.Controllers
 
             return View();
         }
-        [HttpPost]
-        public ActionResult Index(DatXe dx)
-        {
-            dbContext.DatXes.Add(dx);
-            dbContext.SaveChanges();
-           
-            return RedirectToAction("ViTri", "Home");
-        }
-        public List<ViTri> LayVitri()
-        {
-            List<ViTri> lstVitri = Session["ViTri"] as List<ViTri>;
-            if (lstVitri == null)
-            {
-                lstVitri = new List<ViTri>();
-                Session["ViTri"] = lstVitri;
-            }
-            return lstVitri;
-        }
+         
         public ActionResult Vitri()
         {
             return View();
@@ -223,18 +206,71 @@ namespace DoAnChuyenNganh.Controllers
 
             return View();
         }
+        [HttpGet]
         public ActionResult LienHe()
         {
             return View();
         }
+        [HttpPost]
+        public ActionResult LienHe(FormCollection collection, LienHe lh)
+        {
 
+            var hoten = collection["HoTenKh"];
+            var email = collection["Email"];
+            
+            var noidung = collection["NoiDung"];
+            if (String.IsNullOrEmpty(hoten))
+            {
+                ViewData["Loi1"] = "Họ tên Không được để trống";
+            }
+            if (String.IsNullOrEmpty(email))
+            {
+                ViewData["Loi2"] = "Email Không được để trống";
+            }           
+            if (String.IsNullOrEmpty(noidung))
+            {
+                ViewData["Loi4"] = "Nội dung Không được để trống";
+            }
+            else
+            {
+
+                lh.HoTen = hoten;
+                lh.Email = email;             
+                lh.NoiDung = noidung;
+
+                dbContext.LienHes.Add(lh);
+                dbContext.SaveChanges();
+            }
+            return RedirectToAction("Index", "Home");
+
+        }
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
 
             return View();
         }
+          public ActionResult ChuyenCuaToi(String searchString)
+        {
+            var all_baiviet = dbContext.BaiViets.Where(n => n.TieuDeChinh != null).OrderBy(n => n.MaBaiViet);
+            if (!string.IsNullOrEmpty(searchString)) all_baiviet =
+            (IOrderedQueryable<BaiViet>)all_baiviet.Where(a => a.TieuDeChinh.Contains(searchString));
+
+            return View(all_baiviet);
+        }
         //Giải phóng dung lượng biến dbContext, để ở cuối controller
+        public ActionResult ThongTinCaNhan(int id)
+        {
+            var tv = from s in dbContext.ThanhViens
+                     where s.MaThanhVien == id
+                     select s;
+            return View(tv.Single());
+        }
+        public ActionResult XeCuaToi(int id)
+        {
+            var xecuatoi = dbContext.Xes.Where(n => n.MaThanhVien == id).OrderBy(n =>n.MaXe);
+            return View(xecuatoi);
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

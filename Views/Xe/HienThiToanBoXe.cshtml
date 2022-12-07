@@ -21,7 +21,104 @@
         </div>
     </div>
 </section>
+<div class="ftco-section ftco-no-pt bg-light">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-md-12	featured-top">
+                <div class="row no-gutters">
+                    <div class="col-md-4 d-flex align-items-center">
+                        <form class="request-form ftco-animate bg-primary">
+                            <div class="form-group">
+                                <label for="from" class="label">Địa điểm</label>
+                                <input type="text" id="from" name="iViTriBatDau" class="form-control" placeholder="Thành phố, Sân bay,..." autocomplete="off">
+                            </div>
+                            <div class="form-group">
+                                <label for="to" class="label">Địa điểm</label>
+                                <input type="text" id="to" name="iViTriKetThuc" class="form-control" placeholder="Thành phố, Sân bay,...">
+                            </div>
+                            <div class="d-flex">
+                                <div class="form-group mr-2">
+                                    <label for="" class="label">Bắt đầu</label>
+                                    <input type="date" class="form-control" @*id="book_pick_date"*@ id="d1" placeholder="Ngày đi">
+                                </div>
+                                <div class="form-group ml-2">
+                                    <label for="" class="label">Kết thúc</label>
+                                    <input type="date" class="form-control"                                      
+                                           id="d2" @*id="book_off_date"*@  placeholder="Ngày về">
+                                </div>
+                                    
+                            </div>
+                            @*<div class="btn-group d-flex" data-toggle="buttons">
+                                <label for="" class="label">Hình thức</label>
+                                <label class="btn btn-primary active">
+                                    <input type="radio" name="options" autocomplete="off" checked /> Tự lái
+                                </label>
+                                <label class="btn btn-primary">
+                                    <input type="radio" name="options" autocomplete="off" /> Có tài xế
+                                </label>
 
+                            </div>*@
+                            <div class="form-group">
+                                <input type="submit" onclick="calculateDays()" value="Tìm xe" class="btn btn-secondary py-3 px-4">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="form-group">
+                        <div id="googleMap" hidden>
+
+                        </div>
+                        <div id="output" hidden>
+
+                        </div>
+                    </div>
+                    <div class="col-md-8 d-flex align-items-center">
+                        <div class="services-wrap rounded-right w-100">
+                            <h3 class="heading-section mb-4">Cách thức đặt xe</h3>
+                            <div class="row d-flex mb-4">
+                                <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                                    <div class="services w-100 text-center">
+                                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
+                                        <div class="text w-100">
+                                            <h3 class="heading mb-2">Chọn điểm đến</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                                    <div class="services w-100 text-center">
+                                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-rent"></span></div>
+                                        <div class="text w-100">
+                                            <h3 class="heading mb-2">Đặt xe & trải nghiệm chuyến đi</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                                    <div class="services w-100 text-center">
+                                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-handshake"></span></div>
+                                        <div class="text w-100">
+                                            <h3 class="heading mb-2">Kết thúc</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function calculateDays() {
+            var d1 = document.getElementById("d1").value;
+            var d2 = document.getElementById("d2").value;
+            const dateOne = new Date(d1);
+            const dateTwo = new Date(d2);
+            const time = Math.abs(dateTwo - dateOne);
+            const days = Math.ceil(time / (1000 * 60 * 60 * 24));
+            document.getElementById("output").innerHTML = days;
+        }
+    </script>
+</div>
+<br />
 
 
 
@@ -41,7 +138,7 @@
                                         <div class="img rounded d-flex align-items-end" style="background-image: url(/Assets/images/xe/@item.HinhAnh);">
                                         </div>
                                         <div class="text">
-                                            <h2 class="mb-0"><a href="car-single.html">@item.TenXe</a></h2>
+                                            <h2 class="mb-0"><a href="@Url.Action("ChiTietXe","Xe", new { id = item.MaXe})">@item.TenXe</a></h2>
                                             <div class="d-flex mb-3">
                                                 <span class="cat">
                                                     <span class="ion-ios-star"></span>
@@ -85,7 +182,7 @@
                 @Html.Partial("~/Views/LoaiXe/LoaiXePartial.cshtml", lstLoaiXe)
 
 
-               
+
             </div>
 
         </div>

@@ -23,6 +23,9 @@
             }
         </td>
     </tr>
+    <p>
+        @Html.ActionLink("ImportExcel", "ImportExcel", "Excel")
+    </p>
     <tr style="height:50px;">
         <th>
             Loại xe
@@ -76,8 +79,8 @@
         </tr>
     }
 </table>
-@*<br />
-Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+<br />
+@*Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
 
 @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page }))*@

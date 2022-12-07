@@ -1,0 +1,93 @@
+﻿@*@model DoAnChuyenNganh.Models.Xe*@
+@{
+    ViewBag.Title = "ChiTietXe";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/Assets/images/bg.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
+            <div class="col-md-9 ftco-animate pb-5">
+                <p class="breadcrumbs"><span class="mr-2"><a href="@Url.Action("Index","Home")">Trang chủ <i class="ion-ios-arrow-forward"></i></a></span> <span>Chi tiết xe <i class="ion-ios-arrow-forward"></i></span></p>
+                <h1 class="mb-3 bread">Chi tiết xe</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container mt-3">
+    
+       
+        <div class="wrapper row">
+            <div class="preview col-md-6">
+                <div class="preview-pic tab-content">
+                    <div class="tab-pane" id="pic-1">
+                        <img src="~/Assets/images/xe/@Model.HinhAnh">
+                    </div>
+
+                </div>
+                <ul class="preview-thumbnail nav nav-tabs">
+                    <li class="active">
+                        <a data-target="#pic-1" data-toggle="tab" class="">
+                            <img src="~/Assets/images/xe/@Model.HinhAnh" class="img-fluid" style="height:400px; width:800px" />
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="details col-md-6">
+                <p id="result"> </p>
+                <h4 class="details col-md-6"> <span id="giaThue" data-price="@Model.Gia">@String.Format("{0:0,0}", @Model.Gia) VNĐ/Ngày </span></h4>
+
+                <h3 style="margin-right:50px" class="product-title">@Model.TenXe</h3>
+
+                <input type="date" id="d1" name="iNgayDat">
+                <input type="date" id="d2" name="iNgayKetThuc" onchange="calculateDays()">
+
+
+                @*<h4 class="details col-md-6">Ma Loai Xe: <span>@Model.MaLoaiXe </span></h4>*@
+                <h4 class="details col-md-6">Chi tiết giá:</h4>
+                <p class="details col-md-6">Đơn giá thuê: <p><span class="details col-md-6" id="giaThue" data-price="@Model.Gia">:@String.Format("{0:0,0}", @Model.Gia) đ/Ngày</span>
+
+                <p id="output"></p>
+                
+                <br />
+                <br />
+                <div class="datmua mt-2">
+                    <a href="@Url.Action("ThemGioHang","DatXe", new { @iMaXe =@Model.MaXe, @strURL = Request.Url.ToString()})" class="list-group-item" style="width:200px;"> Đặt xe</a>
+                </div>
+            </div>
+
+        </div>
+   
+</div>
+<div class="container mt-3">
+    <h3>Thông tin chi tiết về Sản phẩm</h3>
+    <div class="row">
+        <div class="col">
+            Đảm bảo hàng thật đến tay người mua.
+        </div>
+    </div>
+</div>
+<body>
+    <script>
+        function calculateDays() {
+            var d1 = document.getElementById("d1").value;
+            var d2 = document.getElementById("d2").value;
+
+            let giaThue = $("#giaThue").data("price");
+
+            let dateOne = new Date(d1);
+
+            let dateTwo = new Date(d2);
+
+
+            const time = Math.abs(dateTwo - dateOne);
+            const days = Math.ceil(time / (1000 * 60 * 60 * 24)) + 1;
+
+            const tt = Math.round(days * giaThue);
+            
+            document.getElementById("output").innerHTML =
+                "Tổng chi phí thuê " + giaThue + " x " + days + "ngày" + "<br/>"
+                + "Tổng cộng " + tt + "đ" + "<br/> ";
+        }
+    </script>
+</body>

@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;//dung thu vien nay
 using System.Web;
 using System.Web.Mvc;
 using DoAnChuyenNganh.Models;
+using DoAnChuyenNganh.MoMo;
+using Newtonsoft.Json.Linq;
 
 namespace DoAnChuyenNganh.Controllers
 {
@@ -17,9 +22,9 @@ namespace DoAnChuyenNganh.Controllers
             List<GioHang> lstGiohang = Laygiohang();
             if (lstGiohang.Count == 0)
             {
-                return RedirectToAction("Index", "Site");
+                return RedirectToAction("Index", "Home");
             }
-            ViewBag.Tongsoluong = TongSoLuong();
+                
             ViewBag.Tongtien = TongTien();
             return View(lstGiohang);
         }
@@ -36,30 +41,17 @@ namespace DoAnChuyenNganh.Controllers
 
         public ActionResult ThemGioHang(int iMaXe, string strURL)
         {
+           
             List<GioHang> lstGiohang = Laygiohang();
             GioHang xe = lstGiohang.Find(n => n.iMaXe == iMaXe);
             if (xe == null)       
                 xe = new GioHang(iMaXe);
                 lstGiohang.Add(xe);
-                return Redirect(strURL);
-            //}
-            //else
-            //{
-            //    xe.iSL++;
-            //    return Redirect(strURL);
-            //}
+                return RedirectToAction("DatXe", "DatXe");
+          
         }
 
-        private int TongSoLuong()
-        {
-            int iTongSoLuong = 0;
-            List<GioHang> lstGiohang = Session["GioHang"] as List<GioHang>;
-            if (lstGiohang != null)
-            {
-                iTongSoLuong = lstGiohang.Sum(n => n.iSL);
-            }
-            return iTongSoLuong;
-        }
+        
         private double TongTien()
         {
             double iTongTien = 0;
@@ -76,11 +68,11 @@ namespace DoAnChuyenNganh.Controllers
         {
             if (Session["TAIKHOAN"] == null || Session["TAIKHOAN"].ToString() == "")
             {
-                return RedirectToAction("DatXe", "DatXe");
+                return RedirectToAction("DangNhap", "Home");
             }
 
             List<GioHang> lstGiohang = Laygiohang();
-            ViewBag.Tongsoluong = TongSoLuong();
+            
             ViewBag.Tongtien = TongTien();
 
             return View(lstGiohang);
@@ -90,34 +82,157 @@ namespace DoAnChuyenNganh.Controllers
         public ActionResult DatHang(FormCollection collection)
         {
             DatXe dx = new DatXe();
-           
+            ChiTietDatXe ctdx = new ChiTietDatXe();
             ThanhVien tv = (ThanhVien)Session["TAIKHOAN"];
             List<GioHang> laygh = Laygiohang();
-            GioHang gh = new GioHang(1);
+
+
+            //var ngaybatdau = String.Format("{0:MM/dd/yyyy}", collection["Ngaybatdau"]);
+            //dx.NgayDat = DateTime.Parse(ngaybatdau);
+            //var ngayketthuc = String.Format("{0:MM/dd/yyyy}", collection["Ngayketthuc"]);
+            //dx.NgayKetThuc = DateTime.Parse(ngayketthuc);
             dx.MaThanhVien = tv.MaThanhVien;
             dx.HoTen = tv.HoTen;
-            dx.NgayDat = DateTime.Now;
-            var ngayketthuc = String.Format("{0:MM/dd/yyyy}", collection["NGAYGIAO"]);
-            dx.NgayDat = DateTime.Parse(ngayketthuc);
-            dx.ViTriBatDau = gh.iViTriKetThuc;
-            db.DatXes.Add(dx);
-            db.SaveChanges();
-
-
-
             foreach (var item in laygh)
             {
-                ChiTietDatXe ctdx = new ChiTietDatXe();
-                ctdx.MaDatXe = dx.MaDatXe;
-                ctdx.MaXe = item.iMaXe;
-                ctdx.Status = 0;
-                ctdx.TongThanhToan = (int)item.iGia;
-                db.ChiTietDatXes.Add(ctdx);
+              
+                dx.NgayDat = DateTime.Parse(item.iNgayKetThuc)
+                    ;
+                db.DatXes.Add(dx);
             }
             db.SaveChanges();
 
-            return RedirectToAction("Xacnhandonhang", "Giohang");
+            foreach (var item in laygh)
+            {
+                
+                
+                ctdx.MaDatXe = dx.MaDatXe;
+                ctdx.MaXe = item.iMaXe;
+                ctdx.SoNgay = item.iSL;
+                ctdx.DonGia = int.Parse(item.iGia.ToString());
+                ctdx.Status = 0;
+                ctdx.TongThanhToan = int.Parse(item.iTHANHTIEN.ToString());
+                db.ChiTietDatXes.Add(ctdx);
+            }
+            
+            db.SaveChanges();
+            SendVerificationLinkEmail(tv.Email,ctdx.TongThanhToan.ToString());
+            return RedirectToAction("Xacnhandonhang", "DatXe");
 
         }
+        public ActionResult CapnhatGiohang(int iMaXe, FormCollection f)
+        {
+            List<GioHang> lstGiohang = Laygiohang();
+            GioHang sp = lstGiohang.SingleOrDefault(n => n.iMaXe == iMaXe);
+
+            if (sp != null)
+            {
+                sp.iSL = int.Parse(f["txtSoluong"].ToString());
+            }
+            return RedirectToAction("DatXe");
         }
+        public ActionResult Xacnhandonhang(FormCollection f)
+        {
+            if (Session["TAIKHOAN"] == null || Session["TAIKHOAN"].ToString() == "")
+            {
+                return RedirectToAction("DangNhap", "Home");
+            }
+            List<GioHang> lstGiohang = Laygiohang();
+            //ViewBag.Tongsoluong = TongSoLuong();
+            ViewBag.Tongtien = TongTien();
+            return View();
+
+        }
+        public ActionResult Index()
+        {
+            return View();
+        }
+        public ActionResult Payment()
+        {
+            string endpoint = "https://test-payment.momo.vn/gw_payment/transactionProcessor";
+            string partnerCode = "MOMOUMSK20220614";
+            string accessKey = "FviPM3XuoPjqtHHb";
+            string serectkey = "7LDKFATkz2otkjuMlDh4NYAXhrdxdKeT";
+            string orderInfo = "Carbook";
+            string returnUrl = "https://localhost:44340/Home/Index";
+            string notifyurl = "https://localhost:44340/Home/Index";
+            string amount = TongTien().ToString();
+            string orderid = DateTime.Now.Ticks.ToString();
+            string requestId = DateTime.Now.Ticks.ToString();
+            string extraData = "";
+
+            string rawHash = "partnerCode=" +
+                partnerCode + "&accessKey=" +
+                accessKey + "&requestId=" +
+                requestId + "&amount=" +
+                amount + "&orderId=" +
+                orderid + "&orderInfo=" +
+                orderInfo + "&returnUrl=" +
+                returnUrl + "&notifyUrl=" +
+                notifyurl + "&extraData=" +
+                extraData;
+
+            MoMoSecurity crypto = new MoMoSecurity();
+
+            string signature = crypto.signSHA256(rawHash, serectkey);
+
+
+            JObject message = new JObject
+            {
+                { "partnerCode", partnerCode },
+                { "accessKey", accessKey },
+                { "requestId", requestId },
+                { "amount", amount},
+                { "orderId", orderid },
+                { "orderInfo", orderInfo },
+                { "returnUrl", returnUrl },
+                { "notifyUrl", notifyurl },
+                { "extraData", extraData },
+                { "requestType", "captureMoMoWallet" },
+                { "signature", signature }
+            };
+            string responseFromMomo = PaymentRequest.sendPaymentRequest(endpoint, message.ToString());
+            JObject jmessage = JObject.Parse(responseFromMomo);
+            Session["Giohang"] = null;
+            return Redirect(jmessage.GetValue("payUrl").ToString());
+        }
+        [NonAction]
+        public void SendVerificationLinkEmail(string emailID,string tongtien)
+        {
+         
+
+            var fromEmail = new MailAddress("jacknhoxdx3@gmail.com", "Carbook");
+            var toEmail = new MailAddress(emailID);
+            var fromEmailPassword = "jtkvzmzwikpchunx";
+            string subject = "Carbook xin cám ơn quý khách hàng!";
+
+            string body = "<br/><br/>Chúng tôi xin chân thành cám ơn quý khách hàng" +
+                "  Chúc quý khách có một chuyến đi thật ý nghĩa" +
+                " <br/><br/>Xác nhận thanh toán thành công qua phương thức thanh toán online(MoMo)"+
+                " <br/><br/>Tổng số tiền đẫ thanh toán:"+ tongtien;
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromEmail.Address, fromEmailPassword)
+            };
+
+            using (var message = new MailMessage(fromEmail, toEmail)
+            {
+                Subject = subject,
+                Body = body,
+                IsBodyHtml = true
+            })
+                smtp.Send(message);
+        }
+        public ActionResult ConfirmPaymentClient()
+        {
+            return View();
+        }
+        
+    }
     }
