@@ -2378,7 +2378,6 @@
     <Content Include="Views\Xe\TimXeCoTaiXe.cshtml" />
     <Content Include="Views\Xe\TimXeTuLai.cshtml" />
     <Content Include="Views\Home\XeCuaToi.cshtml" />
-    <Content Include="Views\Home\LichSuDatXe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

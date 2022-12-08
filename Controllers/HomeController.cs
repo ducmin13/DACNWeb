@@ -284,12 +284,6 @@ namespace DoAnChuyenNganh.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult LichSuDatXe(int id)
-        {
-            var lichsu = dbContext.ChiTietDatXes.Where(n => n.MaThanhVien == id).OrderBy(n => n.MaXe);
-            return View(lichsu);
-        }
-
 
     }
 }

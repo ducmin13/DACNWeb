@@ -37,6 +37,9 @@ namespace DoAnChuyenNganh.Models
         [StringLength(255)]
         public string HoTen { get; set; }
 
+        [StringLength(255)]
+        public string DiaChi { get; set; }
+
         [Column(TypeName = "date")]
         public DateTime? NgaySinh { get; set; }
 

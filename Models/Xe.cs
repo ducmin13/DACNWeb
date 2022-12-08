@@ -43,6 +43,12 @@ namespace DoAnChuyenNganh.Models
 
         [StringLength(255)]
         public string ViTri { get; set; }
+        [StringLength(255)]
+        public string ThuongHieu { get; set; }
+        [StringLength(255)]
+        public string NhienLieu { get; set; }
+        [StringLength(255)]
+        public string PhanKhuc { get; set; }
 
         public int? MaThanhPho { get; set; }
 

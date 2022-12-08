@@ -4,7 +4,7 @@
 @{
     ViewBag.Title = "XeCoTaiXe";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
-    IEnumerable<QuanHuyen> lstKhuVuc = (IEnumerable<QuanHuyen>)ViewBag.lstKhuVuc;    //cách ép kiểu 1
+    IEnumerable<QuanHuyen> lstKhuVuc = (IEnumerable<QuanHuyen>)ViewBag.lstKhuVuc;
 
 }
 <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/Assets/images/contact.jpg');" data-stellar-background-ratio="0.5">
@@ -47,14 +47,13 @@
                                         <input type="date" class="form-control"
                                                id="d2" @*id="book_off_date"*@ placeholder="Ngày về">
                                     </div>
-
                                 </div>
                                 <div class="form-group">
                                     <input type="submit" value="Tìm xe" class="btn btn-secondary py-3 px-4">
                                 </div>
                             }
                         </div>
-                        q
+                        
                     </div>
                     @*<div class="form-group">
                         <div id="googleMap" hidden>

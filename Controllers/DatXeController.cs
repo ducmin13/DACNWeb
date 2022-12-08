@@ -99,7 +99,7 @@ namespace DoAnChuyenNganh.Controllers
             foreach (var item in laygh)
             {
 
-
+                ctdx.MaThanhVien = dx.MaThanhVien;
                 ctdx.MaDatXe = dx.MaDatXe;
                 ctdx.MaXe = item.iMaXe;
                 ctdx.SoNgay = item.iSL;

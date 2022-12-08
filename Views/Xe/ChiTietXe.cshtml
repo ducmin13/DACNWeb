@@ -23,7 +23,6 @@
                     <div class="tab-pane" id="pic-1">
                         <img src="~/Assets/images/xe/@Model.HinhAnh">
                     </div>
-
                 </div>
                 <ul class="preview-thumbnail nav nav-tabs">
                     <li class="active">
@@ -35,24 +34,21 @@
             </div>
             <div class="details col-md-6">
                 <p id="result"> </p>
-                <h4 class="details col-md-6"> <span id="giaThue" data-price="@Model.Gia">@String.Format("{0:0,0}", @Model.Gia) VNĐ/Ngày </span></h4>
-
-                <h3 style="margin-right:50px" class="product-title">@Model.TenXe</h3>
-
-                <input type="date" id="d1" name="iNgayDat">
-                <input type="date" id="d2" name="iNgayKetThuc" onchange="calculateDays()">
 
 
-                @*<h4 class="details col-md-6">Ma Loai Xe: <span>@Model.MaLoaiXe </span></h4>*@
-                <h4 class="details col-md-6">Chi tiết giá:</h4>
-                <p class="details col-md-6">Đơn giá thuê: <p><span class="details col-md-6" id="giaThue" data-price="@Model.Gia">:@String.Format("{0:0,0}", @Model.Gia) đ/Ngày</span>
+                <h3 style="margin-right: 50px; font-size:2rem" class="product-title">@Model.TenXe</h3>
 
-                <p id="output"></p>
-                
-                <br />
-                <br />
+                <div style="color:black; font-size:1.3rem">
+                    <span class=" col-md-6" id="giaThue" data-price="@Model.Gia">Giá thuê: @String.Format("{0:0,0}", @Model.Gia)đ/Ngày</span>
+                </div>
+
+                @*<input type="date" id="d1" name="iNgayDat">
+                <input type="date" id="d2" name="iNgayKetThuc" onchange="calculateDays()">*@
+            <br />
+
+
                 <div class="datmua mt-2">
-                    <a href="@Url.Action("ThemGioHang","DatXe", new { @iMaXe =@Model.MaXe, @strURL = Request.Url.ToString()})" class="list-group-item" style="width:200px;"> Đặt xe</a>
+                    <a href="@Url.Action("ThemGioHang","DatXe", new { @iMaXe =@Model.MaXe, @strURL = Request.Url.ToString()})" class="btn btn-success" style="width:120px;">Đặt xe</a>
                 </div>
             </div>
 
@@ -60,10 +56,32 @@
    
 </div>
 <div class="container mt-3">
-    <h3>Thông tin chi tiết về Sản phẩm</h3>
+    <h3>Thông tin chi tiết về xe</h3>
     <div class="row">
         <div class="col">
-            Đảm bảo hàng thật đến tay người mua.
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Thông số kĩ thuật</th>
+                        <th scope="col">Chi tiết</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Thương hiệu</th>
+                        <td>@Model.ThuongHieu</td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">Mức tiêu thụ nhiên liệu</th>
+                        <td>@Model.NhienLieu</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Động cơ</th>
+                        <td>@Model.PhanKhuc</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
