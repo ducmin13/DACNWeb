@@ -87,25 +87,19 @@ namespace DoAnChuyenNganh.Controllers
             List<GioHang> laygh = Laygiohang();
 
 
-            //var ngaybatdau = String.Format("{0:MM/dd/yyyy}", collection["Ngaybatdau"]);
-            //dx.NgayDat = DateTime.Parse(ngaybatdau);
-            //var ngayketthuc = String.Format("{0:MM/dd/yyyy}", collection["Ngayketthuc"]);
-            //dx.NgayKetThuc = DateTime.Parse(ngayketthuc);
+            var ngaybatdau = String.Format("{0:MM/dd/yyyy}", collection["Ngaybatdau"]);
+            dx.NgayDat = DateTime.Parse(ngaybatdau);
+            var ngayketthuc = String.Format("{0:MM/dd/yyyy}", collection["Ngayketthuc"]);
+            dx.NgayKetThuc = DateTime.Parse(ngayketthuc);
             dx.MaThanhVien = tv.MaThanhVien;
             dx.HoTen = tv.HoTen;
-            foreach (var item in laygh)
-            {
-              
-                dx.NgayDat = DateTime.Parse(item.iNgayKetThuc)
-                    ;
-                db.DatXes.Add(dx);
-            }
+            db.DatXes.Add(dx);
             db.SaveChanges();
 
             foreach (var item in laygh)
             {
-                
-                
+
+
                 ctdx.MaDatXe = dx.MaDatXe;
                 ctdx.MaXe = item.iMaXe;
                 ctdx.SoNgay = item.iSL;
@@ -114,9 +108,9 @@ namespace DoAnChuyenNganh.Controllers
                 ctdx.TongThanhToan = int.Parse(item.iTHANHTIEN.ToString());
                 db.ChiTietDatXes.Add(ctdx);
             }
-            
+
             db.SaveChanges();
-            SendVerificationLinkEmail(tv.Email,ctdx.TongThanhToan.ToString());
+            SendVerificationLinkEmail(tv.Email, ctdx.TongThanhToan.ToString());
             return RedirectToAction("Xacnhandonhang", "DatXe");
 
         }

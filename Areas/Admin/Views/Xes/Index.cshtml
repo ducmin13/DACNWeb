@@ -11,6 +11,9 @@
         <td align="left" style="height:150px">
             <h2>@ViewBag.Title</h2>
             <a href="@Url.Action("Create","Xes")" class="btn btn-outline-success">Create</a>
+            <p>
+                @Html.ActionLink("ImportExcel", "ImportExcel", "Excel")
+            </p>
             @using (Html.BeginForm("Index", "Xes", FormMethod.Get, new { @class = "form-inline" }))
             {
                 <br />
@@ -23,9 +26,7 @@
             }
         </td>
     </tr>
-    <p>
-        @Html.ActionLink("ImportExcel", "ImportExcel", "Excel")
-    </p>
+    
     <tr style="height:50px;">
         <th>
             Loại xe

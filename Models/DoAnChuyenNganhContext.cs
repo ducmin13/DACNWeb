@@ -29,7 +29,6 @@ namespace DoAnChuyenNganh.Models
         public virtual DbSet<PhanQuyen> PhanQuyens { get; set; }
         public virtual DbSet<QuanHuyen> QuanHuyens { get; set; }
         public virtual DbSet<Quyen> Quyens { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TaiXe> TaiXes { get; set; }
         public virtual DbSet<ThanhPho> ThanhPhoes { get; set; }
         public virtual DbSet<ThanhVien> ThanhViens { get; set; }
