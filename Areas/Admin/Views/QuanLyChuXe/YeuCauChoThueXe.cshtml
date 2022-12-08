@@ -37,7 +37,8 @@
                         grid.Column("SoDienThoai", "Số điện thoại"),
                         grid.Column("TenXe", "Tên xe"),
                         grid.Column("LoaiXe.TenLoaiXe", "Số chỗ"),
-                        grid.Column("HinhAnh", "Hình ảnh"),
+                        grid.Column("HinhAnh", "Hình ảnh", format: p => Html.Raw("<img width=\"250\" height=\"200\" src=\"../Assets/images/xe/" + p.HinhAnh + "\">")),
+
                         grid.Column(format: p => Html.ActionLink("Chi tiết","ChiTiet", new { id = p.MaChuXe }))
                 )
                     )

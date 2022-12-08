@@ -17,22 +17,21 @@ namespace DoAnChuyenNganh.Models
         public virtual DbSet<ChiTietDatXe> ChiTietDatXes { get; set; }
         public virtual DbSet<ChuDe> ChuDes { get; set; }
         public virtual DbSet<ChuXe> ChuXes { get; set; }
+        public virtual DbSet<DanhGiaXe> DanhGiaXes { get; set; }
         public virtual DbSet<DatXe> DatXes { get; set; }
         public virtual DbSet<DiaDiem> DiaDiems { get; set; }
         public virtual DbSet<HinhThucDatXe> HinhThucDatXes { get; set; }
         public virtual DbSet<HinhThucThanhToan> HinhThucThanhToans { get; set; }
         public virtual DbSet<KhachHang> KhachHangs { get; set; }
+        public virtual DbSet<KhuVuc> KhuVucs { get; set; }
         public virtual DbSet<LienHe> LienHes { get; set; }
         public virtual DbSet<LoaiThanhVien> LoaiThanhViens { get; set; }
         public virtual DbSet<LoaiXe> LoaiXes { get; set; }
         public virtual DbSet<NhaSanXuat> NhaSanXuats { get; set; }
         public virtual DbSet<PhanQuyen> PhanQuyens { get; set; }
-        public virtual DbSet<QuanHuyen> QuanHuyens { get; set; }
         public virtual DbSet<Quyen> Quyens { get; set; }
         public virtual DbSet<TaiXe> TaiXes { get; set; }
-        public virtual DbSet<ThanhPho> ThanhPhoes { get; set; }
         public virtual DbSet<ThanhVien> ThanhViens { get; set; }
-        public virtual DbSet<XaPhuong> XaPhuongs { get; set; }
         public virtual DbSet<Xe> Xes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -65,11 +64,6 @@ namespace DoAnChuyenNganh.Models
                 .Property(e => e.HinhAnhTaiXe)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ThanhPho>()
-                .HasMany(e => e.QuanHuyens)
-                .WithOptional(e => e.ThanhPho)
-                .HasForeignKey(e => e.IdThanhPho);
-
             modelBuilder.Entity<ThanhVien>()
                 .Property(e => e.MatKhau)
                 .IsUnicode(false);
@@ -85,6 +79,15 @@ namespace DoAnChuyenNganh.Models
             modelBuilder.Entity<ThanhVien>()
                 .Property(e => e.DienThoai)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<ThanhVien>()
+                .Property(e => e.HinhAnh)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<ThanhVien>()
+                .HasMany(e => e.DanhGiaXes)
+                .WithRequired(e => e.ThanhVien)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Xe>()
                 .Property(e => e.HinhAnh)

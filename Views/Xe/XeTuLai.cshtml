@@ -4,7 +4,6 @@
 @{
     ViewBag.Title = "XeTuLai";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
-    IEnumerable<QuanHuyen> lstKhuVuc = (IEnumerable<QuanHuyen>)ViewBag.lstKhuVuc;    //cách ép kiểu 1
 }
 
 <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/Assets/images/contact.jpg');" data-stellar-background-ratio="0.5">
@@ -120,12 +119,12 @@
                                             <h2 class="mb-0"><a href="@Url.Action("ChiTietXe","Xe", new { id = item.MaXe})">@item.TenXe</a></h2>
                                             <div class="d-flex mb-3">
                                                 <span class="cat">
-                                                    <p class="mb-0">@item.ViTri</p>
+                                                    @*<p class="mb-0">@item.ViTri</p>*@
 
                                                 </span>
                                                 <p class="price ml-auto">@item.Gia.Value.ToString("#,##0").Replace(',', '.') VNĐ <span>/ngày</span></p>
                                             </div>
-                                            <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Đặt xe</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Chi tiết</a></p>
+                                            <p class="d-flex mb-0 d-block"><a href="@Url.Action("ChiTietXe","Xe", new { id = item.MaXe})" class="btn btn-primary py-2 mr-1">Đặt xe</a> <a href="@Url.Action("ChiTietXe","Xe", new { id = item.MaXe})" class="btn btn-secondary py-2 ml-1">Chi tiết</a></p>
                                         </div>
                                     </div>
                                 </div>
@@ -136,7 +135,7 @@
                                 <div class="col text-center">
                                     <div class="block-27">
                                         Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
-                                        @Html.PagedListPager(Model, page => Url.Action("HienThiXeTheoLoaiXe", new { page = page }))
+                                        @Html.PagedListPager(Model, page => Url.Action("XeTuLai", new { page = page }))
                                     </div>
                                 </div>
                             </div>

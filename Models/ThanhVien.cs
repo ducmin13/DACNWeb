@@ -14,6 +14,7 @@ namespace DoAnChuyenNganh.Models
         {
             BaiViets = new HashSet<BaiViet>();
             BinhLuanBaiViets = new HashSet<BinhLuanBaiViet>();
+            DanhGiaXes = new HashSet<DanhGiaXe>();
             DatXes = new HashSet<DatXe>();
             KhachHangs = new HashSet<KhachHang>();
             Xes = new HashSet<Xe>();
@@ -47,11 +48,17 @@ namespace DoAnChuyenNganh.Models
 
         public int? Status { get; set; }
 
+        [StringLength(255)]
+        public string HinhAnh { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BaiViet> BaiViets { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BinhLuanBaiViet> BinhLuanBaiViets { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DanhGiaXe> DanhGiaXes { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DatXe> DatXes { get; set; }

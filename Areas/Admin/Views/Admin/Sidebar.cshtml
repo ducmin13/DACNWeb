@@ -14,7 +14,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="@Url.Action("Index","ThongKe")">
+        <a class="nav-link" href="@Url.Action("Index","Admin")>
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Thống kê</span>
         </a>
@@ -73,13 +73,13 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Chức năng</h6>
                 <a class="collapse-item" href="@Url.Action("Index","QuanLyTaiXe")">Danh sách tài xế</a>
-                <a class="collapse-item" href="utilities-border.html">Yêu cầu làm tài xế</a>
+              @*  <a class="collapse-item" href="utilities-border.html">Yêu cầu làm tài xế</a>*@
             </div>
         </div>
     </li>
 
 
-    <li class="nav-item">
+    @*<li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
            aria-expanded="true" aria-controls="collapseThree">
             <i class="fas fa-fw fa-cog"></i>
@@ -92,7 +92,7 @@
                 <a class="collapse-item" href="utilities-border.html">Danh sách vị trí xe</a>
             </div>
         </div>
-    </li>
+    </li>*@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
@@ -142,13 +142,7 @@
         </div>
     </li>
 
-    <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Quản lý quyền</span>
-        </a>
-    </li>
+   
 
 
     <!-- Divider -->
