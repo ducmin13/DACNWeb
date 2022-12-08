@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
+using System.Web.UI.WebControls;
 
 namespace DoAnChuyenNganh.Models
 {
@@ -30,6 +32,7 @@ namespace DoAnChuyenNganh.Models
         public String iViTriKetThuc { get; set; }
 
         public int? iMaTaiXe { get; set; }
+        public String iemailTaiXe { get; set; }
 
         public Double iTHANHTIEN
         {
@@ -44,10 +47,12 @@ namespace DoAnChuyenNganh.Models
             iGia = double.Parse(xe.Gia.ToString());
             iMaHinhThucDatXe = xe.MaHinhThucDatXe;
             iMaTaiXe = xe.MaThanhVien;
-            iNgayDat = DateTime.Parse(xe.NgayBatDau.ToString());
-            iNgayKetThuc = DateTime.Parse(xe.NgayKetThuc.ToString());
-            iViTriBatDau = xe.ViTriBatDau;
-            iViTriKetThuc = xe.ViTriKetThuc;
+            //iNgayDat = DateTime.Parse(xe.NgayBatDau.ToString());
+            //iNgayKetThuc = DateTime.Parse(xe.NgayKetThuc.ToString());
+            //iViTriBatDau = xe.ViTriBatDau;
+            //iViTriKetThuc = xe.ViTriKetThuc;
+            ThanhVien taixe = db.ThanhViens.Single(n => n.MaLoaiThanhVien == 7 && n.MaThanhVien == iMaTaiXe);
+            iemailTaiXe = taixe.Email;
         }
     }
 }

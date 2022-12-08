@@ -39,7 +39,7 @@
                         grid.Column("TenXe", "Tên xe"),
                         grid.Column("LoaiXe.TenLoaiXe", "Số chỗ"),
                         grid.Column("HinhAnh", "Hình ảnh"),
-                        grid.Column(format: p => Html.ActionLink("Chỉnh sửa", "ChinhSua", new { id = p.MaChuXe })),
+                        grid.Column(format: p => Html.ActionLink("Chỉnh sửa", "ChiTiet", new { id = p.MaChuXe })),
                 grid.Column(format: p => Html.ActionLink("Xóa", "Xoa", new { id = p.MaChuXe }))
                 )
                     )

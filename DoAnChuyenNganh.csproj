@@ -194,6 +194,7 @@
     <Compile Include="Models\ChiTietDatXe.cs" />
     <Compile Include="Models\ChuDe.cs" />
     <Compile Include="Models\ChuXe.cs" />
+    <Compile Include="Models\DanhGiaXe.cs" />
     <Compile Include="Models\DatXe.cs" />
     <Compile Include="Models\DiaDiem.cs" />
     <Compile Include="Models\DoAnChuyenNganhContext.cs" />
@@ -201,17 +202,15 @@
     <Compile Include="Models\HinhThucDatXe.cs" />
     <Compile Include="Models\HinhThucThanhToan.cs" />
     <Compile Include="Models\KhachHang.cs" />
+    <Compile Include="Models\KhuVuc.cs" />
     <Compile Include="Models\LienHe.cs" />
     <Compile Include="Models\LoaiThanhVien.cs" />
     <Compile Include="Models\LoaiXe.cs" />
     <Compile Include="Models\NhaSanXuat.cs" />
     <Compile Include="Models\PhanQuyen.cs" />
-    <Compile Include="Models\QuanHuyen.cs" />
     <Compile Include="Models\Quyen.cs" />
     <Compile Include="Models\TaiXe.cs" />
-    <Compile Include="Models\ThanhPho.cs" />
     <Compile Include="Models\ThanhVien.cs" />
-    <Compile Include="Models\XaPhuong.cs" />
     <Compile Include="Models\Xe.cs" />
     <Compile Include="MoMo\MoMoSecurity.cs" />
     <Compile Include="MoMo\PaymentRequest.cs" />
@@ -269,6 +268,10 @@
     <Content Include="Assets\images\xe\audi1.jpg" />
     <Content Include="Assets\images\xe\ford1.jpg" />
     <Content Include="Assets\images\xe\ford2.jpg" />
+    <Content Include="Assets\images\xe\ford3.jpg" />
+    <Content Include="Assets\images\xe\ford4.jpg" />
+    <Content Include="Assets\images\xe\ford5.jpg" />
+    <Content Include="Assets\images\xe\ford6.jpg" />
     <Content Include="Assets\images\xe\honda1.jpg" />
     <Content Include="Assets\images\xe\hyundai1.jpg" />
     <Content Include="Assets\images\xe\isuzu1.jpg" />
@@ -276,11 +279,17 @@
     <Content Include="Assets\images\xe\lexus1.jpg" />
     <Content Include="Assets\images\xe\mazda1.jpg" />
     <Content Include="Assets\images\xe\mercedes1.jpg" />
+    <Content Include="Assets\images\xe\mercedes2.jpg" />
+    <Content Include="Assets\images\xe\mercedes3.jpg" />
+    <Content Include="Assets\images\xe\mercedes4.jpg" />
+    <Content Include="Assets\images\xe\mercedes5.jpg" />
     <Content Include="Assets\images\xe\mit1.jpg" />
     <Content Include="Assets\images\xe\nissan2.jpg" />
     <Content Include="Assets\images\xe\peugeot1.jpg" />
     <Content Include="Assets\images\xe\renault1.jpg" />
     <Content Include="Assets\images\xe\toyota1.jpg" />
+    <Content Include="Assets\images\xe\toyota2.jpg" />
+    <Content Include="Assets\images\xe\toyota3.jpg" />
     <Content Include="Assets\js\accordions.js" />
     <Content Include="Assets\js\aos.js" />
     <Content Include="Assets\js\bootstrap-datepicker.js" />
@@ -2378,6 +2387,7 @@
     <Content Include="Views\Xe\TimXeCoTaiXe.cshtml" />
     <Content Include="Views\Xe\TimXeTuLai.cshtml" />
     <Content Include="Views\Home\XeCuaToi.cshtml" />
+    <Content Include="Views\Home\LichSuDatXe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

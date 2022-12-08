@@ -6,16 +6,13 @@ namespace DoAnChuyenNganh.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("XaPhuong")]
-    public partial class XaPhuong
+    [Table("KhuVuc")]
+    public partial class KhuVuc
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int MaXaPhuong { get; set; }
+        public int MaKhuVuc { get; set; }
 
         [StringLength(255)]
-        public string TenXaPhuong { get; set; }
-
-        public int? IdQuanHuyen { get; set; }
+        public string TenKhuVuc { get; set; }
     }
 }

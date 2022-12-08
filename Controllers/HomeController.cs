@@ -32,8 +32,8 @@ namespace DoAnChuyenNganh.Controllers
             var lstXe = dbContext.Xes.ToList();
             ViewBag.ListXe = lstXe;
 
-            var lichsu = dbContext.ChiTietDatXes.ToList();
-            ViewBag.LichSuDatXe = lichsu;
+            //var lichsu = dbContext.ChiTietDatXes.ToList();
+            //ViewBag.LichSuDatXe = lichsu;
             return View();
         }
          
@@ -272,6 +272,13 @@ namespace DoAnChuyenNganh.Controllers
         {
             var xecuatoi = dbContext.Xes.Where(n => n.MaThanhVien == id).OrderBy(n => n.MaXe);
             return View(xecuatoi);
+        }
+        public ActionResult LichSuDatXe(int id)
+        {
+            ThanhVien tv = (ThanhVien)Session["TAIKHOAN"];
+
+            var lichsu = dbContext.DatXes.Where(n => n.MaThanhVien == id).OrderBy(n => n.MaDatXe);
+            return View(lichsu);
         }
         protected override void Dispose(bool disposing)
         {

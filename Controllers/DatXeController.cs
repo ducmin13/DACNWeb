@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Mail;//dung thu vien nay
 using System.Web;
 using System.Web.Mvc;
+using BotDetect;
 using DoAnChuyenNganh.Models;
 using DoAnChuyenNganh.MoMo;
 using Newtonsoft.Json.Linq;
@@ -99,17 +100,22 @@ namespace DoAnChuyenNganh.Controllers
             foreach (var item in laygh)
             {
 
-                ctdx.MaThanhVien = dx.MaThanhVien;
+                //ctdx.MaThanhVien = dx.MaThanhVien;
                 ctdx.MaDatXe = dx.MaDatXe;
                 ctdx.MaXe = item.iMaXe;
                 ctdx.SoNgay = item.iSL;
                 ctdx.DonGia = int.Parse(item.iGia.ToString());
-                ctdx.Status = 0;
+                ctdx.Status = 1;
                 ctdx.TongThanhToan = int.Parse(item.iTHANHTIEN.ToString());
+                ThanhVien taixe = db.ThanhViens.Single(n => n.MaLoaiThanhVien == 7 && n.MaThanhVien == item.iMaTaiXe);
+                         
                 db.ChiTietDatXes.Add(ctdx);
+                GuiMailTaixe(taixe.Email, dx.HoTen,taixe.DienThoai);
+
             }
 
             db.SaveChanges();
+
             SendVerificationLinkEmail(tv.Email, ctdx.TongThanhToan.ToString());
             return RedirectToAction("Xacnhandonhang", "DatXe");
 
@@ -198,12 +204,45 @@ namespace DoAnChuyenNganh.Controllers
             var fromEmail = new MailAddress("jacknhoxdx3@gmail.com", "Carbook");
             var toEmail = new MailAddress(emailID);
             var fromEmailPassword = "jtkvzmzwikpchunx";
-            string subject = "TMTcar xin cám ơn quý khách hàng!<br/>";
+            string subject = "TMTcar xin cám ơn quý khách hàng!";
 
             string body = "Chúng tôi xin chân thành cám ơn quý khách hàng<br/>" +
                 " Chúc quý khách có một chuyến đi thật ý nghĩa" +
                 " Xác nhận thanh toán thành công qua phương thức thanh toán online(MoMo)<br/>" +
                 " Tổng số tiền đã thanh toán:"+ tongtien;
+
+            var smtp = new SmtpClient
+            {
+                Host = "smtp.gmail.com",
+                Port = 587,
+                EnableSsl = true,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                UseDefaultCredentials = false,
+                Credentials = new NetworkCredential(fromEmail.Address, fromEmailPassword)
+            };
+
+            using (var message = new MailMessage(fromEmail, toEmail)
+            {
+                Subject = subject,
+                Body = body,
+                IsBodyHtml = true
+            })
+                smtp.Send(message);
+        }
+        [NonAction]
+        public void GuiMailTaixe(string emailID, string tenkhachhang, string sdt)
+        {
+
+
+            var fromEmail = new MailAddress("jacknhoxdx3@gmail.com", "Carbook");
+            var toEmail = new MailAddress(emailID);
+            var fromEmailPassword = "jtkvzmzwikpchunx";
+            string subject = "TMTcar xin cám ơn quý khách hàng!";
+
+            string body = "Xe của bạn đã được đặt bởi " + tenkhachhang +
+                "<br/>Vui lòng liên hệ số điện thoại " + sdt;
+                ;
+                
 
             var smtp = new SmtpClient
             {

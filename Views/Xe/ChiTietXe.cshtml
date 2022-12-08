@@ -1,4 +1,4 @@
-﻿@*@model DoAnChuyenNganh.Models.Xe*@
+﻿@model DoAnChuyenNganh.Models.Xe
 @{
     ViewBag.Title = "ChiTietXe";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -39,7 +39,10 @@
                 <h3 style="margin-right: 50px; font-size:2rem" class="product-title">@Model.TenXe</h3>
 
                 <div style="color:black; font-size:1.3rem">
-                    <span class=" col-md-6" id="giaThue" data-price="@Model.Gia">Giá thuê: @String.Format("{0:0,0}", @Model.Gia)đ/Ngày</span>
+                    <span class=" col-md-5" id="giaThue" data-price="@Model.Gia">- Giá thuê: @String.Format("{0:0,0}", @Model.Gia)đ/Ngày</span>
+                    <br />
+                    <br />
+                    <span class=" col-md-5">- Địa chỉ: @Model.DiaChi</span>
                 </div>
 
                 @*<input type="date" id="d1" name="iNgayDat">
@@ -47,8 +50,8 @@
             <br />
 
 
-                <div class="datmua mt-2">
-                    <a href="@Url.Action("ThemGioHang","DatXe", new { @iMaXe =@Model.MaXe, @strURL = Request.Url.ToString()})" class="btn btn-success" style="width:120px;">Đặt xe</a>
+                <div class="datmua col-md-5">
+                    <a href="@Url.Action("ThemGioHang","DatXe", new { @iMaXe =@Model.MaXe, @strURL = Request.Url.ToString()})" class="btn btn-success" style="width:120px;height:45px;font-size:1.3rem">Đặt xe</a>
                 </div>
             </div>
 
@@ -78,7 +81,7 @@
                     </tr>
                     <tr>
                         <th scope="row">Động cơ</th>
-                        <td>@Model.PhanKhuc</td>
+                        <td>@Model.DongCo</td>
                     </tr>
                 </tbody>
             </table>

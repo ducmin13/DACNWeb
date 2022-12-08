@@ -13,6 +13,7 @@ namespace DoAnChuyenNganh.Models
         public Xe()
         {
             ChiTietDatXes = new HashSet<ChiTietDatXe>();
+            DanhGiaXes = new HashSet<DanhGiaXe>();
         }
 
         [Key]
@@ -39,45 +40,37 @@ namespace DoAnChuyenNganh.Models
         public int? Status { get; set; }
 
         [StringLength(255)]
-        public string KhuVuc { get; set; }
+        public string DiaChi { get; set; }
 
-        [StringLength(255)]
-        public string ViTri { get; set; }
+        public double? KinhDo { get; set; }
+
+        public double? ViDo { get; set; }
+
+        public int? DaXoa { get; set; }
+
         [StringLength(255)]
         public string ThuongHieu { get; set; }
+
         [StringLength(255)]
         public string NhienLieu { get; set; }
-        [StringLength(255)]
-        public string PhanKhuc { get; set; }
-
-        public int? MaThanhPho { get; set; }
-
-        public int? MaQuanHuyen { get; set; }
-
-        [Column(TypeName = "date")]
-        public DateTime? NgayBatDau { get; set; }
-
-        [Column(TypeName = "date")]
-        public DateTime? NgayKetThuc { get; set; }
 
         [StringLength(255)]
-        public string ViTriBatDau { get; set; }
+        public string DongCo { get; set; }
 
         [StringLength(255)]
-        public string ViTriKetThuc { get; set; }
+        public string KhuVuc { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDatXe> ChiTietDatXes { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DanhGiaXe> DanhGiaXes { get; set; }
 
         public virtual HinhThucDatXe HinhThucDatXe { get; set; }
 
         public virtual LoaiXe LoaiXe { get; set; }
 
         public virtual NhaSanXuat NhaSanXuat { get; set; }
-
-        public virtual QuanHuyen QuanHuyen { get; set; }
-
-        public virtual ThanhPho ThanhPho { get; set; }
 
         public virtual ThanhVien ThanhVien { get; set; }
     }

@@ -4,7 +4,7 @@
 @{
     ViewBag.Title = "XeCoTaiXe";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
-    IEnumerable<QuanHuyen> lstKhuVuc = (IEnumerable<QuanHuyen>)ViewBag.lstKhuVuc;
+   
 
 }
 <section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/Assets/images/contact.jpg');" data-stellar-background-ratio="0.5">
@@ -120,7 +120,7 @@
                                             <p class="price ml-auto">@item.Gia.Value.ToString("#,##0").Replace(',', '.') VNĐ <span>/ngày</span></p>
                                             
                                             @*<p class="mb-0"> Địa chỉ:@item.ViTri</p>*@
-                                            <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Đặt xe</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Chi tiết</a></p>
+                                            <p class="d-flex mb-0 d-block"><a href="@Url.Action("ChiTietXe","Xe", new { id = item.MaXe})" class="btn btn-primary py-2 mr-1">Đặt xe</a> <a href="@Url.Action("ChiTietXe","Xe", new { id = item.MaXe})" class="btn btn-secondary py-2 ml-1">Chi tiết</a></p>
                                         </div>
                                     </div>
                                 </div>
