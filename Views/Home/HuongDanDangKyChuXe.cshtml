@@ -16,8 +16,8 @@
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
             <div class="col-md-9 ftco-animate pb-5">
-                <p class="breadcrumbs"><span class="mr-2"><a href="@Url.Action("Index","Home")">Trang chủ <i class="ion-ios-arrow-forward"></i></a></span> <span>Services <i class="ion-ios-arrow-forward"></i></span></p>
-                <h1 class="mb-3 bread">Our Services</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="@Url.Action("Index","Home")">Trang chủ <i class="ion-ios-arrow-forward"></i></a></span> <span>Trở Thành Chủ Xe <i class="ion-ios-arrow-forward"></i></span></p>
+                <h1 class="mb-3 bread">Trở Thành Chủ Xe</h1>
             </div>
         </div>
     </div>
@@ -112,26 +112,20 @@
                                 </div>
                                 
                                 <div class="form-outline mb-4">
-                                    <label class="form-label" for="form3Example1cg">Số chỗ</label>
-                                    <div class="col-mb-4">
-                                        @Html.DropDownList("MaLoaiXe", null, htmlAttributes: new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(model => model.MaLoaiXe, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>                           
-                                @*<div class="form-outline mb-4">
                                     <label class="form-label" for="form3Example1cg">Hình ảnh xe</label>
 
-                                    <input type="text" id="form3Example1cg" class="form-control form-control-lg"
+                                    <input type="file" id="inputfile" name="HinhAnh" class="form-control form-control-lg"
                                            name="HinhAnh" />
                                     @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @style = "margin-bottom:15px; color:#DC143C;" })
-                                </div>*@
+                                </div>
 
                                 <div class="form-outline mb-4">
                                     @Html.Captcha(exampleCaptcha)
                                     @Html.TextBox("CaptchaCode")
                                 </div>
 
-                                <div class="form-outline mb-4">
+
+                                <div class="d-flex justify-content-center">
                                     <button type="submit"
                                             class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
                                         Đăng ký
@@ -146,5 +140,9 @@
         </div>
     </div>
 </section>
-
+<br />
+<br />
+<br />
+<br />
+<br />
 <br />

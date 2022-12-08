@@ -1,9 +1,9 @@
-﻿@using DoAnChuyenNganh.Models
+﻿    @using DoAnChuyenNganh.Models
 
 <!--start nav-->
 <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
     <div class="container">
-        <a class="navbar-brand" href="@Url.Action("Index","Home")">Car<span>Book</span></a>
+        <a class="navbar-brand"  href="@Url.Action("Index","Home")">Car<span>Book</span></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="oi oi-menu"></span> Menu
         </button>
@@ -11,20 +11,39 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto ">
                 <li class="nav-item "><div class="nav-link font-weight-bold ">@Html.ActionLink("Trang chủ", "Index", "Home")</div> </li>
-                <li class="nav-item"><div class="nav-link font-weight-bold"> @Html.ActionLink("Giới thiệu", "GioiThieu", "Home")</div></li>
-                <li class="nav-item"><div class="nav-link font-weight-bold"> @Html.ActionLink("Đặt xe", "HienThiToanBoXe", "Xe")</div></li>
+                @*<li class="nav-item"><div class="nav-link font-weight-bold"> @Html.ActionLink("Giới thiệu", "GioiThieu", "Home")</div></li>*@
+                @*<li class="nav-item"><div class="nav-link font-weight-bold"> @Html.ActionLink("Đặt xe", "HienThiToanBoXe", "Xe")</div></li>*@
+                <li class="nav-item dropdown">
+                    <a style="color: #2C2C2B " class="nav-link dropdown-toggle font-weight-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Đặt xe
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/Xe/XeCoTaiXe">Xe có tài xế</a></li>
+                        <li><a class="dropdown-item" href="/Xe/XeTuLai">Xe tự lái</a></li>
+                    </ul>
+                </li>
                 <li class="nav-item"><div class="nav-link font-weight-bold">@Html.ActionLink("Bài viết", "HienThiToanBoBaiViet", "BaiViet")</div> </li>
                 <li class="nav-item"><div class="nav-link font-weight-bold">@Html.ActionLink("Liên hệ", "LienHe", "Home")</div> </li>
                 @if (Session["TaiKhoan"] != null && Session["TaiKhoan"].ToString() != "")
                 {
 
                     ThanhVien tv = (ThanhVien)Session["TaiKhoan"];     //ép kiểu từ biến session thành biến tv để lấy ra thông tin
-                    <li class="nav-item "><div class="nav-link font-weight-bold">Xin chào @tv.TenHienThi!</div></li>
+                    @*<li class="nav-item "><div class="nav-link font-weight-bold">Xin chào @tv.TenHienThi!</div></li>*@
+                    <li class="nav-item dropdown">
+                        <a style="color: #2C2C2B"   class="nav-link dropdown-toggle font-weight-bold" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Chào @tv.TenHienThi!
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="Home/ThongTinCaNhan/@tv.MaThanhVien">Thông tin cá nhân</a></li>
+                            <li><a class="dropdown-item" href="Home/XeCuaToi/@tv.MaThanhVien">Xe của tôi</a></li>
+                            <li><a class="dropdown-item" href="Home/ChuyenCuaToi/@tv.MaThanhVien">Chuyến của tôi</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("DangXuat", "Home")">Đăng xuất</a></li>
+                        </ul>
+                    </li>
                     if (tv.MaLoaiThanhVien == 1)
                     {
                         <li><a href="@Url.Action("Index", "Admin/Admin")">Trang Admin</a>  </li>
                     }
-                    <li class="nav-item"><div class="nav-link font-weight-bold"><a href="@Url.Action("DangXuat", "Home")">Đăng xuất</a></div></li>
 
 
                     @*@Html.ActionLink("Đăng xuất", "DangXuat", "Home", new { @class = "lock" })*@
@@ -34,7 +53,7 @@
                     <li class="nav-item"><div class="nav-link font-weight-bold">@Html.ActionLink("Đăng nhập", "DangNhap", "Home")</div> </li>
                     <li class="nav-item"><div class="nav-link font-weight-bold">@Html.ActionLink("Đăng ký", "DangKy", "Home")</div> </li>
                 }
-                <li class="nav-item"><div class="nav-link "><button type="button" class="btn btn-light font-weight-bold">@Html.ActionLink("Trở thành chủ xe","HuongDanDangKyChuXe","Home")</button></div> </li>
+                <li class="nav-item"><div class="nav-link "><button type="button" class="btn btn-light font-weight-bold">@Html.ActionLink("Trở thành chủ xe", "HuongDanDangKyChuXe", "Home")</button></div> </li>
 
             </ul>
         </div>

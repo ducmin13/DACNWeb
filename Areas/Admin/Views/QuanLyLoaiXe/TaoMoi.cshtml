@@ -37,10 +37,11 @@
     });
 </script>
 
-<h4>@Html.ActionLink("Loại xe", "Index") >Tạo mới</h4>
+
 <div class="card flex-md-fill">
     <div class="card-body">
         <h4 class="card-title">Tạo mới loại xe</h4>
+        <h4>@Html.ActionLink("Loại xe", "Index") >Tạo mới</h4>
         <hr />
         @using (Html.BeginForm("TaoMoi", "QuanLyLoaiXe", FormMethod.Post, new { @enctype = "multipart/form-data" }))
         {

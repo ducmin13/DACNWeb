@@ -41,10 +41,11 @@
     });
 </script>
 
-<h4>@Html.ActionLink("Địa Điểm", "Index") > Chỉnh sửa</h4>
-<div class="card">
+
+<div class="card flex-md-fill">
     <div class="card-body">
         <h4 class="card-title">Thông tin sản phẩm</h4>
+        <h4>@Html.ActionLink("Địa Điểm", "Index") > Chỉnh sửa</h4>
         <hr />
         @using (Html.BeginForm("ChinhSua", "QuanLyChuDe", FormMethod.Post, new { @enctype = "multipart/form-data" }))
         {

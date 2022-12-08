@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "TimXeTuLai";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<section class="ftco-section ftco-degree-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 ftco-animate">
+                <section class="ftco-section bg-light">
+                    <div class="container">
+                        <div class="row">
+                            @foreach (var item in Model)
+                            {
+
+                                <div class="col-md-6">
+                                    <div class="car-wrap rounded ftco-animate">
+                                        <div class="img rounded d-flex align-items-end" style="background-image: url(/Assets/images/xe/@item.HinhAnh);">
+                                        </div>
+                                        <div class="text">
+                                            <h2 class="mb-0"><a href="@Url.Action("ChiTietXe","Xe", new { id = item.MaXe})">@item.TenXe</a></h2>
+                                            <div class="d-flex mb-3">
+                                                <span class="cat">
+                                                    <span class="ion-ios-star"></span>
+                                                    <span class="ion-ios-star"></span>
+                                                    <span class="ion-ios-star"></span>
+                                                    <span class="ion-ios-star"></span>
+                                                    <span class="ion-ios-star"></span>
+                                                </span>
+                                                <p class="price ml-auto">@item.Gia.Value.ToString("#,##0").Replace(',', '.') VNĐ <span>/ngày</span></p>
+                                            </div>
+                                            <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Đặt xe</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Chi tiết</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+
+                            <div class="row mt-5">
+                                @*<div class="col text-center">
+                                    <div class="block-27">
+                                        Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber)/@Model.PageCount
+                                        @Html.PagedListPager(Model, page => Url.Action("TimXeTuLai", new { page = page }))
+                                    </div>
+                                </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="col-md-3 sidebar ftco-animate">
+                <div class="sidebar-box">
+                    <form action="#" class="search-form">
+                        <div class="form-group">
+                            <span class="icon icon-search"></span>
+                            <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+

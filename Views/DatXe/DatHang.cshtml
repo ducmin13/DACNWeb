@@ -2,18 +2,29 @@
 @{ ViewBag.Title = "DatHang";
    }
 
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/Assets/images/nen2.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
+            <div class="col-md-9 ftco-animate pb-5">
+                <p class="breadcrumbs"><span class="mr-2"><a href="@Url.Action("Index","Home")">Trang chủ <i class="ion-ios-arrow-forward"></i></a></span> <span>Bài viết <i class="ion-ios-arrow-forward"></i></span></p>
+
+            </div>
+        </div>
+    </div>
+</section>
 <div class="container">
-    <h3 style="text-align:center;color:red;font-size:50px;margin-top:20px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Đặt Xe </h3>
+    <h3 style="text-align:center;color:red;font-size:50px;margin-top:20px;font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif">Xác nhận</h3>
     <div class="row">
         <div class="col-md-8">
             <table class="table table-bordered" style="margin-left:250px">
                 <thead>
                     <tr>
-                        <th style="width:20px">ID</th>
+                       
                         <th style="width:100px">Hình Ảnh</th>
                         <th>Tên Xe</th>
-                        <th>Số ngày</th>
-                        <th>Giá</th>
+                        <th>Số Ngày</th>
+                        <th>Đơn Giá</th>
                         <th>Thành Tiền</th>
 
                     </tr>
@@ -22,21 +33,21 @@
                 {
     <tbody>
         <tr>
-            <td>@item.iMaXe</td>
+            <td hidden>@item.iMaXe</td>
             <td>
                 <img src="~/Assets/images/xe/@item.iHinhAnh" class="img-fluid" />
             </td>
             <td>@item.iTenXe</td>
-            @using (Html.BeginForm("CapnhatGiohang", "Giohang", new { @iMaXe = item.iMaXe }))
+            @using (Html.BeginForm("CapnhatGiohang", "DatXe", new { @iMaXe = item.iMaXe }))
             {
-<td>@item.iSL</td>
+                    <td>@item.iSL</td>
                     <td>@String.Format("{0:0,0}", item.iGia) </td>
                                         <td>@String.Format("{0:0,0}", item.iTHANHTIEN)</td>}
         </tr>
 
     </tbody>}
                 <tr style="font-weight:bold; text-align:right;color:red">
-                    <td colspan="4">Số ngày: @ViewBag.Tongsoluong</td>
+                    
                     
                     <td colspan="5"> Tổng tiền :@String.Format("{0:0,0}", ViewBag.Tongtien)  VNĐ</td>
 
@@ -44,7 +55,7 @@
                 </tr>
                 <tr style="font-weight:bold; color:black; text-align:right">
                     <td colspan="9">
-                        @Html.ActionLink("TRỞ VỀ GIỎ HÀNG", "Giohang", "GioHang")
+                        @Html.ActionLink("TRỞ VỀ", "Giohang", "GioHang")
                     </td>
                 </tr>
             </table>
@@ -53,40 +64,43 @@
 
 </div>
 @using DoAnChuyenNganh.Models
-<h2 style="text-align:center">THÔNG TIN ĐẶT HÀNG</h2>
+<h2 style="text-align:center">THÔNG TIN KHÁCH HÀNG</h2>
 @{ ThanhVien tv = (ThanhVien)Session["TAIKHOAN"]; }
 <table align="center">
     @using (Html.BeginForm())
     {
-@Html.ValidationSummary(true)
-                <tr style="height:40px">
-                    <td>Họ Tên</td>
-                    <td style="font-weight:bold">@tv.HoTen</td>
-                </tr>
-                                <tr style="height:40px">
-                                    <td>Địa Chỉ</td>
-                                    @*<td style="font-weight:bold">@tv.DIACHI</td>*@
-                                </tr>
-                                                <tr style="height:40px">
-                                                    <td>Điện Thoại</td>
-                                                    <td style="font-weight:bold">@tv.DienThoai</td>
-                                                </tr>
-                                                                <tr style="height:40px">
-                                                                    <td>NGÀY ĐẶT</td>
-                                                                    <td style="font-weight:bold">@DateTime.Now.ToShortDateString()</td>
-                                                                </tr>
-                                                                                <tr style="height:40px">
-                                                                                    <td>Ngày Giao Xe</td>
-                                                                                    <td style="font-weight:bold">
-                                                                                        <input type="date" name="NGAYGIAO" id="NgayKetThuc"/>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                                <tr style="height:40px">
-                                                                                                    <td></td>
-                                                                                                    <td>
-                                                                                                        <input type="Submit" value="ĐỒNG Ý ĐẶT" class="btn btn-danger" />
-                                                                                                    </td>
-                                                                                                </tr>}
+        @Html.ValidationSummary(true)
+        <tr style="height:40px">
+            <td>Họ Tên</td>
+            <td style="font-weight:bold">@tv.HoTen</td>
+        </tr>
+        <tr style="height:40px">
+            <td>Địa Chỉ</td>
+            @*<td style="font-weight:bold">@tv.DIACHI</td>*@
+        </tr>
+        <tr style="height:40px">
+            <td>Điện Thoại</td>
+            <td style="font-weight:bold">@tv.DienThoai</td>
+        </tr>
+        <tr style="height:40px">
+            <td>Ngày BD</td>
+            <td style="font-weight:bold">
+                <input type="date" name="Ngaybatdau" />
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td>Ngày KT</td>
+            <td style="font-weight:bold">
+                <input type="date" name="Ngayketthuc" value="12/12/2022" />
+            </td>
+        </tr>
+        <tr style="height:40px">
+            <td></td>
+            <td>
+                <input type="Submit" value="ĐỒNG Ý ĐẶT XE" class="btn btn-danger" />
+            </td>
+        </tr>
+}
 
 </table>
 

@@ -11,6 +11,9 @@
         <td align="left" style="height:150px">
             <h2>@ViewBag.Title</h2>
             <a href="@Url.Action("Create","Xes")" class="btn btn-outline-success">Create</a>
+            <p>
+                @Html.ActionLink("ImportExcel", "ImportExcel", "Excel")
+            </p>
             @using (Html.BeginForm("Index", "Xes", FormMethod.Get, new { @class = "form-inline" }))
             {
                 <br />
@@ -23,6 +26,7 @@
             }
         </td>
     </tr>
+    
     <tr style="height:50px;">
         <th>
             Loại xe
@@ -76,8 +80,8 @@
         </tr>
     }
 </table>
-@*<br />
-Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+<br />
+@*Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
 
 @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page }))*@

@@ -1,0 +1,74 @@
+﻿@model IEnumerable<DoAnChuyenNganh.Models.Xe>
+
+@{
+    ViewBag.Title = "XeCuaToi";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/Assets/images/bg.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
+            <div class="col-md-9 ftco-animate pb-5">
+                <p class="breadcrumbs"><span class="mr-2"><a href="#">Trang chủ <i class="ion-ios-arrow-forward"></i></a></span> <span>Xe của tôi <i class="ion-ios-arrow-forward"></i></span></p>
+                <h1 class="mb-3 bread">Xe của tôi</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<table class="table table-hover">
+    <tr>
+    </tr>
+    <tr style="height:50px;">
+        <th>
+            Loại xe
+        </th>
+        <th>
+            Tên nhà sản xuất
+        </th>
+        <th>
+            Tên xe
+        </th>
+        <th>
+            Giá
+        </th>
+        <th>
+            Hình ảnh
+        </th>
+        <th>
+            Mô tả
+        </th>
+        <th>
+            Tác vụ
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoaiXe.TenLoaiXe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NhaSanXuat.TenNhaSanXuat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenXe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gia)
+            </td>
+            <td>
+                <img src="~/Assets/images/xe/@Url.Content(item.HinhAnh)" style="width:250px; height:200px" alt="Lỗi load hình" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoTa)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit","Xes", new {id=item.MaXe})" class="btn btn-outline-primary">Edit</a>
+                <a href="@Url.Action("UploadHinh","Xes", new {id=item.MaXe})" class="btn btn-info">Upload Img</a>
+
+            </td>
+        </tr>
+    }
+</table>
+<br />

@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Tinh so ngay </title>
+</head>
+<boddy>
+    <input type="date" id="d1">
+    <input type="date" id="d2" onchange="calculateDays()">
+    @*<button onclick="calculateDays()">Get Difference</button>*@
+    <p id="output"> </p>
+</boddy>
+<script>
+        function calculateDays() {
+        var d1 = document.getElementById("d1").value;
+        var d2 = document.getElementById("d2").value;
+        const dateOne = new Date(d1);
+        const dateTwo = new Date(d2);
+        const time = Math.abs(dateTwo - dateOne);
+        const days = Math.ceil(time / (1000 * 60 * 60 * 24));
+        document.getElementById("output").innerHTML= days ;
+        }
+</script>
+</html>

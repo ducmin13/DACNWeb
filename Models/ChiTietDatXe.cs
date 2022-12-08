@@ -26,6 +26,10 @@ namespace DoAnChuyenNganh.Models
 
         public int? Status { get; set; }
 
+        public int? SoNgay { get; set; }
+
+        public int? DonGia { get; set; }
+
         public virtual DatXe DatXe { get; set; }
 
         public virtual Xe Xe { get; set; }

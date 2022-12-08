@@ -1,7 +1,7 @@
 ﻿@using DoAnChuyenNganh.Models
 @model IEnumerable<ChuXe>
 @{
-    ViewBag.Title = "Danh sách yêu cầu";
+    ViewBag.Title = "Danh sách yêu  cầu";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
     WebGrid grid = new WebGrid(source: Model, rowsPerPage: 10); //khởi tạo control webgird
 
@@ -36,7 +36,7 @@
                         grid.Column("TenChuXe", "Tên chủ xe"),
                         grid.Column("SoDienThoai", "Số điện thoại"),
                         grid.Column("TenXe", "Tên xe"),
-                        grid.Column("SoCho", "Số chỗ"),
+                        grid.Column("LoaiXe.TenLoaiXe", "Số chỗ"),
                         grid.Column("HinhAnh", "Hình ảnh"),
                         grid.Column(format: p => Html.ActionLink("Chi tiết","ChiTiet", new { id = p.MaChuXe }))
                 )

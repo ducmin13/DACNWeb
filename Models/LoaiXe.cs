@@ -12,6 +12,7 @@ namespace DoAnChuyenNganh.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public LoaiXe()
         {
+            ChuXes = new HashSet<ChuXe>();
             Xes = new HashSet<Xe>();
         }
 
@@ -22,6 +23,9 @@ namespace DoAnChuyenNganh.Models
         public string TenLoaiXe { get; set; }
 
         public int? Status { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ChuXe> ChuXes { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Xe> Xes { get; set; }
