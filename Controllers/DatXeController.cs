@@ -198,12 +198,12 @@ namespace DoAnChuyenNganh.Controllers
             var fromEmail = new MailAddress("jacknhoxdx3@gmail.com", "Carbook");
             var toEmail = new MailAddress(emailID);
             var fromEmailPassword = "jtkvzmzwikpchunx";
-            string subject = "Carbook xin cám ơn quý khách hàng!";
+            string subject = "TMTcar xin cám ơn quý khách hàng!<br/>";
 
-            string body = "<br/><br/>Chúng tôi xin chân thành cám ơn quý khách hàng" +
-                "  Chúc quý khách có một chuyến đi thật ý nghĩa" +
-                " <br/><br/>Xác nhận thanh toán thành công qua phương thức thanh toán online(MoMo)"+
-                " <br/><br/>Tổng số tiền đẫ thanh toán:"+ tongtien;
+            string body = "Chúng tôi xin chân thành cám ơn quý khách hàng<br/>" +
+                " Chúc quý khách có một chuyến đi thật ý nghĩa" +
+                " Xác nhận thanh toán thành công qua phương thức thanh toán online(MoMo)<br/>" +
+                " Tổng số tiền đã thanh toán:"+ tongtien;
 
             var smtp = new SmtpClient
             {
